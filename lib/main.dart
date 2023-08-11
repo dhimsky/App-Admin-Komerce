@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:komerce/pages/dashboard_page.dart';
 import 'package:komerce/pages/splash_page.dart';
-import 'package:komerce/pages/login.dart'; // Ganti dengan path yang sesuai
+import 'package:komerce/pages/login_page.dart';
+import 'package:komerce/pages/lupapassword_page.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -19,16 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'PlusJakartaSans',
         primarySwatch: Colors.blue,
       ),
-      home: DashboardPage(),
-    );
-  }
-}
-
-class LoginPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Login(), // Menggunakan kelas Login yang sudah Anda sediakan
+      home: LupaPassword(),
     );
   }
 }
