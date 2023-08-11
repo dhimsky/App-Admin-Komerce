@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:komerce/pages/splash_page.dart';
 import 'package:komerce/pages/login.dart'; // Ganti dengan path yang sesuai
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: SplashPage(),
     );
   }
 }

@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
-
 import 'package:google_fonts/google_fonts.dart';
+
+Color orangeColor = Color(0xffF95031);
+Color greyColor = Color(0xffB3B3B3);
+Color grey2Color = Color(0xff828282);
+Color blackColor = Color(0xff000000);
+Color black2Color = Color(0xff1A1A1A);
+Color whiteColor = Color(0xffFFFFFF);
+
+TextStyle tittleText = TextStyle(
+  fontWeight: FontWeight.w700,
+  fontSize: 32,
+  color: blackColor,
+);
+
+TextStyle passText = TextStyle(
+  fontWeight: FontWeight.w700,
+  fontSize: 12,
+  color: grey2Color,
+);
+
+TextStyle logText = TextStyle(
+  fontWeight: FontWeight.w500,
+  fontSize: 14,
+  color: whiteColor,
+);
 
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   @override
