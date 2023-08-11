@@ -63,7 +63,129 @@ class LupaPassword extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Container(
+                          // component112y (10:3475)
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 0 * fem, 32 * fem),
+                          width: double.infinity,
+                          height: 48 * fem,
+                          child: Stack(
+                            children: [
+                              Positioned(
+                                // frame2608601KZT (I10:3475;88:37296)
+                                left: 0 * fem,
+                                top: 8 * fem,
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(
+                                      12 * fem, 10 * fem, 12 * fem, 9 * fem),
+                                  width: 311 * fem,
+                                  height: 40 * fem,
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: Color(0xffcccccc)),
+                                    color: Color(0xffffffff),
+                                    borderRadius:
+                                        BorderRadius.circular(8 * fem),
+                                  ),
+                                  child: TextField(
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(7 * fem),
+                                      hintText: 'email@gmail.com',
+                                      hintStyle: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 16 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xffcccccc),
+                                      ),
+                                      border: InputBorder.none,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                // frame26086647kD (I10:3475;90:34274)
+                                left: 8 * fem,
+                                top: 0 * fem,
+                                child: Container(
+                                  width: 39 * fem,
+                                  height: 16 * fem,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xffffffff),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Email',
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xff1a1a1a),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            style: SafeGoogleFont(
+                              'Plus Jakarta Sans',
+                              fontSize: 12 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.26 * ffem / fem,
+                              color: Color(0xfff95031),
+                            ),
+                            children: [
+                              TextSpan(
+                                text: 'Ingat password? ',
+                                style: SafeGoogleFont(
+                                  'Plus Jakarta Sans',
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w400,
+                                  height: 1.26 * ffem / fem,
+                                  color: Color(0xff999999),
+                                ),
+                              ),
+                              TextSpan(
+                                text: 'Kembali Masuk',
+                                style: SafeGoogleFont(
+                                  'Plus Jakarta Sans',
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w600,
+                                  height: 1.26 * ffem / fem,
+                                  color: Color(0xfff95031),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
+                    ),
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: 40 * fem,
+                    decoration: BoxDecoration(
+                      color: Color(0xfff95031),
+                      borderRadius: BorderRadius.circular(5 * fem),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'KIrim',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont(
+                          'Plus Jakarta Sans',
+                          fontSize: 14 * ffem,
+                          height: 1.26 * ffem / fem,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.1000000015 * fem,
+                          color: Color(0xffffffff),
+                        ),
+                      ),
                     ),
                   ),
                 ],
