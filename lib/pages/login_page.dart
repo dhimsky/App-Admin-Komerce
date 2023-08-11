@@ -14,7 +14,7 @@ class Login extends StatelessWidget {
             width: double.infinity,
             child: Container(
               padding:
-                  EdgeInsets.fromLTRB(32 * fem, 160 * fem, 32 * fem, 0 * fem),
+                  EdgeInsets.fromLTRB(32 * fem, 130 * fem, 32 * fem, 130 * fem),
               width: double.infinity,
               height: 837 * fem,
               decoration: BoxDecoration(
@@ -207,39 +207,49 @@ class Login extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Text(
-                            'Lupa password?',
-                            textAlign: TextAlign.right,
-                            style: SafeGoogleFont(
-                              'Plus Jakarta Sans',
-                              fontSize: 12 * ffem,
-                              fontWeight: FontWeight.w700,
-                              height: 1.26 * ffem / fem,
-                              color: Color(0xff818181),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pushNamed('/lupapassword');
+                            },
+                            child: Text(
+                              'Lupa password?',
+                              textAlign: TextAlign.right,
+                              style: SafeGoogleFont(
+                                'Plus Jakarta Sans',
+                                fontSize: 12 * ffem,
+                                fontWeight: FontWeight.w700,
+                                height: 1.26 * ffem / fem,
+                                color: Color(0xff818181),
+                              ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 40 * fem,
-                      decoration: BoxDecoration(
-                        color: Color(0xfff95031),
-                        borderRadius: BorderRadius.circular(8 * fem),
-                      ),
-                      child: Center(
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/dashboard');
+                      },
+                      child: Container(
+                        width: double.infinity,
+                        height: 40 * fem,
+                        decoration: BoxDecoration(
+                          color: Color(0xfff95031),
+                          borderRadius: BorderRadius.circular(8 * fem),
+                        ),
                         child: Center(
-                          child: Text(
-                            'Login',
-                            textAlign: TextAlign.center,
-                            style: SafeGoogleFont(
-                              'Plus Jakarta Sans',
-                              fontSize: 14 * ffem,
-                              fontWeight: FontWeight.w500,
-                              height: 1.26 * ffem / fem,
-                              letterSpacing: 0.1000000015 * fem,
-                              color: Color(0xffffffff),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              textAlign: TextAlign.center,
+                              style: SafeGoogleFont(
+                                'Plus Jakarta Sans',
+                                fontSize: 14 * ffem,
+                                fontWeight: FontWeight.w500,
+                                height: 1.26 * ffem / fem,
+                                letterSpacing: 0.1000000015 * fem,
+                                color: Color(0xffffffff),
+                              ),
                             ),
                           ),
                         ),

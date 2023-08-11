@@ -15,12 +15,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Login Example',
-      theme: ThemeData(
-        fontFamily: 'PlusJakartaSans',
-        primarySwatch: Colors.blue,
-      ),
-      home: LupaPassword(),
+      home: Login(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => Login(),
+        '/lupapassword': (context) => LupaPassword(),
+        '/dashboard': (context) => DashboardPage(),
+      },
     );
   }
 }

@@ -13,8 +13,8 @@ class LupaPassword extends StatelessWidget {
           child: Container(
             width: double.infinity,
             child: Container(
-              padding: EdgeInsets.fromLTRB(
-                  32 * fem, 182.5 * fem, 32 * fem, 302 * fem),
+              padding:
+                  EdgeInsets.fromLTRB(32 * fem, 120 * fem, 32 * fem, 120 * fem),
               width: double.infinity,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
@@ -130,37 +130,42 @@ class LupaPassword extends StatelessWidget {
                             ],
                           ),
                         ),
-                        RichText(
-                          text: TextSpan(
-                            style: SafeGoogleFont(
-                              'Plus Jakarta Sans',
-                              fontSize: 12 * ffem,
-                              fontWeight: FontWeight.w400,
-                              height: 1.26 * ffem / fem,
-                              color: Color(0xfff95031),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pushNamed('/login');
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              style: SafeGoogleFont(
+                                'Plus Jakarta Sans',
+                                fontSize: 12 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 1.26 * ffem / fem,
+                                color: Color(0xfff95031),
+                              ),
+                              children: [
+                                TextSpan(
+                                  text: 'Ingat password? ',
+                                  style: SafeGoogleFont(
+                                    'Plus Jakarta Sans',
+                                    fontSize: 12 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.26 * ffem / fem,
+                                    color: Color(0xff999999),
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Kembali Masuk',
+                                  style: SafeGoogleFont(
+                                    'Plus Jakarta Sans',
+                                    fontSize: 12 * ffem,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.26 * ffem / fem,
+                                    color: Color(0xfff95031),
+                                  ),
+                                ),
+                              ],
                             ),
-                            children: [
-                              TextSpan(
-                                text: 'Ingat password? ',
-                                style: SafeGoogleFont(
-                                  'Plus Jakarta Sans',
-                                  fontSize: 12 * ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.26 * ffem / fem,
-                                  color: Color(0xff999999),
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Kembali Masuk',
-                                style: SafeGoogleFont(
-                                  'Plus Jakarta Sans',
-                                  fontSize: 12 * ffem,
-                                  fontWeight: FontWeight.w600,
-                                  height: 1.26 * ffem / fem,
-                                  color: Color(0xfff95031),
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ],
