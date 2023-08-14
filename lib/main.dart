@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'PlusJakartaSans',
+        fontFamily: 'PlusJakartaSans'
       ),
       home: Login(),
       initialRoute: '/login',
