@@ -16,11 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: 'PlusJakartaSans'
-      ),
-      home: Profile(),
-      initialRoute: '/profile',
+      theme: ThemeData(fontFamily: 'PlusJakartaSans'),
+      home: Login(),
+      initialRoute: '/dashboard',
       routes: {
         '/login': (context) => Login(),
         '/lupapassword': (context) => LupaPassword(),

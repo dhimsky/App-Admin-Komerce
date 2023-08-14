@@ -16,69 +16,95 @@ class DashboardPage extends StatelessWidget {
       ]),
       backgroundColor: orangeColor,
       body: SafeArea(
-        child: SingleChildScrollView(
+          child: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(
               height: 30,
             ),
-            Row(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Halo Arief,',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: whiteColor,
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Halo Arief,',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: whiteColor,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      'Selamat Datang !',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: whiteColor),
-                    )
-                  ],
-                ),
-                Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                      color: whiteColor,
-                      borderRadius: BorderRadius.circular(40)),
-                  padding: EdgeInsets.all(12),
-                  child: Icon(
-                    Icons.notifications_none_rounded,
-                    color: Color(0xff626262),
-                    size: 30,
+                      SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        'Selamat Datang !',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: whiteColor),
+                      )
+                    ],
                   ),
-                ),
-              ],
+                  Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: whiteColor,
+                        borderRadius: BorderRadius.circular(40)),
+                    padding: EdgeInsets.all(12),
+                    child: Icon(
+                      Icons.notifications_none_rounded,
+                      color: Color(0xff626262),
+                      size: 30,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: 21,
             ),
             Container(
               width: double.infinity,
-              padding: EdgeInsetsDirectional.all(30),
+              height: 500,
+              padding: EdgeInsetsDirectional.all(24),
               decoration: BoxDecoration(
                   color: whiteColor,
                   borderRadius: BorderRadius.vertical(
                     top: Radius.circular(30),
                   )),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(),
-                    ],
+                  Container(
+                    decoration: BoxDecoration(
+                      color: orangeColor,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    width: 327,
+                    height: 109,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          height: 25.5,
+                        ),
+                        Text('data')
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xfffFBA63C),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    width: 327,
+                    height: 65,
                   ),
                 ],
               ),
