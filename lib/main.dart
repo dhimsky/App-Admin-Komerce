@@ -19,11 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'PlusJakartaSans'),
       home: Login(),
-<<<<<<< Updated upstream
-      initialRoute: '/dashboard',
-=======
-      initialRoute: '/profile',
->>>>>>> Stashed changes
+      initialRoute: '/login',
       routes: {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),

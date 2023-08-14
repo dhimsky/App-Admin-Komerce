@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komerce/theme.dart';
 
@@ -166,14 +167,11 @@ class Login extends StatelessWidget {
                                                 ),
                                               ),
                                               Container(
-                                                width: 24 * fem,
-                                                height: 24 * fem,
-                                                child: Image.asset(
-                                                  'assets/images/eye-slash.png',
                                                   width: 24 * fem,
                                                   height: 24 * fem,
-                                                ),
-                                              ),
+                                                  child: Icon(
+                                                    CupertinoIcons.eye_slash,
+                                                  )),
                                             ],
                                           ),
                                         ),
