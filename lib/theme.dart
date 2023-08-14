@@ -27,6 +27,7 @@ TextStyle logText = TextStyle(
   color: whiteColor,
 );
 
+
 class MyCustomScrollBehavior extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {

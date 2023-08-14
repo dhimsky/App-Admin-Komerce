@@ -41,7 +41,17 @@ class DashboardPage extends StatelessWidget {
                     ],
                   ),
                   Spacer(),
-                  Text('logo lonceng')
+                  Container(
+                    decoration: BoxDecoration(
+                        color: whiteColor,
+                        borderRadius: BorderRadius.circular(40)),
+                    padding: EdgeInsets.all(12),
+                    child: Icon(
+                      Icons.notifications_none_rounded,
+                      color: Color(0xff626262),
+                      size: 30,
+                    ),
+                  ),
                 ],
               ),
             ),
