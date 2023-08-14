@@ -4,6 +4,7 @@ import 'package:komerce/pages/dashboard_page.dart';
 import 'package:komerce/pages/splash_page.dart';
 import 'package:komerce/pages/login_page.dart';
 import 'package:komerce/pages/lupapassword_page.dart';
+import 'package:komerce/pages/profile_page.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -18,12 +19,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         fontFamily: 'PlusJakartaSans'
       ),
-      home: Login(),
-      initialRoute: '/login',
+      home: Profile(),
+      initialRoute: '/profile',
       routes: {
         '/login': (context) => Login(),
         '/lupapassword': (context) => LupaPassword(),
         '/dashboard': (context) => DashboardPage(),
+        '/profile': (context) => Profile(),
       },
     );
   }
