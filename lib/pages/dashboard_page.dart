@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komerce/theme.dart';
+import 'package:komerce/menu.dart';
 
 class DashboardPage extends StatelessWidget {
   @override
@@ -105,6 +106,25 @@ class DashboardPage extends StatelessWidget {
                     ),
                     width: 327,
                     height: 65,
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        children: [Ikon(ikon: 'm')],
+                      ),
+                      Column(
+                        children: [Ikon(ikon: 'm')],
+                      ),
+                      Column(
+                        children: [Ikon(ikon: 'm')],
+                      ),
+                      Column(
+                        children: [Ikon(ikon: 'm')],
+                      ),
+                    ],
                   ),
                 ],
               ),
