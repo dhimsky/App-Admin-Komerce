@@ -226,7 +226,7 @@ class Login extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/dashboard');
+                        Navigator.of(context).pushNamed('/home');
                       },
                       child: Container(
                         width: double.infinity,

@@ -14,7 +14,7 @@ class Profile extends StatelessWidget {
             icon: IconButton(
               icon: Icon(CupertinoIcons.home),
               onPressed: () {
-                Navigator.pushNamed(context, '/dashboard');
+                Navigator.pushNamed(context, '/home');
               },
             ),
             label: 'Beranda'),

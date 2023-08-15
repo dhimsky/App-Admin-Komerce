@@ -122,7 +122,7 @@ class HomePage extends StatelessWidget {
                         width: 375 * fem,
                         height: 273 * fem,
                         child: Image.asset(
-                          'header.png',
+                          'assets/images/backgroundatas.png',
                           width: 375 * fem,
                           height: 273 * fem,
                         ),
@@ -190,10 +190,10 @@ class HomePage extends StatelessWidget {
                                           top: -151 * fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 609.73 * fem,
-                                              height: 497.46 * fem,
+                                              width: 500 * fem,
+                                              height: 400 * fem,
                                               child: Image.asset(
-                                                'assets/images/header.png',
+                                                'assets/images/backgroundsaldo.png',
                                                 width: 609.73 * fem,
                                                 height: 497.46 * fem,
                                               ),
@@ -299,9 +299,9 @@ class HomePage extends StatelessWidget {
                                           child: Align(
                                             child: SizedBox(
                                               width: 378 * fem,
-                                              height: 252 * fem,
+                                              height: 235 * fem,
                                               child: Image.asset(
-                                                'assets/images/d-render-abstract-white-geometric-background-1.png',
+                                                'assets/images/backgroundsaldo.png',
                                                 fit: BoxFit.cover,
                                               ),
                                             ),
@@ -385,160 +385,162 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(
-                                40 * fem, 0 * fem, 28 * fem, 307 * fem),
-                            width: double.infinity,
-                            height: 79 * fem,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 43.5 * fem, 0 * fem),
-                                  height: double.infinity,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 8 * fem),
-                                        width: 40 * fem,
-                                        height: 40 * fem,
-                                        child: Icon(
-                                          Icons.search,
-                                          color: Color(0xfff95031),
-                                        ),
-                                      ),
-                                      Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 35 * fem,
-                                        ),
-                                        child: Text(
-                                          'Cari\nOrder',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xff626262),
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  40 * fem, 0 * fem, 28 * fem, 307 * fem),
+                              width: double.infinity,
+                              height: 79 * fem,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 43.5 * fem, 0 * fem),
+                                    height: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 8 * fem),
+                                          width: 40 * fem,
+                                          height: 40 * fem,
+                                          child: Icon(
+                                            Icons.search,
+                                            color: Color(0xfff95031),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 41 * fem, 0 * fem),
-                                  height: double.infinity,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 8 * fem),
-                                        width: 40 * fem,
-                                        height: 40 * fem,
-                                        child: Icon(
-                                          Icons.edit_note_outlined,
-                                          color: Color(0xfff95031),
-                                        ),
-                                      ),
-                                      Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 43 * fem,
-                                        ),
-                                        child: Text(
-                                          'Update\nNo. HP',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xff626262),
+                                        Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: 35 * fem,
+                                          ),
+                                          child: Text(
+                                            'Cari\nOrder',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff626262),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 30.5 * fem, 0 * fem),
-                                  height: double.infinity,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 8 * fem),
-                                        width: 40 * fem,
-                                        height: 40 * fem,
-                                        child: Icon(
-                                          Icons.add_home_outlined,
-                                          color: Color(0xfff95031),
-                                        ),
-                                      ),
-                                      Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 45 * fem,
-                                        ),
-                                        child: Text(
-                                          'Tambah\nAlamat',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xff626262),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 41 * fem, 0 * fem),
+                                    height: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 8 * fem),
+                                          width: 40 * fem,
+                                          height: 40 * fem,
+                                          child: Icon(
+                                            Icons.edit_note_outlined,
+                                            color: Color(0xfff95031),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  height: double.infinity,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 8 * fem),
-                                        width: 40 * fem,
-                                        height: 40 * fem,
-                                        child: Icon(
-                                          Icons.verified_outlined,
-                                          color: Color(0xfff95031),
-                                        ),
-                                      ),
-                                      Container(
-                                        constraints: BoxConstraints(
-                                          maxWidth: 64 * fem,
-                                        ),
-                                        child: Text(
-                                          'Kirim Ulang\nVerifikasi',
-                                          textAlign: TextAlign.center,
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xff626262),
+                                        Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: 43 * fem,
+                                          ),
+                                          child: Text(
+                                            'Update\nNo. HP',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff626262),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 30.5 * fem, 0 * fem),
+                                    height: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 8 * fem),
+                                          width: 40 * fem,
+                                          height: 40 * fem,
+                                          child: Icon(
+                                            Icons.add_home_outlined,
+                                            color: Color(0xfff95031),
+                                          ),
+                                        ),
+                                        Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: 45 * fem,
+                                          ),
+                                          child: Text(
+                                            'Tambah\nAlamat',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff626262),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    height: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 8 * fem),
+                                          width: 40 * fem,
+                                          height: 40 * fem,
+                                          child: Icon(
+                                            Icons.verified_outlined,
+                                            color: Color(0xfff95031),
+                                          ),
+                                        ),
+                                        Container(
+                                          constraints: BoxConstraints(
+                                            maxWidth: 64 * fem,
+                                          ),
+                                          child: Text(
+                                            'Kirim Ulang\nVerifikasi',
+                                            textAlign: TextAlign.center,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff626262),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
