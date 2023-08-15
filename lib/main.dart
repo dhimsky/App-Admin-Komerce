@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'PlusJakartaSans'),
       home: Login(),
-      initialRoute: '/home',
+      initialRoute: '/ubahpassword',
       routes: {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),

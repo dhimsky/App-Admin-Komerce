@@ -164,97 +164,24 @@ class Profile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        24 * fem, 16 * fem, 24 * fem, 47 * fem),
-                    width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 230 * fem),
-                          padding: EdgeInsets.fromLTRB(
-                              12 * fem, 12 * fem, 12 * fem, 12 * fem),
-                          width: double.infinity,
-                          height: 48 * fem,
-                          decoration: BoxDecoration(
-                            color: Color(0xffffffff),
-                            borderRadius: BorderRadius.circular(8 * fem),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x19000000),
-                                offset: Offset(0 * fem, 0 * fem),
-                                blurRadius: 10.5 * fem,
-                              ),
-                            ],
-                          ),
-                          child: Container(
-                            width: double.infinity,
-                            height: double.infinity,
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 8 * fem, 0 * fem),
-                                  width: 24 * fem,
-                                  height: 24 * fem,
-                                  child: Icon(
-                                    Icons.key,
-                                    color: Color.fromARGB(255, 245, 75, 32),
-                                  ),
-                                ),
-                                Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 4 * fem, 0 * fem, 3.5 * fem),
-                                  height: double.infinity,
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(0 * fem,
-                                            0.5 * fem, 169 * fem, 0 * fem),
-                                        child: Text(
-                                          'Ubah Password',
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w500,
-                                            height: 1.26 * ffem / fem,
-                                            letterSpacing: -0.25 * fem,
-                                            color: Color(0xff818181),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: EdgeInsets.fromLTRB(0 * fem,
-                                            0 * fem, 0 * fem, 0.5 * fem),
-                                        width: 16 * fem,
-                                        height: 16 * fem,
-                                        child: Icon(
-                                          Icons.arrow_forward_ios,
-                                          color:
-                                              Color.fromARGB(255, 245, 75, 32),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                          child: Container(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, '/ubahpassword');
+                    },
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(
+                          24 * fem, 16 * fem, 24 * fem, 47 * fem),
+                      width: double.infinity,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(
+                                0 * fem, 0 * fem, 0 * fem, 230 * fem),
                             padding: EdgeInsets.fromLTRB(
-                                24 * fem, 14 * fem, 24 * fem, 14 * fem),
+                                12 * fem, 12 * fem, 12 * fem, 12 * fem),
                             width: double.infinity,
-                            height: 52 * fem,
+                            height: 48 * fem,
                             decoration: BoxDecoration(
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(8 * fem),
@@ -274,33 +201,111 @@ class Profile extends StatelessWidget {
                                 children: [
                                   Container(
                                     margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 1 * fem, 167 * fem, 0 * fem),
-                                    child: Text(
-                                      'Keluar Akun',
-                                      style: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 16 * ffem,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1.26 * ffem / fem,
-                                        letterSpacing: -0.25 * fem,
-                                        color: Color(0xffe31a1a),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
+                                        0 * fem, 0 * fem, 8 * fem, 0 * fem),
                                     width: 24 * fem,
                                     height: 24 * fem,
                                     child: Icon(
-                                      Icons.logout_outlined,
+                                      Icons.key,
                                       color: Color.fromARGB(255, 245, 75, 32),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 4 * fem, 0 * fem, 3.5 * fem),
+                                    height: double.infinity,
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0.5 * fem, 169 * fem, 0 * fem),
+                                          child: Text(
+                                            'Ubah Password',
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w500,
+                                              height: 1.26 * ffem / fem,
+                                              letterSpacing: -0.25 * fem,
+                                              color: Color(0xff818181),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 0.5 * fem),
+                                          width: 16 * fem,
+                                          height: 16 * fem,
+                                          child: Icon(
+                                            Icons.arrow_forward_ios,
+                                            color: Color.fromARGB(
+                                                255, 245, 75, 32),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(context, '/login');
+                            },
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(
+                                  24 * fem, 14 * fem, 24 * fem, 14 * fem),
+                              width: double.infinity,
+                              height: 52 * fem,
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x19000000),
+                                    offset: Offset(0 * fem, 0 * fem),
+                                    blurRadius: 10.5 * fem,
+                                  ),
+                                ],
+                              ),
+                              child: Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 1 * fem, 167 * fem, 0 * fem),
+                                      child: Text(
+                                        'Keluar Akun',
+                                        style: SafeGoogleFont(
+                                          'Plus Jakarta Sans',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.26 * ffem / fem,
+                                          letterSpacing: -0.25 * fem,
+                                          color: Color(0xffe31a1a),
+                                        ),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 24 * fem,
+                                      height: 24 * fem,
+                                      child: Icon(
+                                        Icons.logout_outlined,
+                                        color: Color.fromARGB(255, 245, 75, 32),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
