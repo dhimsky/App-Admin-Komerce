@@ -11,11 +11,29 @@ class DetailProfile extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home), label: 'Beranda'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.home),
+              onPressed: () {
+                Navigator.pushNamed(context, '/dashboard');
+              },
+            ),
+            label: 'Beranda'),
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.list_bullet), label: 'Log Aktivitas'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.list_bullet),
+              onPressed: () {
+                Navigator.pushNamed(context, '/detailprofile');
+              },
+            ),
+            label: 'Log Aktivitas'),
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.profile_circled), label: 'Profile'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.profile_circled),
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+            label: 'Profile'),
       ]),
       body: SafeArea(
         child: SingleChildScrollView(
@@ -43,13 +61,19 @@ class DetailProfile extends StatelessWidget {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 10 * fem, 1 * fem),
-                                width: 24 * fem,
-                                height: 24 * fem,
-                                child: Icon(
-                                  Icons.arrow_back_ios,
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(context, '/profile');
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(
+                                      0 * fem, 0 * fem, 10 * fem, 1 * fem),
+                                  width: 24 * fem,
+                                  height: 24 * fem,
+                                  child: Icon(
+                                    Icons.arrow_back_ios,
+                                    color: Color.fromARGB(255, 245, 75, 32),
+                                  ),
                                 ),
                               ),
                               Text(

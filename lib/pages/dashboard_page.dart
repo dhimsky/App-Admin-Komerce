@@ -9,11 +9,29 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home), label: 'Beranda'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.home),
+              onPressed: () {
+                Navigator.pushNamed(context, '/dashboard');
+              },
+            ),
+            label: 'Beranda'),
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.list_bullet), label: 'Log Aktivitas'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.list_bullet),
+              onPressed: () {
+                Navigator.pushNamed(context, '/detailprofile');
+              },
+            ),
+            label: 'Log Aktivitas'),
         BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.profile_circled), label: 'Profile'),
+            icon: IconButton(
+              icon: Icon(CupertinoIcons.profile_circled),
+              onPressed: () {
+                Navigator.pushNamed(context, '/profile');
+              },
+            ),
+            label: 'Profile'),
       ]),
       backgroundColor: orangeColor,
       body: SafeArea(

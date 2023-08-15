@@ -6,6 +6,7 @@ import 'package:komerce/pages/login_page.dart';
 import 'package:komerce/pages/lupapassword_page.dart';
 import 'package:komerce/pages/profile_page.dart';
 import 'package:komerce/pages/detailprofile_page.dart';
+import 'package:komerce/pages/home_page.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'PlusJakartaSans'),
       home: Login(),
-      initialRoute: '/login',
+      initialRoute: '/home',
       routes: {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/dashboard': (context) => DashboardPage(),
         '/profile': (context) => Profile(),
         '/detailprofile': (context) => DetailProfile(),
+        '/home': (context) => HomePage(),
       },
     );
   }
