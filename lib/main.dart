@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:komerce/pages/dashboard_page.dart';
-import 'package:komerce/pages/splash_page.dart';
-import 'package:komerce/pages/login_page.dart';
-import 'package:komerce/pages/lupapassword_page.dart';
-import 'package:komerce/pages/profile_page.dart';
-import 'package:komerce/pages/detailprofile_page.dart';
-import 'package:komerce/pages/home_page.dart';
+import 'package:komerce/ui/pages/splash_page.dart';
+import 'package:komerce/ui/pages/login_page.dart';
+import 'package:komerce/ui/pages/lupapassword_page.dart';
+import 'package:komerce/ui/pages/profile_page.dart';
+import 'package:komerce/ui/pages/detailprofile_page.dart';
+import 'package:komerce/ui/pages/home_page.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),
         '/lupapassword': (context) => LupaPassword(),
-        '/dashboard': (context) => DashboardPage(),
         '/profile': (context) => Profile(),
         '/detailprofile': (context) => DetailProfile(),
         '/home': (context) => HomePage(),

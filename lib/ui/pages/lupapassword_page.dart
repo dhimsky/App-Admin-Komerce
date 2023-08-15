@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:komerce/theme.dart';
+import 'package:komerce/shared/theme.dart';
 
 class LupaPassword extends StatelessWidget {
   @override
