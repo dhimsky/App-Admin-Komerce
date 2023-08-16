@@ -393,41 +393,47 @@ class HomePage extends StatelessWidget {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 43.5 * fem, 0 * fem),
-                                    height: double.infinity,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 8 * fem),
-                                          width: 40 * fem,
-                                          height: 40 * fem,
-                                          child: Icon(
-                                            Icons.search,
-                                            color: Color(0xfff95031),
-                                          ),
-                                        ),
-                                        Container(
-                                          constraints: BoxConstraints(
-                                            maxWidth: 35 * fem,
-                                          ),
-                                          child: Text(
-                                            'Cari\nOrder',
-                                            textAlign: TextAlign.center,
-                                            style: SafeGoogleFont(
-                                              'Plus Jakarta Sans',
-                                              fontSize: 12 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.26 * ffem / fem,
-                                              color: Color(0xff626262),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, '/cariorder');
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.fromLTRB(0 * fem,
+                                          0 * fem, 43.5 * fem, 0 * fem),
+                                      height: double.infinity,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(0 * fem,
+                                                0 * fem, 0 * fem, 8 * fem),
+                                            width: 40 * fem,
+                                            height: 40 * fem,
+                                            child: Icon(
+                                              Icons.search,
+                                              color: Color(0xfff95031),
                                             ),
                                           ),
-                                        ),
-                                      ],
+                                          Container(
+                                            constraints: BoxConstraints(
+                                              maxWidth: 35 * fem,
+                                            ),
+                                            child: Text(
+                                              'Cari\nOrder',
+                                              textAlign: TextAlign.center,
+                                              style: SafeGoogleFont(
+                                                'Plus Jakarta Sans',
+                                                fontSize: 12 * ffem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.26 * ffem / fem,
+                                                color: Color(0xff626262),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Container(

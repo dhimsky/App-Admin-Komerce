@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:komerce/ui/pages/cari_order_page.dart';
 import 'package:komerce/ui/pages/splash_page.dart';
 import 'package:komerce/ui/pages/login_page.dart';
 import 'package:komerce/ui/pages/lupa_password_page.dart';
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'PlusJakartaSans'),
-      home: Login(),
-      initialRoute: '/login',
+      home: SplashPage(),
+      initialRoute: '/splash',
       routes: {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/detailprofile': (context) => DetailProfile(),
         '/home': (context) => HomePage(),
         '/ubahpassword': (context) => UbahPassword(),
+        '/cariorder': (context) => CariOrder(),
       },
     );
   }
