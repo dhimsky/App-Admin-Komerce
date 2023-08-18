@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:komerce/ui/pages/cari_order_page.dart';
+import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/ui/pages/splash_page.dart';
 import 'package:komerce/ui/pages/login_page.dart';
 import 'package:komerce/ui/pages/lupa_password_page.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomePage(),
         '/ubahpassword': (context) => UbahPassword(),
         '/cariorder': (context) => CariOrder(),
+        '/detailorder': (context) => DetailOrder(),
       },
     );
   }
