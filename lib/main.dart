@@ -11,6 +11,7 @@ import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 
 void main() {
+  
   debugPaintSizeEnabled = false;
   runApp(MyApp());
 }
