@@ -9,7 +9,6 @@ import 'package:komerce/ui/pages/profile_page.dart';
 import 'package:komerce/ui/pages/detail_profile_page.dart';
 import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
-import 'package:komerce/ui/pages/detail.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -22,8 +21,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'PlusJakartaSans'),
-      home: Detail(),
-      initialRoute: '/detail',
+      home: Login(),
+      initialRoute: '/login',
       routes: {
         '/splash': (context) => SplashPage(),
         '/login': (context) => Login(),
@@ -34,7 +33,6 @@ class MyApp extends StatelessWidget {
         '/ubahpassword': (context) => UbahPassword(),
         '/cariorder': (context) => CariOrder(),
         '/detailorder': (context) => DetailOrder(),
-        '/detail': (context) => Detail(),
       },
     );
   }

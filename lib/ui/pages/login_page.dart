@@ -1,42 +1,49 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:komerce/shared/theme.dart';
 
-class Login extends StatelessWidget {
+import '../../shared/theme.dart';
+
+class Login extends StatefulWidget {
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  bool _isPasswordVisible = false;
+  final _formKey = GlobalKey<FormState>();
+  String _username = '';
+  String _password = '';
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
-            child: Container(
+            decoration: BoxDecoration(
+              color: Color(0xffffffff),
+            ),
+            child: Padding(
               padding:
                   EdgeInsets.fromLTRB(32 * fem, 120 * fem, 32 * fem, 120 * fem),
-              width: double.infinity,
-              height: 837 * fem,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
+              child: Form(
+                key: _formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 31.5 * fem),
+                      margin: EdgeInsets.only(bottom: 31.5 * fem),
                       constraints: BoxConstraints(
                         maxWidth: 215 * fem,
                       ),
                       child: Text(
-                        'Login to\nyour Account ',
-                        style: SafeGoogleFont(
-                          'Plus Jakarta Sans',
+                        'Login to\nyour Account',
+                        style: TextStyle(
                           fontSize: 32 * ffem,
                           fontWeight: FontWeight.w700,
                           height: 1.26 * ffem / fem,
@@ -59,147 +66,83 @@ class Login extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 0 * fem, 24 * fem),
-                                  width: double.infinity,
-                                  height: 48 * fem,
-                                  child: Stack(
-                                    children: [
-                                      Positioned(
-                                        left: 0 * fem,
-                                        top: 8 * fem,
-                                        child: Container(
-                                          padding: EdgeInsets.fromLTRB(12 * fem,
-                                              10 * fem, 12 * fem, 9 * fem),
-                                          width: 311 * fem,
-                                          height: 40 * fem,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Color(0xffcccccc)),
-                                            color: Color(0xffffffff),
-                                            borderRadius:
-                                                BorderRadius.circular(8 * fem),
-                                          ),
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              contentPadding:
-                                                  EdgeInsets.all(7 * fem),
-                                              hintText: 'Masukan username kamu',
-                                              hintStyle: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 16 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xffb3b3b3),
-                                              ),
-                                              border: InputBorder.none,
-                                            ),
-                                          ),
+                                  child: Positioned(
+                                    left: 0 * fem,
+                                    top: 8 * fem,
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.all(7 * fem),
+                                        hintText: 'Masukan username kamu',
+                                        hintStyle: SafeGoogleFont(
+                                          'Plus Jakarta Sans',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.26 * ffem / fem,
+                                          color: Color(0xffb3b3b3),
                                         ),
+                                        border: OutlineInputBorder(),
                                       ),
-                                      Positioned(
-                                        left: 8 * fem,
-                                        top: 0 * fem,
-                                        child: Container(
-                                          width: 66 * fem,
-                                          height: 16 * fem,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffffffff),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Username',
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff1a1a1a),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                      validator: (value) {
+                                        if (value == null || value.isEmpty) {
+                                          return 'Username tidak ditemukan';
+                                        }
+                                        return null;
+                                      },
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _username = value;
+                                        });
+                                      },
+                                    ),
                                   ),
                                 ),
                                 Container(
-                                  width: double.infinity,
-                                  height: 52 * fem,
-                                  child: Stack(
-                                    children: [
-                                      Positioned(
-                                        left: 0 * fem,
-                                        top: 8 * fem,
+                                  padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                  child: TextFormField(
+                                    obscureText: !_isPasswordVisible,
+                                    decoration: InputDecoration(
+                                      contentPadding: EdgeInsets.all(7 * fem),
+                                      hintText: 'Password kamu',
+                                      hintStyle: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 16 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xffb3b3b3),
+                                      ),
+                                      border: OutlineInputBorder(),
+                                      suffixIcon: GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            _isPasswordVisible =
+                                                !_isPasswordVisible;
+                                          });
+                                        },
                                         child: Container(
-                                          padding: EdgeInsets.fromLTRB(12 * fem,
-                                              10 * fem, 12 * fem, 10 * fem),
-                                          width: 311 * fem,
-                                          height: 44 * fem,
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Color(0xffcccccc)),
-                                            color: Color(0xffffffff),
-                                            borderRadius:
-                                                BorderRadius.circular(8 * fem),
-                                          ),
-                                          child: Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Expanded(
-                                                child: TextField(
-                                                  obscureText: true,
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.all(7 * fem),
-                                                    hintText: 'Password kamu',
-                                                    hintStyle: SafeGoogleFont(
-                                                      'Plus Jakarta Sans',
-                                                      fontSize: 16 * ffem,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      height: 1.26 * ffem / fem,
-                                                      color: Color(0xffb3b3b3),
-                                                    ),
-                                                    border: InputBorder.none,
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                  width: 24 * fem,
-                                                  height: 24 * fem,
-                                                  child: Icon(
-                                                    CupertinoIcons.eye_slash,
-                                                  )),
-                                            ],
+                                          width: 24 * fem,
+                                          height: 24 * fem,
+                                          child: Icon(
+                                            _isPasswordVisible
+                                                ? CupertinoIcons.eye_slash
+                                                : CupertinoIcons.eye,
                                           ),
                                         ),
                                       ),
-                                      Positioned(
-                                        left: 8 * fem,
-                                        top: 0 * fem,
-                                        child: Container(
-                                          width: 64 * fem,
-                                          height: 16 * fem,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffffffff),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Password',
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff1a1a1a),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                    ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Username atau password salah';
+                                      }
+                                      if (value.length < 8) {
+                                        return 'Password minimal 8 karakter';
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _password = value;
+                                      });
+                                    },
                                   ),
                                 ),
                               ],
@@ -210,10 +153,8 @@ class Login extends StatelessWidget {
                               Navigator.of(context).pushNamed('/lupapassword');
                             },
                             child: Text(
-                              'Lupa password?',
-                              textAlign: TextAlign.right,
-                              style: SafeGoogleFont(
-                                'Plus Jakarta Sans',
+                              'Forgot password?',
+                              style: TextStyle(
                                 fontSize: 12 * ffem,
                                 fontWeight: FontWeight.w700,
                                 height: 1.26 * ffem / fem,
@@ -224,10 +165,17 @@ class Login extends StatelessWidget {
                         ],
                       ),
                     ),
-                    TextButton(
+                    ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/home');
+                        if (_formKey.currentState!.validate()) {
+                          Navigator.of(context).pushNamed('/home');
+                        }
                       },
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                        elevation: MaterialStateProperty.all<double>(0),
+                      ),
                       child: Container(
                         width: double.infinity,
                         height: 40 * fem,
