@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 
 class DetailOrder extends StatelessWidget {
   const DetailOrder({super.key});
-
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -12,243 +11,1403 @@ class DetailOrder extends StatelessWidget {
     double ffem = fem * 0.97;
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            child: Container(
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        24 * fem, 36 * fem, 0 * fem, 20 * fem),
-                    width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 147 * fem, 0 * fem),
-                          width: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(context, '/cariorder');
-                                },
-                                child: Container(
-                                  margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 0 * fem, 10 * fem, 1 * fem),
-                                  width: 24 * fem,
-                                  height: 24 * fem,
-                                  child: Icon(
-                                    Icons.arrow_back_ios,
-                                    color: Color.fromARGB(255, 245, 75, 32),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: Container(
+                width: double.infinity,
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Color(0xffffffff),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.fromLTRB(
+                            12 * fem, 20 * fem, 16.71 * fem, 15 * fem),
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  12 * fem, 0 * fem, 181.29 * fem, 23 * fem),
+                              width: double.infinity,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, '/cariorder');
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 0 * fem, 10 * fem, 1 * fem),
+                                      width: 24 * fem,
+                                      height: 24 * fem,
+                                      child: Icon(
+                                        Icons.arrow_back_ios,
+                                        color: Color.fromARGB(255, 0, 0, 0),
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Text(
+                                    'Detail Order',
+                                    style: SafeGoogleFont(
+                                      'Plus Jakarta Sans',
+                                      fontSize: 20 * ffem,
+                                      fontWeight: FontWeight.w700,
+                                      height: 1.26 * ffem / fem,
+                                      color: Color(0xff222222),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Text(
-                                // identitaskamuRSh (23:1971)
-                                'Detail Order',
-                                style: SafeGoogleFont(
-                                  'Plus Jakarta Sans',
-                                  fontSize: 20 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.26 * ffem / fem,
-                                  color: Color(0xff000000),
-                                ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  12 * fem, 0 * fem, 7.29 * fem, 14 * fem),
+                              padding: EdgeInsets.fromLTRB(
+                                  12 * fem, 11.5 * fem, 12 * fem, 11 * fem),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x28000000),
+                                    offset: Offset(0 * fem, 0 * fem),
+                                    blurRadius: 8 * fem,
+                                  ),
+                                ],
                               ),
-                            ],
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 11.5 * fem),
+                                    child: Text(
+                                      'Data Partner',
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 16 * ffem,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.26 * ffem / fem,
+                                        letterSpacing: 0.1000000015 * fem,
+                                        color: Color(0xff222222),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 252 * fem,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 71 * fem, 0 * fem),
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    38 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Nama Partner',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Sholehudin',
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff333333),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 7 * fem,
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    84 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Email',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'sholehudin@gmail.com',
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff333333),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 7 * fem,
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 21 * fem, 0 * fem),
+                                          width: double.infinity,
+                                          height: 16 * fem,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    25 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'No. Handphone',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                padding: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    0.03 * fem,
+                                                    0 * fem),
+                                                height: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              4.03 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        '08737266461233',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              1 * fem),
+                                                      width: 11.94 * fem,
+                                                      height: 12 * fem,
+                                                      child: Image.asset(
+                                                        'assets/images/Whatsapp.png',
+                                                        width: 11.94 * fem,
+                                                        height: 12 * fem,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  12 * fem, 0 * fem, 7.29 * fem, 16 * fem),
+                              padding: EdgeInsets.fromLTRB(
+                                  8 * fem, 12 * fem, 8 * fem, 11.5 * fem),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xffdff3ff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                              ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0.5 * fem, 159 * fem, 0 * fem),
+                                    child: Text(
+                                      'No. Resi',
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0.5 * fem, 4 * fem, 0 * fem),
+                                    child: Text(
+                                      'KOMSHIP9982',
+                                      textAlign: TextAlign.right,
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 0.5 * fem),
+                                    width: 16 * fem,
+                                    height: 16 * fem,
+                                    child: Icon(
+                                      Icons.file_copy_outlined,
+                                      color: Color.fromARGB(255, 0, 0, 0),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  12 * fem, 0 * fem, 7.29 * fem, 0 * fem),
+                              padding: EdgeInsets.fromLTRB(
+                                  12 * fem, 11.5 * fem, 12 * fem, 11 * fem),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x28000000),
+                                    offset: Offset(0 * fem, 0 * fem),
+                                    blurRadius: 8 * fem,
+                                  ),
+                                ],
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 11.5 * fem),
+                                    child: Text(
+                                      'Rincian Order',
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 16 * ffem,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1.26 * ffem / fem,
+                                        letterSpacing: 0.1000000015 * fem,
+                                        color: Color(0xff222222),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          padding: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    122 * fem,
+                                                    7 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              68 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Pembeli',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'Sasa Melati',
+                                                      style: SafeGoogleFont(
+                                                        'Plus Jakarta Sans',
+                                                        fontSize: 12 * ffem,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height:
+                                                            1.26 * ffem / fem,
+                                                        color:
+                                                            Color(0xff333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    94 * fem,
+                                                    7 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              42 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Waktu Order',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '11 Oktober 2023',
+                                                      style: SafeGoogleFont(
+                                                        'Plus Jakarta Sans',
+                                                        fontSize: 12 * ffem,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height:
+                                                            1.26 * ffem / fem,
+                                                        color:
+                                                            Color(0xff333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    100 * fem,
+                                                    7 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              58 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'No. Order',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'RX1234567890',
+                                                      style: SafeGoogleFont(
+                                                        'Plus Jakarta Sans',
+                                                        fontSize: 12 * ffem,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height:
+                                                            1.26 * ffem / fem,
+                                                        color:
+                                                            Color(0xff333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    35 * fem,
+                                                    5 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              37 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Alamat Tujuan',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      constraints:
+                                                          BoxConstraints(
+                                                        maxWidth: 153 * fem,
+                                                      ),
+                                                      child: Text(
+                                                        'Sukamaju RT01/RW02,  Tamansari, Karangmoncol, Purbalingga, 556474',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    163 * fem,
+                                                    6 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              2 * fem,
+                                                              51 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Pengiriman',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 25 * fem,
+                                                      height: 25 * fem,
+                                                      child: Image.asset(
+                                                        'assets/images/id-express.png',
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    159 * fem,
+                                                    7 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              51 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Pengiriman',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      'COD',
+                                                      style: SafeGoogleFont(
+                                                        'Plus Jakarta Sans',
+                                                        fontSize: 12 * ffem,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height:
+                                                            1.26 * ffem / fem,
+                                                        color:
+                                                            Color(0xff333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    151 * fem,
+                                                    0 * fem),
+                                                width: double.infinity,
+                                                child: Row(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      margin:
+                                                          EdgeInsets.fromLTRB(
+                                                              0 * fem,
+                                                              0 * fem,
+                                                              54 * fem,
+                                                              0 * fem),
+                                                      child: Text(
+                                                        'Berat Total',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff333333),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '800gr',
+                                                      style: SafeGoogleFont(
+                                                        'Plus Jakarta Sans',
+                                                        fontSize: 12 * ffem,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height:
+                                                            1.26 * ffem / fem,
+                                                        color:
+                                                            Color(0xff333333),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          height: 1 * fem,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffe2e2e2),
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    126 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Total Harga Barang',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rp980.000',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff333333),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    203 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Ongkir',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rp24.000',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff333333),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    141 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Potongan Harga',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                '-Rp20.000',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xffe31a1a),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          margin: EdgeInsets.fromLTRB(0 * fem,
+                                              0 * fem, 0 * fem, 7 * fem),
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    185 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Biaya Lain',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rp20.000',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff333333),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          width: double.infinity,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    95 * fem,
+                                                    0 * fem),
+                                                child: Text(
+                                                  'Total Pembayaran',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff333333),
+                                                  ),
+                                                ),
+                                              ),
+                                              Text(
+                                                'Rp1.004.000',
+                                                textAlign: TextAlign.right,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 16 * ffem,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff34a770),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 0 * fem, 10 * fem),
+                        padding: EdgeInsets.fromLTRB(
+                            24 * fem, 23.5 * fem, 24 * fem, 23.5 * fem),
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(color: Color(0xffc2c2c2)),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 375,
-                    height: 117,
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          height: 117,
-                          padding: const EdgeInsets.all(12),
-                          decoration: ShapeDecoration(
-                            color: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8)),
-                            shadows: [
-                              BoxShadow(
-                                color: Color(0x28000000),
-                                blurRadius: 16,
-                                offset: Offset(0, 0),
-                                spreadRadius: 0,
-                              )
-                            ],
+                        child: Text(
+                          'Rincian Pesanan',
+                          style: SafeGoogleFont(
+                            'Plus Jakarta Sans',
+                            fontSize: 16 * ffem,
+                            fontWeight: FontWeight.w600,
+                            height: 1.26 * ffem / fem,
+                            letterSpacing: 0.1000000015 * fem,
+                            color: Color(0xff222222),
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Data Partner',
-                                  style: TextStyle(
-                                    color: Color(0xFF222222),
-                                    fontSize: 16,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 0.10,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 12),
-                              Container(
-                                width: double.infinity,
-                                height: 61,
+                        ),
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 580 * fem,
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              left: 24 * fem,
+                              top: 0 * fem,
+                              child: Container(
+                                width: 327 * fem,
+                                height: 469 * fem,
                                 child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Container(
+                                      padding: EdgeInsets.fromLTRB(16 * fem,
+                                          16 * fem, 16 * fem, 16 * fem),
                                       width: double.infinity,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(
-                                              child: Text(
-                                                'Nama Partner',
-                                                style: TextStyle(
-                                                  color: Color(0xFF333333),
-                                                  fontSize: 12,
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  fontWeight: FontWeight.w400,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 188,
-                                            child: Text(
-                                              'Sholehudin',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 12,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
+                                      height: 143 * fem,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffffffff),
+                                        borderRadius:
+                                            BorderRadius.circular(8 * fem),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x28000000),
+                                            offset: Offset(0 * fem, 0 * fem),
+                                            blurRadius: 8 * fem,
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    const SizedBox(height: 8),
-                                    Container(
-                                      width: double.infinity,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                      child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          Expanded(
-                                            child: SizedBox(
-                                              child: Text(
-                                                'Email',
-                                                style: TextStyle(
-                                                  color: Color(0xFF333333),
-                                                  fontSize: 12,
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  fontWeight: FontWeight.w400,
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(0 * fem,
+                                                0 * fem, 104 * fem, 7 * fem),
+                                            width: double.infinity,
+                                            height: 67 * fem,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      12 * fem,
+                                                      0 * fem),
+                                                  width: 66 * fem,
+                                                  height: 66 * fem,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8 * fem),
+                                                    color: Color(0xffd9d9d9),
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(
+                                                        'assets/images/jilbab.png',
+                                                      ),
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            width: 188,
-                                            child: Text(
-                                              'sholehudin@gmail.com',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 12,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const SizedBox(height: 8),
-                                    Container(
-                                      width: double.infinity,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: SizedBox(
-                                              child: Text(
-                                                'No. Handphone',
-                                                style: TextStyle(
-                                                  color: Color(0xFF333333),
-                                                  fontSize: 12,
-                                                  fontFamily:
-                                                      'Plus Jakarta Sans',
-                                                  fontWeight: FontWeight.w400,
+                                                Container(
+                                                  height: double.infinity,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Jilbab Pasmina',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 16 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        'Hijau - M',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        '1 x Rp120.000',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
                                           ),
                                           Container(
-                                            height: 15,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                            child: Column(
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
+                                                  CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  '08737266461233',
-                                                  style: TextStyle(
-                                                    color: Color(0xFF333333),
-                                                    fontSize: 12,
-                                                    fontFamily:
-                                                        'Plus Jakarta Sans',
-                                                    fontWeight: FontWeight.w600,
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      3 * fem),
+                                                  child: Text(
+                                                    'Total Harga',
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff818181),
+                                                    ),
                                                   ),
                                                 ),
-                                                const SizedBox(width: 4),
+                                                Text(
+                                                  'Rp240.000',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 14 * ffem,
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20 * fem,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(16 * fem,
+                                          16 * fem, 16 * fem, 16 * fem),
+                                      width: double.infinity,
+                                      height: 143 * fem,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffffffff),
+                                        borderRadius:
+                                            BorderRadius.circular(8 * fem),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x28000000),
+                                            offset: Offset(0 * fem, 0 * fem),
+                                            blurRadius: 8 * fem,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(0 * fem,
+                                                0 * fem, 104 * fem, 7 * fem),
+                                            width: double.infinity,
+                                            height: 67 * fem,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
                                                 Container(
-                                                  width: 12,
-                                                  height: 12,
-                                                  clipBehavior: Clip.antiAlias,
-                                                  decoration: BoxDecoration(),
-                                                  child: Stack(children: []),
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      12 * fem,
+                                                      0 * fem),
+                                                  width: 66 * fem,
+                                                  height: 66 * fem,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8 * fem),
+                                                    color: Color(0xffd9d9d9),
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(
+                                                        'assets/images/jilbab.png',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: double.infinity,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Jilbab Pasmina',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 16 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        'Hijau - M',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        '1 x Rp120.000',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      3 * fem),
+                                                  child: Text(
+                                                    'Total Harga',
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff818181),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Rp240.000',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 14 * ffem,
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff000000),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20 * fem,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.fromLTRB(16 * fem,
+                                          16 * fem, 16 * fem, 16 * fem),
+                                      width: double.infinity,
+                                      height: 143 * fem,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffffffff),
+                                        borderRadius:
+                                            BorderRadius.circular(8 * fem),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x28000000),
+                                            offset: Offset(0 * fem, 0 * fem),
+                                            blurRadius: 8 * fem,
+                                          ),
+                                        ],
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(0 * fem,
+                                                0 * fem, 104 * fem, 7 * fem),
+                                            width: double.infinity,
+                                            height: 67 * fem,
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      12 * fem,
+                                                      0 * fem),
+                                                  width: 66 * fem,
+                                                  height: 66 * fem,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8 * fem),
+                                                    color: Color(0xffd9d9d9),
+                                                    image: DecorationImage(
+                                                      fit: BoxFit.cover,
+                                                      image: AssetImage(
+                                                        'assets/images/jilbab.png',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: double.infinity,
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        'Jilbab Pasmina',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 16 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        'Hijau - M',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                      SizedBox(
+                                                        height: 7 * fem,
+                                                      ),
+                                                      Text(
+                                                        '1 x Rp120.000',
+                                                        style: SafeGoogleFont(
+                                                          'Plus Jakarta Sans',
+                                                          fontSize: 12 * ffem,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          height:
+                                                              1.26 * ffem / fem,
+                                                          color:
+                                                              Color(0xff000000),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      3 * fem),
+                                                  child: Text(
+                                                    'Total Harga',
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff818181),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  'Rp240.000',
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 14 * ffem,
+                                                    fontWeight: FontWeight.w700,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff000000),
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -259,1059 +1418,80 @@ class DetailOrder extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 14,
-                  ),
-                  Container(
-                    width: 327,
-                    height: 40,
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
-                    decoration: ShapeDecoration(
-                      color: Color(0xFFDFF3FF),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            child: Text(
-                              'No. Resi',
-                              style: TextStyle(
-                                color: Color(0xFF333333),
-                                fontSize: 12,
-                                fontFamily: 'Plus Jakarta Sans',
-                                fontWeight: FontWeight.w400,
-                              ),
                             ),
-                          ),
+                          ],
                         ),
-                        const SizedBox(width: 4),
-                        SizedBox(
-                          width: 188,
-                          child: Text(
-                            'KOMSHIP9982',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Color(0xFF333333),
-                              fontSize: 12,
-                              fontFamily: 'Plus Jakarta Sans',
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 4),
-                        Container(
-                          width: 16,
-                          height: 16,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 16,
-                                height: 16,
-                                child: Stack(children: []),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  Container(
-                    width: 327,
-                    height: 373,
-                    padding: const EdgeInsets.all(12),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x28000000),
-                          blurRadius: 16,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            'Rincian Order',
-                            style: TextStyle(
-                              color: Color(0xFF222222),
-                              fontSize: 16,
-                              fontFamily: 'Plus Jakarta Sans',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: 0.10,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Container(
-                          width: double.infinity,
-                          height: 317,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Pembeli',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Sasa Melati',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Waktu Order',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        '11 Oktober 2023',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'No. Order',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'RX1234567890',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Alamat Tujuan',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Sukamaju RT01/RW02,  Tamansari, Karangmoncol, Purbalingga, 556474',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Pengiriman',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      width: 188,
-                                      height: 21,
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          // Container(
-                                          //   width: 25,
-                                          //   height: 25,
-                                          //   decoration: BoxDecoration(
-                                          //     image: DecorationImage(
-                                          //       image: NetworkImage(
-                                          //           "https://via.placeholder.com/25x25"),
-                                          //       fit: BoxFit.fill,
-                                          //     ),
-                                          //   ),
-                                          // ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Pengiriman',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'COD',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Berat Total',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        '800gr',
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                decoration: ShapeDecoration(
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                      width: 0.50,
-                                      strokeAlign: BorderSide.strokeAlignCenter,
-                                      color: Color(0xFFE2E2E2),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Total Harga Barang',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Rp980.000',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Ongkir',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Rp24.000',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Potongan Harga',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        '-Rp20.000',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFFE31A1A),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Biaya Lain',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Rp20.000',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFF333333),
-                                          fontSize: 12,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 8),
-                              Container(
-                                width: double.infinity,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Expanded(
-                                      child: SizedBox(
-                                        child: Text(
-                                          'Total Pembayaran',
-                                          style: TextStyle(
-                                            color: Color(0xFF333333),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 188,
-                                      child: Text(
-                                        'Rp1.004.000',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(
-                                          color: Color(0xFF34A770),
-                                          fontSize: 16,
-                                          fontFamily: 'Plus Jakarta Sans',
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Container(
-                    width: 375,
-                    height: 68,
-                    padding: const EdgeInsets.all(24),
-                    // decoration: BoxDecoration(
-                    //   border: Border.only(
-                    //     left: BorderSide(color: Color(0xFFC2C2C2)),
-                    //     top: BorderSide(width: 0.50, color: Color(0xFFC2C2C2)),
-                    //     right: BorderSide(color: Color(0xFFC2C2C2)),
-                    //     bottom: BorderSide(color: Color(0xFFC2C2C2)),
-                    //   ),
-                    // ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          child: SizedBox(
-                            child: Text(
-                              'Rincian Pesanan',
-                              style: TextStyle(
-                                color: Color(0xFF222222),
-                                fontSize: 16,
-                                fontFamily: 'Plus Jakarta Sans',
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: 0.10,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    width: 327,
-                    height: 143,
-                    padding: const EdgeInsets.all(16),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x28000000),
-                          blurRadius: 16,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 66,
-                                height: 66,
-                                decoration: ShapeDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://via.placeholder.com/66x66"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Jilbab Pasmina',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Hijau - M',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          '1 x Rp120.000',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
-                          width: double.infinity,
-                          height: 37,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Total Harga',
-                                  style: TextStyle(
-                                    color: Color(0xFF818181),
-                                    fontSize: 12,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Rp240.000',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: 327,
-                    height: 143,
-                    padding: const EdgeInsets.all(16),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x28000000),
-                          blurRadius: 16,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 66,
-                                height: 66,
-                                decoration: ShapeDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://via.placeholder.com/66x66"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Jilbab Pasmina',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Hijau - M',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          '1 x Rp120.000',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
-                          width: double.infinity,
-                          height: 37,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Total Harga',
-                                  style: TextStyle(
-                                    color: Color(0xFF818181),
-                                    fontSize: 12,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Rp240.000',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    width: 327,
-                    height: 143,
-                    padding: const EdgeInsets.all(16),
-                    decoration: ShapeDecoration(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                      shadows: [
-                        BoxShadow(
-                          color: Color(0x28000000),
-                          blurRadius: 16,
-                          offset: Offset(0, 0),
-                          spreadRadius: 0,
-                        )
-                      ],
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: double.infinity,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 66,
-                                height: 66,
-                                decoration: ShapeDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://via.placeholder.com/66x66"),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8)),
-                                ),
-                              ),
-                              const SizedBox(width: 12),
-                              Expanded(
-                                child: Container(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Jilbab Pasmina',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 16,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          'Hijau - M',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(height: 8),
-                                      SizedBox(
-                                        width: double.infinity,
-                                        child: Text(
-                                          '1 x Rp120.000',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        const SizedBox(height: 8),
-                        Container(
-                          width: double.infinity,
-                          height: 37,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Total Harga',
-                                  style: TextStyle(
-                                    color: Color(0xFF818181),
-                                    fontSize: 12,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              SizedBox(
-                                width: double.infinity,
-                                child: Text(
-                                  'Rp240.000',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 14,
-                                    fontFamily: 'Plus Jakarta Sans',
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
+                ),
               ),
             ),
-          ),
+            Positioned(
+              left: 0 * fem,
+              bottom:
+                  0, // Adjust this value to control the distance from the bottom
+              child: Container(
+                padding:
+                    EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 24 * fem),
+                width: 375 * fem,
+                height: 86 * fem,
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x33000000),
+                      offset: Offset(0 * fem,
+                          4 * fem), // Adjust the offset to control the shadow
+                      blurRadius: 7 * fem,
+                    ),
+                  ],
+                ),
+                child: Container(
+                  width: double.infinity,
+                  height: double.infinity,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 8 * fem, 0 * fem),
+                        width: 50 * fem,
+                        height: 50 * fem,
+                        child: Image.asset(
+                          'assets/images/More-Button.png',
+                          width: 50 * fem,
+                          height: 50 * fem,
+                        ),
+                      ),
+                      Container(
+                        width: 269 * fem,
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Color(0xfff94f31),
+                          borderRadius: BorderRadius.circular(8 * fem),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Check Update',
+                            textAlign: TextAlign.center,
+                            style: SafeGoogleFont(
+                              'Plus Jakarta Sans',
+                              fontSize: 14 * ffem,
+                              fontWeight: FontWeight.w500,
+                              height: 1.26 * ffem / fem,
+                              letterSpacing: 0.1000000015 * fem,
+                              color: Color(0xffffffff),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 
-class LupaPassword extends StatelessWidget {
+class LupaPassword extends StatefulWidget {
+  @override
+  _LupaPasswordState createState() => _LupaPasswordState();
+}
+
+class _LupaPasswordState extends State<LupaPassword> {
+  final _formKey = GlobalKey<FormState>();
+  String _email = '';
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -64,7 +71,6 @@ class LupaPassword extends StatelessWidget {
                           ),
                         ),
                         Container(
-                          // component112y (10:3475)
                           margin: EdgeInsets.fromLTRB(
                               0 * fem, 0 * fem, 0 * fem, 32 * fem),
                           width: double.infinity,
@@ -72,7 +78,6 @@ class LupaPassword extends StatelessWidget {
                           child: Stack(
                             children: [
                               Positioned(
-                                // frame2608601KZT (I10:3475;88:37296)
                                 left: 0 * fem,
                                 top: 8 * fem,
                                 child: Container(
@@ -87,7 +92,7 @@ class LupaPassword extends StatelessWidget {
                                     borderRadius:
                                         BorderRadius.circular(8 * fem),
                                   ),
-                                  child: TextField(
+                                  child: TextFormField(
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: 'email@gmail.com',
@@ -100,6 +105,20 @@ class LupaPassword extends StatelessWidget {
                                       ),
                                       border: InputBorder.none,
                                     ),
+                                    validator: (value) {
+                                      if (value == null || value.isEmpty) {
+                                        return 'Email is required';
+                                      }
+                                      if (!value.contains('@')) {
+                                        return 'Invalid email format';
+                                      }
+                                      return null;
+                                    },
+                                    onChanged: (value) {
+                                      setState(() {
+                                        _email = value;
+                                      });
+                                    },
                                   ),
                                 ),
                               ),
@@ -171,24 +190,33 @@ class LupaPassword extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    width: double.infinity,
-                    height: 40 * fem,
-                    decoration: BoxDecoration(
-                      color: Color(0xfff95031),
-                      borderRadius: BorderRadius.circular(5 * fem),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState != null &&
+                          _formKey.currentState!.validate()) {
+                        Navigator.of(context).pushNamed('/home');
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xfff95031),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5 * fem),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 12 * fem),
                     ),
-                    child: Center(
-                      child: Text(
-                        'KIrim',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Plus Jakarta Sans',
-                          fontSize: 14 * ffem,
-                          height: 1.26 * ffem / fem,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.1000000015 * fem,
-                          color: Color(0xffffffff),
+                    child: Container(
+                      width: double.infinity,
+                      child: Center(
+                        child: Text(
+                          'Kirim',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14 * ffem,
+                            height: 1.26 * ffem / fem,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.1000000015 * fem,
+                            color: Color(0xffffffff),
+                          ),
                         ),
                       ),
                     ),
