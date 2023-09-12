@@ -66,85 +66,119 @@ class _LoginState extends State<Login> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  child: Positioned(
-                                    left: 0 * fem,
-                                    top: 8 * fem,
-                                    child: TextFormField(
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.all(7 * fem),
-                                        hintText: 'Masukan username kamu',
-                                        hintStyle: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 16 * ffem,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Username',
+                                        style: TextStyle(
+                                          fontSize: 12,
                                           fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xffb3b3b3),
+                                          color: Color(0xff000000),
                                         ),
-                                        border: OutlineInputBorder(),
                                       ),
-                                      validator: (value) {
-                                        if (value == null || value.isEmpty) {
-                                          return 'Username tidak ditemukan';
-                                        }
-                                        return null;
-                                      },
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _username = value;
-                                        });
-                                      },
-                                    ),
+                                      SizedBox(height: 0),
+                                      TextFormField(
+                                        decoration: InputDecoration(
+                                          contentPadding:
+                                              EdgeInsets.all(7 * fem),
+                                          hintText: 'Masukan username kamu',
+                                          hintStyle: SafeGoogleFont(
+                                            'Plus Jakarta Sans',
+                                            fontSize: 16 * ffem,
+                                            fontWeight: FontWeight.w400,
+                                            height: 1.26 * ffem / fem,
+                                            color: Color(0xffb3b3b3),
+                                          ),
+                                          border: OutlineInputBorder(),
+                                        ),
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Username tidak ditemukan';
+                                          }
+                                          return null;
+                                        },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _username = value;
+                                          });
+                                        },
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 Container(
                                   padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                  child: TextFormField(
-                                    obscureText: !_isPasswordVisible,
-                                    decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(7 * fem),
-                                      hintText: 'Password kamu',
-                                      hintStyle: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 16 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.26 * ffem / fem,
-                                        color: Color(0xffb3b3b3),
-                                      ),
-                                      border: OutlineInputBorder(),
-                                      suffixIcon: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            _isPasswordVisible =
-                                                !_isPasswordVisible;
-                                          });
-                                        },
-                                        child: Container(
-                                          width: 24 * fem,
-                                          height: 24 * fem,
-                                          child: Icon(
-                                            _isPasswordVisible
-                                                ? CupertinoIcons.eye_slash
-                                                : CupertinoIcons.eye,
-                                          ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Password', // Teks yang ingin ditampilkan di atas kotak teks
+                                        style: TextStyle(
+                                          fontSize:
+                                              12, // Sesuaikan dengan ukuran font yang Anda inginkan
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff000000),
                                         ),
                                       ),
-                                    ),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return 'Username atau password salah';
-                                      }
-                                      if (value.length < 8) {
-                                        return 'Password minimal 8 karakter';
-                                      }
-                                      return null;
-                                    },
-                                    onChanged: (value) {
-                                      setState(() {
-                                        _password = value;
-                                      });
-                                    },
+                                      SizedBox(
+                                          height:
+                                              0), // Jarak antara teks "Password" dan kotak teks
+                                      TextFormField(
+                                        obscureText: !_isPasswordVisible,
+                                        decoration: InputDecoration(
+                                          contentPadding:
+                                              EdgeInsets.all(7 * fem),
+                                          hintText: 'Password kamu',
+                                          hintStyle: SafeGoogleFont(
+                                            'Plus Jakarta Sans',
+                                            fontSize: 16 * ffem,
+                                            fontWeight: FontWeight.w400,
+                                            height: 1.26 * ffem / fem,
+                                            color: Color(0xffb3b3b3),
+                                          ),
+                                          border: OutlineInputBorder(),
+                                          suffixIcon: GestureDetector(
+                                            onTap: () {
+                                              setState(() {
+                                                _isPasswordVisible =
+                                                    !_isPasswordVisible;
+                                              });
+                                            },
+                                            child: Container(
+                                              width: 24 * fem,
+                                              height: 24 * fem,
+                                              child: Icon(
+                                                _isPasswordVisible
+                                                    ? CupertinoIcons.eye
+                                                    : CupertinoIcons.eye_slash,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        validator: (value) {
+                                          if (value == null || value.isEmpty) {
+                                            return 'Username atau password salah';
+                                          }
+                                          if (value.length < 8) {
+                                            return 'Password minimal 8 karakter';
+                                          }
+                                          if (value.contains(' ')) {
+                                            return 'Password tidak boleh mengandung spasi';
+                                          }
+                                          return null;
+                                        },
+                                        onChanged: (value) {
+                                          setState(() {
+                                            _password = value;
+                                          });
+                                        },
+                                      ),
+                                    ],
                                   ),
-                                ),
+                                )
                               ],
                             ),
                           ),
