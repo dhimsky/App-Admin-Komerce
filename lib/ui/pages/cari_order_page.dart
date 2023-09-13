@@ -39,7 +39,7 @@ class CariOrder extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/home');
+                                  Navigator.pushNamed(context, '/landing');
                                 },
                                 child: Container(
                                   margin: EdgeInsets.fromLTRB(

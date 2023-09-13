@@ -202,7 +202,7 @@ class _LoginState extends State<Login> {
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          Navigator.of(context).pushNamed('/home');
+                          Navigator.of(context).pushNamed('/landing');
                         }
                       },
                       style: ButtonStyle(

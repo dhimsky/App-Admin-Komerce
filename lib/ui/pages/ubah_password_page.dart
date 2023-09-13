@@ -39,7 +39,7 @@ class UbahPassword extends StatelessWidget {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/profile');
+                                  Navigator.pushNamed(context, '/landing');
                                 },
                                 child: Container(
                                   margin: EdgeInsets.fromLTRB(
@@ -296,7 +296,7 @@ class UbahPassword extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/profile');
+                      Navigator.pushNamed(context, '/landing');
                     },
                     child: Container(
                       width: double.infinity,

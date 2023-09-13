@@ -194,7 +194,7 @@ class _LupaPasswordState extends State<LupaPassword> {
                     onPressed: () {
                       if (_formKey.currentState != null &&
                           _formKey.currentState!.validate()) {
-                        Navigator.of(context).pushNamed('/home');
+                        Navigator.of(context).pushNamed('/landing');
                       }
                     },
                     style: ElevatedButton.styleFrom(

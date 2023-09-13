@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -9,32 +10,6 @@ class Profile extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-            icon: IconButton(
-              icon: Icon(CupertinoIcons.home),
-              onPressed: () {
-                Navigator.pushNamed(context, '/home');
-              },
-            ),
-            label: 'Beranda'),
-        BottomNavigationBarItem(
-            icon: IconButton(
-              icon: Icon(CupertinoIcons.list_bullet),
-              onPressed: () {
-                Navigator.pushNamed(context, '/detailprofile');
-              },
-            ),
-            label: 'Log Aktivitas'),
-        BottomNavigationBarItem(
-            icon: IconButton(
-              icon: Icon(CupertinoIcons.profile_circled),
-              onPressed: () {
-                Navigator.pushNamed(context, '/profile');
-              },
-            ),
-            label: 'Profile'),
-      ]),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
