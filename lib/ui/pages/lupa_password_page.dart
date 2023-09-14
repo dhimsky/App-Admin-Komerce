@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
+import 'dart:async';
 
 class LupaPassword extends StatefulWidget {
   @override
@@ -123,7 +124,6 @@ class _LupaPasswordState extends State<LupaPassword> {
                                 ),
                               ),
                               Positioned(
-                                // frame26086647kD (I10:3475;90:34274)
                                 left: 8 * fem,
                                 top: 0 * fem,
                                 child: Container(
@@ -192,10 +192,85 @@ class _LupaPasswordState extends State<LupaPassword> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      if (_formKey.currentState != null &&
-                          _formKey.currentState!.validate()) {
-                        Navigator.of(context).pushNamed('/landing');
-                      }
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: Container(
+                              padding: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                              width: 247 * fem,
+                              height: 115 * fem,
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                                    width: 58.8 * fem,
+                                    height: 55.2 * fem,
+                                    child: Image.asset(
+                                      'assets/images/success-icon.png',
+                                      width: 58.8 * fem,
+                                      height: 55.2 * fem,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                    constraints: BoxConstraints(
+                                      maxWidth: 197 * fem,
+                                    ),
+                                    child: Text(
+                                      'Konfirmasi lupa password telah terkirim ke email-mu. Silahkan cek kotak masuk email.',
+                                      textAlign: TextAlign.center,
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w500,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 30 * fem,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xfff95031),
+                                    borderRadius:
+                                        BorderRadius.circular(8 * fem),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'Oke',
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xffffffff),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xfff95031),
