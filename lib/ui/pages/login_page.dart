@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:komerce/model/my_response.dart';
+import 'package:komerce/module/login/login_controller.dart';
 
 import '../../shared/theme.dart';
 
@@ -13,6 +15,8 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   String _username = '';
   String _password = '';
+
+  LoginController _controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +84,7 @@ class _LoginState extends State<Login> {
                                       ),
                                       SizedBox(height: 0),
                                       TextFormField(
+                                        controller: _controller.emailController,
                                         decoration: InputDecoration(
                                           contentPadding:
                                               EdgeInsets.all(7 * fem),
@@ -127,6 +132,8 @@ class _LoginState extends State<Login> {
                                           height:
                                               0), // Jarak antara teks "Password" dan kotak teks
                                       TextFormField(
+                                        controller:
+                                            _controller.passwordController,
                                         obscureText: !_isPasswordVisible,
                                         decoration: InputDecoration(
                                           contentPadding:
@@ -199,42 +206,54 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          Navigator.of(context).pushNamed('/landing');
-                        }
-                      },
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                        elevation: MaterialStateProperty.all<double>(0),
-                      ),
-                      child: Container(
-                        width: double.infinity,
-                        height: 40 * fem,
-                        decoration: BoxDecoration(
-                          color: Color(0xfff95031),
-                          borderRadius: BorderRadius.circular(8 * fem),
-                        ),
-                        child: Center(
-                          child: Center(
-                            child: Text(
-                              'Login',
-                              textAlign: TextAlign.center,
-                              style: SafeGoogleFont(
-                                'Plus Jakarta Sans',
-                                fontSize: 14 * ffem,
-                                fontWeight: FontWeight.w500,
-                                height: 1.26 * ffem / fem,
-                                letterSpacing: 0.1000000015 * fem,
-                                color: Color(0xffffffff),
+                    (_controller.isLoading)
+                        ? Center(
+                            child: SizedBox(
+                              height: 32,
+                              width: 32,
+                              child: CircularProgressIndicator(
+                                color: Colors.blue,
+                                strokeWidth: 3,
+                              ),
+                            ),
+                          )
+                        : ElevatedButton(
+                            onPressed: _login,
+                            // () {
+                            //   if (_formKey.currentState!.validate()) {
+                            //     Navigator.of(context).pushNamed('/landing');
+                            //   }
+                            // },
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.transparent),
+                              elevation: MaterialStateProperty.all<double>(0),
+                            ),
+                            child: Container(
+                              width: double.infinity,
+                              height: 40 * fem,
+                              decoration: BoxDecoration(
+                                color: Color(0xfff95031),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                              ),
+                              child: Center(
+                                child: Center(
+                                  child: Text(
+                                    'Login',
+                                    textAlign: TextAlign.center,
+                                    style: SafeGoogleFont(
+                                      'Plus Jakarta Sans',
+                                      fontSize: 14 * ffem,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.26 * ffem / fem,
+                                      letterSpacing: 0.1000000015 * fem,
+                                      color: Color(0xffffffff),
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),
@@ -243,5 +262,25 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void _login() async {
+    setState(() {
+      _controller.isLoading = true;
+    });
+
+    MyResponse response = await _controller.login();
+
+    setState(() {
+      _controller.isLoading = false;
+    });
+
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(response.message)));
+    if (response.status == 200) {
+      Navigator.of(context).pushNamed('/landing');
+    } else {
+      //gagal login
+    }
   }
 }
