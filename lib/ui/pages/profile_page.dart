@@ -225,7 +225,6 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                           ),
-
                           GestureDetector(
                             onTap: () {
                               showDialog(
@@ -233,241 +232,161 @@ class Profile extends StatelessWidget {
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     content: Container(
-                                      width: 247,
-                                      height: 187,
-                                      padding: const EdgeInsets.all(24),
-                                      decoration: ShapeDecoration(
-                                        color: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8)),
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                      width: 247 * fem,
+                                      height: 155 *
+                                          fem, // Menambahkan tinggi agar dialog lebih proporsional
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffffffff),
+                                        borderRadius:
+                                            BorderRadius.circular(8 * fem),
                                       ),
                                       child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.center,
                                         children: [
                                           Container(
-                                            width: 60,
-                                            height: 60,
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width: 58.80,
-                                                  height: 55.20,
-                                                  child: Stack(
+                                            margin: EdgeInsets.fromLTRB(0 * fem,
+                                                0 * fem, 0 * fem, 14.4 * fem),
+                                            width: 58.8 * fem,
+                                            height: 55.2 * fem,
+                                            child: Image.asset(
+                                              'assets/images/alert-icon.png',
+                                              width: 58.8 * fem,
+                                              height: 55.2 * fem,
+                                            ),
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.fromLTRB(
+                                                0 * fem,
+                                                0 * fem,
+                                                0 * fem,
+                                                10 *
+                                                    fem), // Memberi margin ke teks
+                                            constraints: BoxConstraints(
+                                              maxWidth: 197 * fem,
+                                            ),
+                                            child: Text(
+                                              'Anda yakin ingin keluar dari akun anda ?',
+                                              textAlign: TextAlign.center,
+                                              style: SafeGoogleFont(
+                                                'Plus Jakarta Sans',
+                                                fontSize: 12 * ffem,
+                                                fontWeight: FontWeight.w500,
+                                                height: 1 * ffem / fem,
+                                                color: Color(0xff333333),
+                                              ),
+                                            ),
+                                          ),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Container(
+                                                  width: 97.50,
+                                                  height: 25,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 12,
+                                                    vertical: 4,
+                                                  ),
+                                                  decoration: ShapeDecoration(
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                        width: 1,
+                                                        color:
+                                                            Color(0xFF999999),
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
                                                     children: [
-                                                      Positioned(
-                                                        left: 0,
-                                                        top: 22.08,
-                                                        child: Container(
-                                                          width: 32.90,
-                                                          height: 33.12,
-                                                          decoration:
-                                                              ShapeDecoration(
-                                                            color: Color(
-                                                                0xFFFBA63C),
-                                                            shape: OvalBorder(),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        left: 2.80,
-                                                        top: 0,
-                                                        child: Container(
-                                                          width: 56,
-                                                          height: 55.20,
-                                                          decoration:
-                                                              ShapeDecoration(
-                                                            gradient:
-                                                                LinearGradient(
-                                                              begin: Alignment(
-                                                                  0.71, 0.70),
-                                                              end: Alignment(
-                                                                  -0.71, -0.7),
-                                                              colors: [
-                                                                Color(
-                                                                    0xFFFF9B1F),
-                                                                Color(
-                                                                    0xFFFFD49F)
-                                                              ],
-                                                            ),
-                                                            shape: OvalBorder(
-                                                              side: BorderSide(
-                                                                  width: 0.76,
-                                                                  color: Colors
-                                                                      .white),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        left: 42.70,
-                                                        top: 3.45,
-                                                        child: Container(
-                                                          width: 13.71,
-                                                          height: 13.80,
-                                                          decoration:
-                                                              ShapeDecoration(
-                                                            color: Color(
-                                                                0xFFFBA63C),
-                                                            shape: OvalBorder(),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      Positioned(
-                                                        left: 16.99,
-                                                        top: 13.85,
-                                                        child: Container(
-                                                          width: 27.77,
-                                                          height: 27.37,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              image: NetworkImage(
-                                                                  "https://via.placeholder.com/28x27"),
-                                                              fit: BoxFit.fill,
-                                                            ),
-                                                          ),
+                                                      Text(
+                                                        'Tidak',
+                                                        style: TextStyle(
+                                                          color:
+                                                              Color(0xFF999999),
+                                                          fontSize: 12,
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height: 0,
                                                         ),
                                                       ),
                                                     ],
                                                   ),
                                                 ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 12,
-                                          ),
-                                          SizedBox(
-                                            width: double.infinity,
-                                            child: Text(
-                                              'Anda yakin ingin keluar dari akun anda ?',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 12,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
                                               ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 12,
-                                          ),
-                                          Container(
-                                            width: double.infinity,
-                                            height: 25,
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    height: double.infinity,
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 12,
-                                                        vertical: 4),
-                                                    decoration: ShapeDecoration(
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        side: BorderSide(
-                                                            width: 1,
-                                                            color: Color(
-                                                                0xFF999999)),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8),
+                                              SizedBox(
+                                                width:
+                                                    4, // Jarak antara tombol "Tidak" dan "Iya"
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pushNamed('/login');
+                                                },
+                                                child: Container(
+                                                  width: 97.50,
+                                                  height: 25,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                    horizontal: 12,
+                                                    vertical: 4,
+                                                  ),
+                                                  decoration: ShapeDecoration(
+                                                    color: Color(0xFFF94F31),
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Text(
+                                                        'Iya',
+                                                        style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontSize: 12,
+                                                          fontFamily:
+                                                              'Plus Jakarta Sans',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          height: 0,
+                                                        ),
                                                       ),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          'Tidak',
-                                                          style: TextStyle(
-                                                            color: Color(
-                                                                0xFF999999),
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            height: 0,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                    ],
                                                   ),
                                                 ),
-                                                SizedBox(
-                                                  width: 4,
-                                                ),
-                                                Expanded(
-                                                  child: Container(
-                                                    height: double.infinity,
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 12,
-                                                        vertical: 4),
-                                                    decoration: ShapeDecoration(
-                                                      color: Color(0xFFF94F31),
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          8)),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Text(
-                                                          'Iya',
-                                                          style: TextStyle(
-                                                            color: Colors.white,
-                                                            fontSize: 12,
-                                                            fontFamily:
-                                                                'Plus Jakarta Sans',
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                            height: 0,
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ],
                                       ),
@@ -526,7 +445,6 @@ class Profile extends StatelessWidget {
                               ),
                             ),
                           ),
-                          
                         ],
                       ),
                     ),
