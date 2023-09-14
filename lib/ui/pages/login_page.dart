@@ -173,7 +173,7 @@ class _LoginState extends State<Login> {
                                             return 'Password minimal 8 karakter';
                                           }
                                           if (value.contains(' ')) {
-                                            return 'Password tidak boleh mengandung spasi';
+                                            return 'Password tidak dapat menggunakan spasi';
                                           }
                                           return null;
                                         },
