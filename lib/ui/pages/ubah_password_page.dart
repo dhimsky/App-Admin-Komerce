@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 
-class UbahPassword extends StatelessWidget {
-  const UbahPassword({super.key});
-
+class UbahPassword extends StatefulWidget {
   @override
+  _UbahPassword createState() => _UbahPassword();
+}
+
+class _UbahPassword extends State<UbahPassword> {
+  @override
+  bool showPassword = false;
+  bool showPassword2 = false;
+  bool showPassword3 = false;
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -91,12 +97,13 @@ class UbahPassword extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: TextField(
-                                    obscureText: true,
+                                    obscureText:
+                                        !showPassword, // Toggle password visibility
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: '',
-                                      hintStyle: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
+                                      hintStyle: TextStyle(
+                                        fontFamily: 'Plus Jakarta Sans',
                                         fontSize: 16 * ffem,
                                         fontWeight: FontWeight.w400,
                                         height: 1.26 * ffem / fem,
@@ -107,11 +114,25 @@ class UbahPassword extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                    width: 24 * fem,
-                                    height: 24 * fem,
-                                    child: Icon(
-                                      CupertinoIcons.eye_slash,
-                                    )),
+                                  width: 24 * fem,
+                                  height: 24 * fem,
+                                  child: InkWell(
+                                    onTap: () {
+                                      // Toggle password visibility when the button is pressed
+                                      setState(() {
+                                        showPassword = !showPassword;
+                                      });
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        showPassword
+                                            ? CupertinoIcons.eye
+                                            : CupertinoIcons.eye_slash,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -127,8 +148,8 @@ class UbahPassword extends StatelessWidget {
                             ),
                             child: Text(
                               'Password Lama',
-                              style: SafeGoogleFont(
-                                'Plus Jakarta Sans',
+                              style: TextStyle(
+                                fontFamily: 'Plus Jakarta Sans',
                                 fontSize: 12 * ffem,
                                 fontWeight: FontWeight.w400,
                                 height: 1.26 * ffem / fem,
@@ -166,7 +187,7 @@ class UbahPassword extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: TextField(
-                                    obscureText: true,
+                                    obscureText: !showPassword2,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: '',
@@ -182,11 +203,25 @@ class UbahPassword extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                    width: 24 * fem,
-                                    height: 24 * fem,
-                                    child: Icon(
-                                      CupertinoIcons.eye_slash,
-                                    )),
+                                  width: 24 * fem,
+                                  height: 24 * fem,
+                                  child: InkWell(
+                                    onTap: () {
+                                      // Toggle password visibility when the button is pressed
+                                      setState(() {
+                                        showPassword2 = !showPassword2;
+                                      });
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        showPassword2
+                                            ? CupertinoIcons.eye
+                                            : CupertinoIcons.eye_slash,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -241,7 +276,7 @@ class UbahPassword extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: TextField(
-                                    obscureText: true,
+                                    obscureText: !showPassword3,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: '',
@@ -257,11 +292,25 @@ class UbahPassword extends StatelessWidget {
                                   ),
                                 ),
                                 Container(
-                                    width: 24 * fem,
-                                    height: 24 * fem,
-                                    child: Icon(
-                                      CupertinoIcons.eye_slash,
-                                    )),
+                                  width: 24 * fem,
+                                  height: 24 * fem,
+                                  child: InkWell(
+                                    onTap: () {
+                                      // Toggle password visibility when the button is pressed
+                                      setState(() {
+                                        showPassword3 = !showPassword3;
+                                      });
+                                    },
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        showPassword3
+                                            ? CupertinoIcons.eye
+                                            : CupertinoIcons.eye_slash,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -295,7 +344,153 @@ class UbahPassword extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, '/landing');
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            content: Container(
+                              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                              width: 247 * fem,
+                              height: 155 *
+                                  fem, // Menambahkan tinggi agar dialog lebih proporsional
+                              decoration: BoxDecoration(
+                                color: Color(0xffffffff),
+                                borderRadius: BorderRadius.circular(8 * fem),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                                    width: 58.8 * fem,
+                                    height: 55.2 * fem,
+                                    child: Image.asset(
+                                      'assets/images/alert-icon.png',
+                                      width: 58.8 * fem,
+                                      height: 55.2 * fem,
+                                    ),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.fromLTRB(
+                                        0 * fem,
+                                        0 * fem,
+                                        0 * fem,
+                                        10 * fem), // Memberi margin ke teks
+                                    constraints: BoxConstraints(
+                                      maxWidth: 197 * fem,
+                                    ),
+                                    child: Text(
+                                      'Anda yakin ingin mengubah password ?',
+                                      textAlign: TextAlign.center,
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w500,
+                                        height: 1 * ffem / fem,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: Container(
+                                          width: 97.50,
+                                          height: 25,
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                            vertical: 4,
+                                          ),
+                                          decoration: ShapeDecoration(
+                                            shape: RoundedRectangleBorder(
+                                              side: BorderSide(
+                                                width: 1,
+                                                color: Color(0xFF999999),
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'Tidak',
+                                                style: TextStyle(
+                                                  color: Color(0xFF999999),
+                                                  fontSize: 12,
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width:
+                                            4, // Jarak antara tombol "Tidak" dan "Iya"
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context)
+                                              .pushNamed('/landing');
+                                        },
+                                        child: Container(
+                                          width: 97.50,
+                                          height: 25,
+                                          padding: const EdgeInsets.symmetric(
+                                            horizontal: 12,
+                                            vertical: 4,
+                                          ),
+                                          decoration: ShapeDecoration(
+                                            color: Color(0xFFF94F31),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                'Iya',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 12,
+                                                  fontFamily:
+                                                      'Plus Jakarta Sans',
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 0,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
                     },
                     child: Container(
                       width: double.infinity,
