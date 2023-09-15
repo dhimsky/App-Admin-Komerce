@@ -53,7 +53,6 @@ class UbahPassword extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                // identitaskamuRSh (23:1971)
                                 'Ubah Password',
                                 style: SafeGoogleFont(
                                   'Plus Jakarta Sans',

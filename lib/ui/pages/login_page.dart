@@ -96,7 +96,10 @@ class _LoginState extends State<Login> {
                                             height: 1.26 * ffem / fem,
                                             color: Color(0xffb3b3b3),
                                           ),
-                                          border: OutlineInputBorder(),
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10 * fem),
+                                          ),
                                         ),
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
@@ -120,17 +123,14 @@ class _LoginState extends State<Login> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Password', // Teks yang ingin ditampilkan di atas kotak teks
+                                        'Password',
                                         style: TextStyle(
-                                          fontSize:
-                                              12, // Sesuaikan dengan ukuran font yang Anda inginkan
+                                          fontSize: 12,
                                           fontWeight: FontWeight.w400,
                                           color: Color(0xff000000),
                                         ),
                                       ),
-                                      SizedBox(
-                                          height:
-                                              0), // Jarak antara teks "Password" dan kotak teks
+                                      SizedBox(height: 0),
                                       TextFormField(
                                         controller:
                                             _controller.passwordController,
@@ -146,7 +146,10 @@ class _LoginState extends State<Login> {
                                             height: 1.26 * ffem / fem,
                                             color: Color(0xffb3b3b3),
                                           ),
-                                          border: OutlineInputBorder(),
+                                          border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      10 * fem)),
                                           suffixIcon: GestureDetector(
                                             onTap: () {
                                               setState(() {
