@@ -190,7 +190,6 @@ class _LupaPasswordState extends State<LupaPassword> {
                       ],
                     ),
                   ),
-                  
                   ElevatedButton(
                     onPressed: () {
                       showDialog(

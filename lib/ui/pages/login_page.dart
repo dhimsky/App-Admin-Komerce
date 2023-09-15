@@ -70,18 +70,8 @@ class _LoginState extends State<Login> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Container(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  child: Stack(
                                     children: [
-                                      Text(
-                                        'Username',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
                                       SizedBox(height: 0),
                                       TextFormField(
                                         controller: _controller.emailController,
@@ -113,23 +103,36 @@ class _LoginState extends State<Login> {
                                           });
                                         },
                                       ),
+                                      Positioned(
+                                        left: 8 * fem,
+                                        bottom: 32 * fem,
+                                        child: Container(
+                                          width: 65 * fem,
+                                          height: 16 * fem,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffffffff),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'Username',
+                                              style: SafeGoogleFont(
+                                                'Plus Jakarta Sans',
+                                                fontSize: 12 * ffem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.26 * ffem / fem,
+                                                color: Color(0xff1a1a1a),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
                                 Container(
                                   padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                  child: Stack(
                                     children: [
-                                      Text(
-                                        'Password',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontWeight: FontWeight.w400,
-                                          color: Color(0xff000000),
-                                        ),
-                                      ),
                                       SizedBox(height: 0),
                                       TextFormField(
                                         controller:
@@ -185,6 +188,29 @@ class _LoginState extends State<Login> {
                                             _password = value;
                                           });
                                         },
+                                      ),
+                                      Positioned(
+                                        left: 8 * fem,
+                                        bottom: 32 * fem,
+                                        child: Container(
+                                          width: 60 * fem,
+                                          height: 16 * fem,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xffffffff),
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              'Password',
+                                              style: SafeGoogleFont(
+                                                'Plus Jakarta Sans',
+                                                fontSize: 12 * ffem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.26 * ffem / fem,
+                                                color: Color(0xff1a1a1a),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -282,8 +308,6 @@ class _LoginState extends State<Login> {
         .showSnackBar(SnackBar(content: Text(response.message)));
     if (response.status == 200) {
       Navigator.of(context).pushNamed('/landing');
-    } else {
-      //gagal login
-    }
+    } else {}
   }
 }
