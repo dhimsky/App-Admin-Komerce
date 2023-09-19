@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:komerce/models/login/my_response.dart';
-import 'package:komerce/services/login/login_controller.dart';
+import 'package:komerce/models/response_model.dart';
+import 'package:komerce/controller/login_controller.dart';
 
 import '../../shared/theme.dart';
 

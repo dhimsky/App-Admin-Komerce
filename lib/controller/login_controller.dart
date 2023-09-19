@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:komerce/models/login/my_response.dart';
-import 'package:komerce/services/login/login_repository.dart';
+import 'package:komerce/models/response_model.dart';
+import 'package:komerce/services/login_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../models/login/user_model.dart';
+import '../models/user_model.dart';
 
 class LoginController {
   LoginRepository _repository = LoginRepository();

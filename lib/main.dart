@@ -12,6 +12,7 @@ import 'package:komerce/ui/pages/detail_profile_page.dart';
 import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 import 'package:komerce/ui/pages/landing_page.dart';
+import 'package:komerce/ui/pages/testing.dart';
 
 void main() {
   debugPaintSizeEnabled = false;
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'PlusJakartaSans'),
-        home: SplashPage(),
-        initialRoute: '/splash',
+        home: SearchPage(),
+        initialRoute: '/testing',
         routes: {
+          '/testing': (context) => SearchPage(),
           '/landing': (context) => LandingPage(),
           '/splash': (context) => SplashPage(),
           '/login': (context) => Login(),
