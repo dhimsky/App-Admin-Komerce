@@ -12,9 +12,19 @@ import 'package:komerce/ui/pages/detail_profile_page.dart';
 import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 import 'package:komerce/ui/pages/landing_page.dart';
-import 'package:komerce/ui/pages/testing.dart';
+import 'dart:io';
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
 
 void main() {
+  HttpOverrides.global = MyHttpOverrides();
   debugPaintSizeEnabled = false;
   runApp(MyApp());
 }
@@ -31,10 +41,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'PlusJakartaSans'),
-        home: SearchPage(),
-        initialRoute: '/testing',
+        home: SplashPage(),
+        initialRoute: '/splash',
         routes: {
-          '/testing': (context) => SearchPage(),
           '/landing': (context) => LandingPage(),
           '/splash': (context) => SplashPage(),
           '/login': (context) => Login(),

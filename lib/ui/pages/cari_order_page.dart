@@ -1,9 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:komerce/models/order_model.dart';
+import 'package:komerce/services/order_service.dart';
 
 class CariOrder extends StatelessWidget {
-  const CariOrder({super.key});
+  final TextEditingController _orderIdController = TextEditingController();
+  final OrderController _orderController = OrderController();
+
+  void _showDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Hasil Pencarian Order ID'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Tutup'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _checkOrder(BuildContext context) async {
+    final String orderId = _orderIdController.text;
+    final Order? order = await _orderController.getOrderById(orderId);
+
+    if (order != null) {
+      _showDialog(context,
+          'Order ID ditemukan: ${order.name}'); // Menambahkan parameter context
+    } else {
+      _showDialog(context,
+          'Order ID tidak ditemukan.'); // Menambahkan parameter context
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,6 +141,7 @@ class CariOrder extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: TextField(
+                                    controller: _orderIdController,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: 'KOMSHIP123XXX',
@@ -130,9 +166,9 @@ class CariOrder extends StatelessWidget {
                   SizedBox(
                     height: 350,
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, '/detailorder');
+                      _checkOrder(context);
                     },
                     child: Container(
                       width: double.infinity,
@@ -170,7 +206,7 @@ class CariOrder extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
