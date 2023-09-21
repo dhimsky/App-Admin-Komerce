@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:komerce/models/response_model.dart';
 import 'package:komerce/services/login_service.dart';
@@ -16,25 +15,38 @@ class LoginController {
   var passwordController = TextEditingController();
 
   Future<MyResponse> login() async {
-    http.Response result =
-        await _repository.login(emailController.text, passwordController.text);
+  http.Response result = await _repository.login(
+      emailController.text, passwordController.text);
 
-    if (result.statusCode == 200) {
-      Map<String, dynamic> myBody = jsonDecode(result.body);
-      MyResponse<User> myResponse = MyResponse.fromJson(myBody, User.fromJson);
+  print("cek ${result.body}");
 
-      debugPrint("${myResponse.message}");
+  if (result.statusCode == 200) {
+    print('Berhasil login');
+    Map<String, dynamic> myBody = jsonDecode(result.body);
+    MyResponse<User> myResponse = MyResponse.fromJson(myBody, User.fromJson);
 
-      if (myResponse.status == 200) {
-        final prefs = await SharedPreferences.getInstance();
+    if (myResponse.status == 200) {
+      final prefs = await SharedPreferences.getInstance();
 
-        //simpan data token
-        await prefs.setString('token', myResponse.data?.token ?? "");
+      // Simpan data token
+      await prefs.setString('token', myResponse.data?.token ?? "");
+      print('Token telah disimpan: ${myResponse.data?.token}');
+
+      // Load token dari SharedPreferences
+      String? token = prefs.getString('token');
+      if (token != null) {
+        // Token berhasil dimuat, Anda dapat menggunakannya
+        print('Token: $token');
+      } else {
+        // Token tidak ditemukan di SharedPreferences
+        print('Token tidak ditemukan');
       }
-
-      return myResponse;
-    } else {
-      return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");
     }
+
+    return myResponse;
+  } else {
+    return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");
   }
+}
+
 }
