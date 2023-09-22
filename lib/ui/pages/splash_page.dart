@@ -8,29 +8,33 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  bool _isDisposed =
+      false; // variabel untuk melacak apakah widget sudah di-"dispose"
+
   @override
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      checkAuthentication();
+      if (!_isDisposed) {
+        checkAuthentication();
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    _isDisposed = true; // _isDisposed menjadi true saat widget di-"dispose"
+    super.dispose();
   }
 
   // Fungsi untuk memeriksa otentikasi
   Future<void> checkAuthentication() async {
+    if (_isDisposed) return; // Periksa kembali apakah widget sudah di-"dispose"
+
     final prefs = await SharedPreferences.getInstance();
     final savedToken = prefs.getString('token');
 
     if (savedToken != null && savedToken.isNotEmpty) {
-      // Jika token tersimpan (tidak null dan tidak kosong), Anda bisa menganggap pengguna sudah login.
-      // Anda juga harus memeriksa validitas token dengan mengirimkannya ke server jika perlu.
-      // Jika token valid, alihkan ke halaman beranda. Jika tidak valid, alihkan ke halaman login.
-      // Contoh:
-      // if (await validateTokenWithServer(savedToken)) {
-      //   Navigator.pushReplacementNamed(context, '/home');
-      // } else {
-      //   Navigator.pushReplacementNamed(context, '/login');
-      // }
       Navigator.pushReplacementNamed(context, '/landing');
     } else {
       // Jika token belum tersimpan, alihkan ke halaman login.

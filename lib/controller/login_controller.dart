@@ -37,7 +37,7 @@ class LoginController {
         // Load token dari SharedPreferences
         String? savedToken = prefs.getString('token');
         if (savedToken != null) {
-          // Token berhasil dimuat, Anda dapat menggunakannya
+          // Bila token berhasil di muat
           print('Token: $savedToken');
         } else {
           // Token tidak ditemukan di SharedPreferences
@@ -48,7 +48,7 @@ class LoginController {
         print('Token tidak ditemukan dalam respons');
       }
 
-      // Kemudian Anda dapat mengembalikan respons yang telah dimodifikasi
+      // mengembalikan respons yang telah dimodifikasi
       return MyResponse(status: 200, message: "Login berhasil", data: myBody);
     } else {
       return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");

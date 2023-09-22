@@ -465,7 +465,6 @@ class Profile extends StatelessWidget {
     await prefs.remove('token');
     print('Token dihapus.');
 
-    // Gantilah dengan logika pengalihan ke halaman login atau halaman awal yang sesuai
     Navigator.pushReplacementNamed(context, '/login');
   }
 }
