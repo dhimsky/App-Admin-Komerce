@@ -15,38 +15,43 @@ class LoginController {
   var passwordController = TextEditingController();
 
   Future<MyResponse> login() async {
-  http.Response result = await _repository.login(
-      emailController.text, passwordController.text);
+    http.Response result =
+        await _repository.login(emailController.text, passwordController.text);
 
-  print("cek ${result.body}");
+    print("cek ${result.body}");
 
-  if (result.statusCode == 200) {
-    print('Berhasil login');
-    Map<String, dynamic> myBody = jsonDecode(result.body);
-    MyResponse<User> myResponse = MyResponse.fromJson(myBody, User.fromJson);
+    if (result.statusCode == 200) {
+      print('Berhasil login');
+      Map<String, dynamic> myBody = jsonDecode(result.body);
 
-    if (myResponse.status == 200) {
-      final prefs = await SharedPreferences.getInstance();
+      // Simpan token dari respons
+      String? token = myBody['token'];
 
-      // Simpan data token
-      await prefs.setString('token', myResponse.data?.token ?? "");
-      print('Token telah disimpan: ${myResponse.data?.token}');
-
-      // Load token dari SharedPreferences
-      String? token = prefs.getString('token');
       if (token != null) {
-        // Token berhasil dimuat, Anda dapat menggunakannya
-        print('Token: $token');
+        final prefs = await SharedPreferences.getInstance();
+
+        // Simpan data token ke SharedPreferences
+        await prefs.setString('token', token);
+        print('Token telah disimpan: $token');
+
+        // Load token dari SharedPreferences
+        String? savedToken = prefs.getString('token');
+        if (savedToken != null) {
+          // Token berhasil dimuat, Anda dapat menggunakannya
+          print('Token: $savedToken');
+        } else {
+          // Token tidak ditemukan di SharedPreferences
+          print('Token tidak ditemukan');
+        }
       } else {
-        // Token tidak ditemukan di SharedPreferences
-        print('Token tidak ditemukan');
+        // Handle jika token tidak ditemukan dalam respons
+        print('Token tidak ditemukan dalam respons');
       }
+
+      // Kemudian Anda dapat mengembalikan respons yang telah dimodifikasi
+      return MyResponse(status: 200, message: "Login berhasil", data: myBody);
+    } else {
+      return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");
     }
-
-    return myResponse;
-  } else {
-    return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");
   }
-}
-
 }

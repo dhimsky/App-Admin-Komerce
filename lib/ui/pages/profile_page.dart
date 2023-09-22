@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -340,8 +341,7 @@ class Profile extends StatelessWidget {
                                               ),
                                               TextButton(
                                                 onPressed: () {
-                                                  Navigator.of(context)
-                                                      .pushNamed('/login');
+                                                  _logout(context);
                                                 },
                                                 child: Container(
                                                   width: 97.50,
@@ -456,5 +456,16 @@ class Profile extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _logout(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    // Hapus token dari SharedPreferences
+    await prefs.remove('token');
+    print('Token dihapus.');
+
+    // Gantilah dengan logika pengalihan ke halaman login atau halaman awal yang sesuai
+    Navigator.pushReplacementNamed(context, '/login');
   }
 }
