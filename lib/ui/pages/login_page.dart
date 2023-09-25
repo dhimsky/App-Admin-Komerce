@@ -27,48 +27,159 @@ class _LoginState extends State<Login> {
 
     return WillPopScope(
       onWillPop: () async {
-  // Menampilkan dialog konfirmasi keluar aplikasi
-  final shouldExit = await showDialog(
-    context: context,
-    builder: (context) {
-      return AlertDialog(
-        title: Text('Keluar Aplikasi'),
-        content: Text('Apakah Anda yakin ingin keluar dari aplikasi?'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(
-                  false); // Menutup dialog dengan nilai false (Batal)
-            },
-            child: Text('Batal'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop(
-                  true); // Menutup dialog dengan nilai true (Keluar)
-            },
-            child: Text('Keluar'),
-          ),
-        ],
-      );
-    },
-  );
+        // Menampilkan dialog konfirmasi keluar aplikasi
+        final shouldExit = await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Container(
+                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                width: 247 * fem,
+                height: 155 *
+                    fem, // Menambahkan tinggi agar dialog lebih proporsional
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.circular(8 * fem),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                      width: 58.8 * fem,
+                      height: 55.2 * fem,
+                      child: Image.asset(
+                        'assets/images/alert-icon.png',
+                        width: 58.8 * fem,
+                        height: 55.2 * fem,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem,
+                          10 * fem), // Memberi margin ke teks
+                      constraints: BoxConstraints(
+                        maxWidth: 197 * fem,
+                      ),
+                      child: Text(
+                        'Anda yakin ingin keluar dari aplikasi ?',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont(
+                          'Plus Jakarta Sans',
+                          fontSize: 12 * ffem,
+                          fontWeight: FontWeight.w500,
+                          height: 1 * ffem / fem,
+                          color: Color(0xff333333),
+                        ),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(
+                                false); // Menutup dialog dengan nilai false (Batal)
+                          },
+                          child: Container(
+                            width: 97.50,
+                            height: 25,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 4,
+                            ),
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(
+                                  width: 1,
+                                  color: Color(0xFF999999),
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Tidak',
+                                  style: TextStyle(
+                                    color: Color(0xFF999999),
+                                    fontSize: 12,
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontWeight: FontWeight.w400,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 4, // Jarak antara tombol "Tidak" dan "Iya"
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop(
+                                true); // Menutup dialog dengan nilai true (Keluar)
+                          },
+                          child: Container(
+                            width: 97.50,
+                            height: 25,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 4,
+                            ),
+                            decoration: ShapeDecoration(
+                              color: Color(0xFFF94F31),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Iya',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontFamily: 'Plus Jakarta Sans',
+                                    fontWeight: FontWeight.w400,
+                                    height: 0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
 
-  // Jika pengguna memilih "Keluar", maka aplikasi akan keluar langsung
-  if (shouldExit == true) {
-    // Keluar dari aplikasi tanpa kembali ke halaman sebelumnya
-    Navigator.of(context).pop(); // Menutup halaman Login
-    SystemNavigator.pop(); // Keluar dari aplikasi
-  }
+        // Jika pengguna memilih "Keluar", maka aplikasi akan keluar langsung
+        if (shouldExit == true) {
+          // Keluar dari aplikasi tanpa kembali ke halaman sebelumnya
+          Navigator.of(context).pop(); // Menutup halaman Login
+          SystemNavigator.pop(); // Keluar dari aplikasi
+        }
 
-  return false; // Tetap di halaman Login jika memilih "Batal"
-},
-
+        return false; // Tetap di halaman Login jika memilih "Batal"
+      },
       child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             child: Container(
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
               ),

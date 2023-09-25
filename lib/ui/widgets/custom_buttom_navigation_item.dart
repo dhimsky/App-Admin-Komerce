@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:komerce/ui/pages/log_activity_page.dart';
 import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/profile_page.dart';
+import 'package:komerce/ui/pages/ubah_password_page.dart';
 
 class CustomBottomNavigationItem extends StatefulWidget {
   const CustomBottomNavigationItem({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class CustomBottomNavigationItem extends StatefulWidget {
       _CustomBottomNavigationItemState();
 }
 
-class _CustomBottomNavigationItemState extends State<CustomBottomNavigationItem> {
+class _CustomBottomNavigationItemState
+    extends State<CustomBottomNavigationItem> {
   int _currentIndex = 0; // Indeks halaman aktif
 
   // Daftar halaman yang akan ditampilkan pada navigasi
@@ -43,7 +45,8 @@ class _CustomBottomNavigationItemState extends State<CustomBottomNavigationItem>
         ],
         currentIndex: _currentIndex, // Atur indeks halaman aktif
         selectedItemColor: Colors.orange, // Warna saat item terpilih (aktif)
-        unselectedItemColor: Colors.grey, // Warna saat item tidak terpilih (tidak aktif)
+        unselectedItemColor:
+            Colors.grey, // Warna saat item tidak terpilih (tidak aktif)
         onTap: (index) {
           setState(() {
             _currentIndex = index; // Perbarui indeks halaman aktif

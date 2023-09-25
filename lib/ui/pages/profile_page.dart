@@ -17,6 +17,7 @@ class Profile extends StatelessWidget {
             width: double.infinity,
             child: Container(
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
               ),
@@ -32,7 +33,7 @@ class Profile extends StatelessWidget {
                       children: [
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                              12 * fem, 30 * fem, 0 * fem, 0 * fem),
+                              12 * fem, 40 * fem, 0 * fem, 0 * fem),
                           child: Text(
                             'Profile',
                             style: SafeGoogleFont(

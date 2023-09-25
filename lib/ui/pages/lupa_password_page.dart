@@ -24,6 +24,7 @@ class _LupaPasswordState extends State<LupaPassword> {
               padding:
                   EdgeInsets.fromLTRB(32 * fem, 120 * fem, 32 * fem, 120 * fem),
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
               ),

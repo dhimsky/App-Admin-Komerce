@@ -45,7 +45,8 @@ class _UbahPassword extends State<UbahPassword> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/landing');
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/landing');
                                 },
                                 child: Container(
                                   margin: EdgeInsets.fromLTRB(
