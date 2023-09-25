@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:komerce/models/response_model.dart';
 import 'package:komerce/controller/login_controller.dart';
 
@@ -24,266 +25,313 @@ class _LoginState extends State<Login> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Color(0xffffffff),
-            ),
-            child: Padding(
-              padding:
-                  EdgeInsets.fromLTRB(32 * fem, 120 * fem, 32 * fem, 120 * fem),
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(bottom: 31.5 * fem),
-                      constraints: BoxConstraints(
-                        maxWidth: 215 * fem,
-                      ),
-                      child: Text(
-                        'Login to\nyour Account',
-                        style: TextStyle(
-                          fontSize: 32 * ffem,
-                          fontWeight: FontWeight.w700,
-                          height: 1.26 * ffem / fem,
-                          color: Color(0xff000000),
+    return WillPopScope(
+      onWillPop: () async {
+  // Menampilkan dialog konfirmasi keluar aplikasi
+  final shouldExit = await showDialog(
+    context: context,
+    builder: (context) {
+      return AlertDialog(
+        title: Text('Keluar Aplikasi'),
+        content: Text('Apakah Anda yakin ingin keluar dari aplikasi?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(
+                  false); // Menutup dialog dengan nilai false (Batal)
+            },
+            child: Text('Batal'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(
+                  true); // Menutup dialog dengan nilai true (Keluar)
+            },
+            child: Text('Keluar'),
+          ),
+        ],
+      );
+    },
+  );
+
+  // Jika pengguna memilih "Keluar", maka aplikasi akan keluar langsung
+  if (shouldExit == true) {
+    // Keluar dari aplikasi tanpa kembali ke halaman sebelumnya
+    Navigator.of(context).pop(); // Menutup halaman Login
+    SystemNavigator.pop(); // Keluar dari aplikasi
+  }
+
+  return false; // Tetap di halaman Login jika memilih "Batal"
+},
+
+      child: Scaffold(
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Color(0xffffffff),
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                    32 * fem, 120 * fem, 32 * fem, 120 * fem),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(bottom: 31.5 * fem),
+                        constraints: BoxConstraints(
+                          maxWidth: 215 * fem,
+                        ),
+                        child: Text(
+                          'Login to\nyour Account',
+                          style: TextStyle(
+                            fontSize: 32 * ffem,
+                            fontWeight: FontWeight.w700,
+                            height: 1.26 * ffem / fem,
+                            color: Color(0xff000000),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 31 * fem),
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 0 * fem, 12 * fem),
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  child: Stack(
-                                    children: [
-                                      SizedBox(height: 0),
-                                      TextFormField(
-                                        controller: _controller.emailController,
-                                        decoration: InputDecoration(
-                                          contentPadding:
-                                              EdgeInsets.all(7 * fem),
-                                          hintText: 'Masukan username kamu',
-                                          hintStyle: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 16 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xffb3b3b3),
-                                          ),
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10 * fem),
-                                          ),
-                                        ),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Username tidak ditemukan';
-                                          }
-                                          return null;
-                                        },
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _username = value;
-                                          });
-                                        },
-                                      ),
-                                      Positioned(
-                                        left: 8 * fem,
-                                        bottom: 32 * fem,
-                                        child: Container(
-                                          width: 65 * fem,
-                                          height: 16 * fem,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffffffff),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Username',
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff1a1a1a),
-                                              ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 0 * fem, 31 * fem),
+                        width: double.infinity,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 0 * fem, 12 * fem),
+                              width: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    child: Stack(
+                                      children: [
+                                        SizedBox(height: 0),
+                                        TextFormField(
+                                          controller:
+                                              _controller.emailController,
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.all(7 * fem),
+                                            hintText: 'Masukan username kamu',
+                                            hintStyle: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 16 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xffb3b3b3),
                                             ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                  child: Stack(
-                                    children: [
-                                      SizedBox(height: 0),
-                                      TextFormField(
-                                        controller:
-                                            _controller.passwordController,
-                                        obscureText: !_isPasswordVisible,
-                                        decoration: InputDecoration(
-                                          contentPadding:
-                                              EdgeInsets.all(7 * fem),
-                                          hintText: 'Password kamu',
-                                          hintStyle: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 16 * ffem,
-                                            fontWeight: FontWeight.w400,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xffb3b3b3),
-                                          ),
-                                          border: OutlineInputBorder(
+                                            border: OutlineInputBorder(
                                               borderRadius:
                                                   BorderRadius.circular(
-                                                      10 * fem)),
-                                          suffixIcon: GestureDetector(
-                                            onTap: () {
-                                              setState(() {
-                                                _isPasswordVisible =
-                                                    !_isPasswordVisible;
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 24 * fem,
-                                              height: 24 * fem,
-                                              child: Icon(
-                                                _isPasswordVisible
-                                                    ? CupertinoIcons.eye
-                                                    : CupertinoIcons.eye_slash,
+                                                      10 * fem),
+                                            ),
+                                          ),
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Username tidak ditemukan';
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _username = value;
+                                            });
+                                          },
+                                        ),
+                                        Positioned(
+                                          left: 8 * fem,
+                                          bottom: 32 * fem,
+                                          child: Container(
+                                            width: 65 * fem,
+                                            height: 16 * fem,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffffffff),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'Username',
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff1a1a1a),
+                                                ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                        validator: (value) {
-                                          if (value == null || value.isEmpty) {
-                                            return 'Username atau password salah';
-                                          }
-                                          if (value.length < 8) {
-                                            return 'Password minimal 8 karakter';
-                                          }
-                                          if (value.contains(' ')) {
-                                            return 'Password tidak dapat menggunakan spasi';
-                                          }
-                                          return null;
-                                        },
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _password = value;
-                                          });
-                                        },
-                                      ),
-                                      Positioned(
-                                        left: 8 * fem,
-                                        bottom: 32 * fem,
-                                        child: Container(
-                                          width: 60 * fem,
-                                          height: 16 * fem,
-                                          decoration: BoxDecoration(
-                                            color: Color(0xffffffff),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Password',
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff1a1a1a),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                )
-                              ],
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pushNamed('/lupapassword');
-                            },
-                            child: Text(
-                              'Forgot password?',
-                              style: TextStyle(
-                                fontSize: 12 * ffem,
-                                fontWeight: FontWeight.w700,
-                                height: 1.26 * ffem / fem,
-                                color: Color(0xff818181),
+                                  Container(
+                                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                    child: Stack(
+                                      children: [
+                                        SizedBox(height: 0),
+                                        TextFormField(
+                                          controller:
+                                              _controller.passwordController,
+                                          obscureText: !_isPasswordVisible,
+                                          decoration: InputDecoration(
+                                            contentPadding:
+                                                EdgeInsets.all(7 * fem),
+                                            hintText: 'Password kamu',
+                                            hintStyle: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 16 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xffb3b3b3),
+                                            ),
+                                            border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        10 * fem)),
+                                            suffixIcon: GestureDetector(
+                                              onTap: () {
+                                                setState(() {
+                                                  _isPasswordVisible =
+                                                      !_isPasswordVisible;
+                                                });
+                                              },
+                                              child: Container(
+                                                width: 24 * fem,
+                                                height: 24 * fem,
+                                                child: Icon(
+                                                  _isPasswordVisible
+                                                      ? CupertinoIcons.eye
+                                                      : CupertinoIcons
+                                                          .eye_slash,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          validator: (value) {
+                                            if (value == null ||
+                                                value.isEmpty) {
+                                              return 'Username atau password salah';
+                                            }
+                                            if (value.length < 8) {
+                                              return 'Password minimal 8 karakter';
+                                            }
+                                            if (value.contains(' ')) {
+                                              return 'Password tidak dapat menggunakan spasi';
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _password = value;
+                                            });
+                                          },
+                                        ),
+                                        Positioned(
+                                          left: 8 * fem,
+                                          bottom: 32 * fem,
+                                          child: Container(
+                                            width: 60 * fem,
+                                            height: 16 * fem,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffffffff),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'Password',
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff1a1a1a),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
-                          ),
-                        ],
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/lupapassword');
+                              },
+                              child: Text(
+                                'Forgot password?',
+                                style: TextStyle(
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.26 * ffem / fem,
+                                  color: Color(0xff818181),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    (_controller.isLoading)
-                        ? Center(
-                            child: SizedBox(
-                              height: 32,
-                              width: 32,
-                              child: CircularProgressIndicator(
-                                color: Colors.blue,
-                                strokeWidth: 3,
+                      (_controller.isLoading)
+                          ? Center(
+                              child: SizedBox(
+                                height: 32,
+                                width: 32,
+                                child: CircularProgressIndicator(
+                                  color: Colors.blue,
+                                  strokeWidth: 3,
+                                ),
                               ),
-                            ),
-                          )
-                        : ElevatedButton(
-                            onPressed: _login,
-                            // () {
-                            //   if (_formKey.currentState!.validate()) {
-                            //     Navigator.of(context).pushNamed('/landing');
-                            //   }
-                            // },
-                            style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.transparent),
-                              elevation: MaterialStateProperty.all<double>(0),
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: 40 * fem,
-                              decoration: BoxDecoration(
-                                color: Color(0xfff95031),
-                                borderRadius: BorderRadius.circular(8 * fem),
+                            )
+                          : ElevatedButton(
+                              onPressed: _login,
+                              // () {
+                              //   if (_formKey.currentState!.validate()) {
+                              //     Navigator.of(context).pushNamed('/landing');
+                              //   }
+                              // },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.transparent),
+                                elevation: MaterialStateProperty.all<double>(0),
                               ),
-                              child: Center(
+                              child: Container(
+                                width: double.infinity,
+                                height: 40 * fem,
+                                decoration: BoxDecoration(
+                                  color: Color(0xfff95031),
+                                  borderRadius: BorderRadius.circular(8 * fem),
+                                ),
                                 child: Center(
-                                  child: Text(
-                                    'Login',
-                                    textAlign: TextAlign.center,
-                                    style: SafeGoogleFont(
-                                      'Plus Jakarta Sans',
-                                      fontSize: 14 * ffem,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.26 * ffem / fem,
-                                      letterSpacing: 0.1000000015 * fem,
-                                      color: Color(0xffffffff),
+                                  child: Center(
+                                    child: Text(
+                                      'Login',
+                                      textAlign: TextAlign.center,
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 14 * ffem,
+                                        fontWeight: FontWeight.w500,
+                                        height: 1.26 * ffem / fem,
+                                        letterSpacing: 0.1000000015 * fem,
+                                        color: Color(0xffffffff),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
