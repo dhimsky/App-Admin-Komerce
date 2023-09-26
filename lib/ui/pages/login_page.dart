@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:komerce/models/response_model.dart';
 import 'package:komerce/controller/login_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../shared/theme.dart';
 
@@ -226,7 +227,7 @@ class _LoginState extends State<Login> {
                                         SizedBox(height: 0),
                                         TextFormField(
                                           controller:
-                                              _controller.emailController,
+                                              _controller.usernameController,
                                           decoration: InputDecoration(
                                             contentPadding:
                                                 EdgeInsets.all(7 * fem),
@@ -466,6 +467,8 @@ class _LoginState extends State<Login> {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(response.message)));
     if (response.status == 200) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('username', _username);
       Navigator.of(context).pushNamed('/landing');
     } else {}
   }

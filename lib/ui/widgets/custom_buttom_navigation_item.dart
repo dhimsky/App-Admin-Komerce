@@ -44,7 +44,8 @@ class _CustomBottomNavigationItemState
           ),
         ],
         currentIndex: _currentIndex, // Atur indeks halaman aktif
-        selectedItemColor: Colors.orange, // Warna saat item terpilih (aktif)
+        selectedItemColor:
+            Color(0xfff95031), // Warna saat item terpilih (aktif)
         unselectedItemColor:
             Colors.grey, // Warna saat item tidak terpilih (tidak aktif)
         onTap: (index) {

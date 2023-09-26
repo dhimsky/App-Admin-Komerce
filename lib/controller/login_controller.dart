@@ -11,12 +11,12 @@ class LoginController {
 
   bool isLoading = false;
 
-  var emailController = TextEditingController();
+  var usernameController = TextEditingController();
   var passwordController = TextEditingController();
 
   Future<MyResponse> login() async {
-    http.Response result =
-        await _repository.login(emailController.text, passwordController.text);
+    http.Response result = await _repository.login(
+        usernameController.text, passwordController.text);
 
     print("cek ${result.body}");
 

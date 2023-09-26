@@ -1,14 +1,36 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String username = ''; // Variabel untuk menyimpan nama pengguna
+
   Future<void> _refreshData() async {
     // Logika pembaruan data disini
     await Future.delayed(Duration(seconds: 2));
   }
 
   @override
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
+  Future<void> getUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String storedUsername = prefs.getString('username') ??
+        ''; // Default kosong jika tidak ditemukan
+    setState(() {
+      username = storedUsername;
+    });
+  }
+
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -39,7 +61,7 @@ class HomePage extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 119 * fem, 0 * fem),
+                                  0 * fem, 0 * fem, 110 * fem, 0 * fem),
                               height: double.infinity,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +70,7 @@ class HomePage extends StatelessWidget {
                                     margin: EdgeInsets.fromLTRB(
                                         0 * fem, 0 * fem, 0 * fem, 4 * fem),
                                     child: Text(
-                                      'Halo Arief,',
+                                      'Halo $username,',
                                       style: SafeGoogleFont(
                                         'Plus Jakarta Sans',
                                         fontSize: 14 * ffem,
@@ -403,6 +425,20 @@ class HomePage extends StatelessWidget {
                                                   8 * fem),
                                               width: 40 * fem,
                                               height: 40 * fem,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffffffff),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        12 * fem),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Color(0x28000000),
+                                                    offset: Offset(
+                                                        0 * fem, 0 * fem),
+                                                    blurRadius: 8 * fem,
+                                                  ),
+                                                ],
+                                              ),
                                               child: Icon(
                                                 Icons.search,
                                                 color: Color(0xfff95031),
@@ -441,6 +477,20 @@ class HomePage extends StatelessWidget {
                                                 0 * fem, 0 * fem, 8 * fem),
                                             width: 40 * fem,
                                             height: 40 * fem,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffffffff),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      12 * fem),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color(0x28000000),
+                                                  offset:
+                                                      Offset(0 * fem, 0 * fem),
+                                                  blurRadius: 8 * fem,
+                                                ),
+                                              ],
+                                            ),
                                             child: Icon(
                                               Icons.edit_note_outlined,
                                               color: Color(0xfff95031),
@@ -478,6 +528,20 @@ class HomePage extends StatelessWidget {
                                                 0 * fem, 0 * fem, 8 * fem),
                                             width: 40 * fem,
                                             height: 40 * fem,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffffffff),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      12 * fem),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color(0x28000000),
+                                                  offset:
+                                                      Offset(0 * fem, 0 * fem),
+                                                  blurRadius: 8 * fem,
+                                                ),
+                                              ],
+                                            ),
                                             child: Icon(
                                               Icons.add_home_outlined,
                                               color: Color(0xfff95031),
@@ -513,6 +577,20 @@ class HomePage extends StatelessWidget {
                                                 0 * fem, 0 * fem, 8 * fem),
                                             width: 40 * fem,
                                             height: 40 * fem,
+                                            decoration: BoxDecoration(
+                                              color: Color(0xffffffff),
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      12 * fem),
+                                              boxShadow: [
+                                                BoxShadow(
+                                                  color: Color(0x28000000),
+                                                  offset:
+                                                      Offset(0 * fem, 0 * fem),
+                                                  blurRadius: 8 * fem,
+                                                ),
+                                              ],
+                                            ),
                                             child: Icon(
                                               Icons.verified_outlined,
                                               color: Color(0xfff95031),

@@ -88,7 +88,6 @@ class CariOrder extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                // identitaskamuRSh (23:1971)
                                 'Cari Order',
                                 style: SafeGoogleFont(
                                   'Plus Jakarta Sans',
