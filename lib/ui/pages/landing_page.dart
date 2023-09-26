@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
 
 class LandingPage extends StatelessWidget {
@@ -8,7 +9,9 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return false;
+        // Keluar dari aplikasi ketika tombol kembali ditekan.
+        SystemNavigator.pop();
+        return false; // Tetap kembalikan false untuk menghindari perilaku default.
       },
       child: Scaffold(
         bottomNavigationBar: CustomBottomNavigationItem(),
