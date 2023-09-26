@@ -13,39 +13,6 @@ class _CariOrder extends State<CariOrder> {
   final OrderService _orderService = OrderService();
   String _result = '';
 
-  // void _showDialog(BuildContext context, String message) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Hasil Pencarian Order ID'),
-  //         content: Text(message),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: Text('Tutup'),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  // void _checkOrder(BuildContext context) async {
-  //   final String orderId = _orderIdController.text;
-  //   final Order? order = await _orderController.getOrderById(orderId);
-
-  //   if (order != null) {
-  //     _showDialog(context,
-  //         'Order ID ditemukan: ${order.name}'); // Menambahkan parameter context
-  //   } else {
-  //     _showDialog(context,
-  //         'Order ID tidak ditemukan.'); // Menambahkan parameter context
-  //   }
-  // }
-
   bool isLoading = false; // Tambahkan variabel isLoading.
 
   Future<void> _fetchOrderDetails() async {
