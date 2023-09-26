@@ -3,32 +3,42 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../services/profile_service.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String username = ''; // Variabel untuk menyimpan nama pengguna
+  String namaLengkap = ''; // Variabel untuk menyimpan nama pengguna
 
   Future<void> _refreshData() async {
     // Logika pembaruan data disini
     await Future.delayed(Duration(seconds: 2));
   }
 
+  Future<void> loadUserProfile() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+
+      Map<String, dynamic> userProfile = await fetchUserProfile(token!);
+
+      // Set data profil pengguna ke state atau variabel di halaman profil
+      setState(() {
+        namaLengkap = userProfile['data']['nama_lengkap'];
+      });
+    } catch (e) {
+      // Tangani kesalahan jika terjadi
+      print('Error: $e');
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    getUsername();
-  }
-
-  Future<void> getUsername() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String storedUsername = prefs.getString('username') ??
-        ''; // Default kosong jika tidak ditemukan
-    setState(() {
-      username = storedUsername;
-    });
+    loadUserProfile();
   }
 
   Widget build(BuildContext context) {
@@ -70,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                                     margin: EdgeInsets.fromLTRB(
                                         0 * fem, 0 * fem, 0 * fem, 4 * fem),
                                     child: Text(
-                                      'Halo $username,',
+                                      'Halo $namaLengkap,',
                                       style: SafeGoogleFont(
                                         'Plus Jakarta Sans',
                                         fontSize: 14 * ffem,

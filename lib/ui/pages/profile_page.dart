@@ -4,7 +4,41 @@ import 'package:flutter/cupertino.dart';
 import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Profile extends StatelessWidget {
+import '../../services/profile_service.dart';
+
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  String namaLengkap = '';
+  String divisi = '';
+
+  Future<void> loadUserProfile() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+
+      Map<String, dynamic> userProfile = await fetchUserProfile(token!);
+
+      // Set data profil pengguna ke state atau variabel di halaman profil
+      setState(() {
+        namaLengkap = userProfile['data']['nama_lengkap'];
+        divisi = userProfile['data']['divisi'];
+      });
+    } catch (e) {
+      // Tangani kesalahan jika terjadi
+      print('Error: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -61,7 +95,7 @@ class Profile extends StatelessWidget {
                       children: [
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 101 * fem, 0 * fem),
+                              0 * fem, 0 * fem, 80 * fem, 0 * fem),
                           height: double.infinity,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -99,7 +133,7 @@ class Profile extends StatelessWidget {
                                       margin: EdgeInsets.fromLTRB(
                                           0 * fem, 0 * fem, 0 * fem, 7 * fem),
                                       child: Text(
-                                        'Arief Feisal Basri',
+                                        '$namaLengkap',
                                         style: SafeGoogleFont(
                                           'Plus Jakarta Sans',
                                           fontSize: 16 * ffem,
@@ -110,7 +144,7 @@ class Profile extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      'UI/UX Designer',
+                                      '$divisi',
                                       style: SafeGoogleFont(
                                         'Plus Jakarta Sans',
                                         fontSize: 12 * ffem,

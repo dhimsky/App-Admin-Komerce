@@ -2,8 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DetailProfile extends StatelessWidget {
+import '../../services/profile_service.dart';
+
+class DetailProfile extends StatefulWidget {
+  @override
+  State<DetailProfile> createState() => _DetailProfileState();
+}
+
+class _DetailProfileState extends State<DetailProfile> {
+  String namaLengkap = '';
+  String email = '';
+  String username = '';
+  String noHp = '';
+  String jenisKelamin = '';
+  String alamat = '';
+
+  Future<void> loadUserProfile() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token');
+
+      Map<String, dynamic> userProfile = await fetchUserProfile(token!);
+
+      // Set data profil pengguna ke state atau variabel di halaman profil
+      setState(() {
+        namaLengkap = userProfile['data']['nama_lengkap'];
+        email = userProfile['data']['email'];
+        username = userProfile['data']['username'];
+        noHp = userProfile['data']['no_hp'];
+        jenisKelamin = userProfile['data']['jenis_kelamin'];
+        alamat = userProfile['data']['alamat'];
+      });
+    } catch (e) {
+      // Tangani kesalahan jika terjadi
+      print('Error: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadUserProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -103,7 +146,7 @@ class DetailProfile extends StatelessWidget {
                                             BorderRadius.circular(8 * fem),
                                       ),
                                       child: Text(
-                                        'Arief Feisal Basri',
+                                        '$namaLengkap',
                                         style: SafeGoogleFont(
                                           'Plus Jakarta Sans',
                                           fontSize: 12 * ffem,
@@ -125,7 +168,7 @@ class DetailProfile extends StatelessWidget {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 149 * fem, 0 * fem),
+                                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                       child: Text(
                                         'Email',
                                         style: SafeGoogleFont(
@@ -137,18 +180,23 @@ class DetailProfile extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                                      child: Text(
-                                        'arieffeisal01@gmail.com',
-                                        textAlign: TextAlign.right,
-                                        style: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 12 * ffem,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xff333333),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            '$email',
+                                            textAlign: TextAlign.right,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff333333),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -164,7 +212,7 @@ class DetailProfile extends StatelessWidget {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 218 * fem, 0 * fem),
+                                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                       child: Text(
                                         'Username',
                                         style: SafeGoogleFont(
@@ -176,18 +224,23 @@ class DetailProfile extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                                      child: Text(
-                                        'arieffsl',
-                                        textAlign: TextAlign.right,
-                                        style: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 12 * ffem,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xff333333),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            '$username',
+                                            textAlign: TextAlign.right,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff333333),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -203,7 +256,7 @@ class DetailProfile extends StatelessWidget {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 174 * fem, 0 * fem),
+                                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                       child: Text(
                                         'No.HP',
                                         style: SafeGoogleFont(
@@ -215,18 +268,23 @@ class DetailProfile extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                                      child: Text(
-                                        '+628763716123456',
-                                        textAlign: TextAlign.right,
-                                        style: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 12 * ffem,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xff333333),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            '$noHp',
+                                            textAlign: TextAlign.right,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff333333),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -242,7 +300,7 @@ class DetailProfile extends StatelessWidget {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 189 * fem, 0 * fem),
+                                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                       child: Text(
                                         'Jenis Kelamin',
                                         style: SafeGoogleFont(
@@ -254,18 +312,23 @@ class DetailProfile extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 1 * fem, 0 * fem, 0 * fem),
-                                      child: Text(
-                                        'Laki-laki',
-                                        textAlign: TextAlign.right,
-                                        style: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 12 * ffem,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xff333333),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0 * fem, 1 * fem, 0 * fem, 0 * fem),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            '$jenisKelamin',
+                                            textAlign: TextAlign.right,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff333333),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -302,14 +365,14 @@ class DetailProfile extends StatelessWidget {
                                             BorderRadius.circular(8 * fem),
                                       ),
                                       child: Align(
-                                        alignment: Alignment.topCenter,
+                                        alignment: Alignment.topLeft,
                                         child: SizedBox(
                                           child: Container(
                                             constraints: BoxConstraints(
                                               maxWidth: 306 * fem,
                                             ),
                                             child: Text(
-                                              'Jln. Raya Tunjungmulih No.2, RT 02/03, Karangmoncol, Purbalingga, Jawa Tengah, Indonesia. 53333',
+                                              '$alamat',
                                               style: SafeGoogleFont(
                                                 'Plus Jakarta Sans',
                                                 fontSize: 12 * ffem,
