@@ -53,7 +53,9 @@ class MyApp extends StatelessWidget {
           '/home': (context) => HomePage(),
           '/ubahpassword': (context) => UbahPassword(),
           '/cariorder': (context) => CariOrder(),
-          '/detailorder': (context) => DetailOrder(),
+          '/detailorder': (context) => DetailOrder(
+                orderNumber: '',
+              ),
         },
       ),
     );

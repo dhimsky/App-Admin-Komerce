@@ -17,11 +17,12 @@ class OrderService {
     );
 
     if (response.statusCode == 200) {
+      final Map<String, dynamic> data = jsonDecode(response.body);
       print(
           'URL yang digunakan: ${Uri.parse('$baseUrl/search?search=$orderNumber')}');
       print('cek token : $bearerToken');
       print('Response API: ${response.body}');
-      return jsonDecode(response.body);
+      return data;
     } else if (response.statusCode == 401) {
       // Menangani kasus jika status code adalah 401 (Unauthorized)
       print(

@@ -1,16 +1,76 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:komerce/services/order_service.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 
-class DetailOrder extends StatelessWidget {
+class DetailOrder extends StatefulWidget {
+  final String orderNumber; // Nomor pesanan yang akan ditampilkan
+
+  DetailOrder({required this.orderNumber}) {
+    print('orderNumber: $orderNumber'); // Tambahkan pernyataan print di sini
+  }
+
+  @override
+  _DetailOrder createState() => _DetailOrder();
+}
+
+class _DetailOrder extends State<DetailOrder> {
   Future<void> _refreshData() async {
     // Logika pembaruan data disini
     await Future.delayed(Duration(seconds: 2));
   }
 
-  const DetailOrder({super.key});
+  final OrderService orderService = OrderService();
+
+  String namaPartner = '';
+  String email = '';
+  String noHp = '';
+  String waktuOrder = '';
+  String pengiriman = '';
+
+  String noResi = '';
+
+  String namaPembeli = '';
+  String noOrder = '';
+  String alamatTujuan = '';
+  String ekpedisiPengiriman = '';
+  String tipePengiriman = '';
+  String beratTotal = '';
+
+  String totalHargaBarang = '';
+  String ongkir = '';
+  String potonganHarga = '';
+  String biayaLain = '';
+  String totalPembayaran = '';
+
+  Future<void> fetchData() async {
+    try {
+      // Panggil metode getOrderDetails dengan nomor pesanan dari widget
+      Map<String, dynamic>? orderData =
+          await orderService.getOrderDetails(widget.orderNumber!);
+
+      setState(() {
+        namaPartner = orderData['data']['user_fullname'];
+        noHp = orderData['data']['customer_phone'];
+        noResi = orderData['data']['order_no'];
+        pengiriman = orderData['data']['shipment_image_path'];
+        waktuOrder = orderData['data']['order_date'];
+      });
+    } catch (e) {
+      // Tangani kesalahan jika terjadi
+      print('Error: $e');
+    }
+  }
+
   @override
+  void initState() {
+    super.initState();
+    // Panggil fetchData saat widget diinisialisasi
+    fetchData();
+    print('orderNumber asu: ${widget.orderNumber}');
+  }
+
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -118,7 +178,7 @@ class DetailOrder extends StatelessWidget {
                                         children: [
                                           Container(
                                             margin: EdgeInsets.fromLTRB(0 * fem,
-                                                0 * fem, 71 * fem, 0 * fem),
+                                                0 * fem, 0 * fem, 0 * fem),
                                             width: double.infinity,
                                             child: Row(
                                               crossAxisAlignment:
@@ -143,7 +203,7 @@ class DetailOrder extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'Sholehudin',
+                                                  '$namaPartner',
                                                   style: SafeGoogleFont(
                                                     'Plus Jakarta Sans',
                                                     fontSize: 12 * ffem,
@@ -183,7 +243,7 @@ class DetailOrder extends StatelessWidget {
                                                   ),
                                                 ),
                                                 Text(
-                                                  'sholehudin@gmail.com',
+                                                  '$namaPartner',
                                                   style: SafeGoogleFont(
                                                     'Plus Jakarta Sans',
                                                     fontSize: 12 * ffem,
@@ -245,7 +305,7 @@ class DetailOrder extends StatelessWidget {
                                                                 4.03 * fem,
                                                                 0 * fem),
                                                         child: Text(
-                                                          '08737266461233',
+                                                          '$noHp',
                                                           style: SafeGoogleFont(
                                                             'Plus Jakarta Sans',
                                                             fontSize: 12 * ffem,
@@ -463,7 +523,7 @@ class DetailOrder extends StatelessWidget {
                                                   margin: EdgeInsets.fromLTRB(
                                                       0 * fem,
                                                       0 * fem,
-                                                      94 * fem,
+                                                      0 * fem,
                                                       7 * fem),
                                                   width: double.infinity,
                                                   child: Row(
@@ -494,7 +554,7 @@ class DetailOrder extends StatelessWidget {
                                                         ),
                                                       ),
                                                       Text(
-                                                        '11 Oktober 2023',
+                                                        '$waktuOrder',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -653,8 +713,8 @@ class DetailOrder extends StatelessWidget {
                                                       Container(
                                                         width: 25 * fem,
                                                         height: 25 * fem,
-                                                        child: Image.asset(
-                                                          'assets/images/id-express.png',
+                                                        child: Image.network(
+                                                          '$pengiriman',
                                                           fit: BoxFit.cover,
                                                         ),
                                                       ),

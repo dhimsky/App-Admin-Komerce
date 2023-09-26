@@ -50,7 +50,7 @@ class _CariOrder extends State<CariOrder> {
         // Data pemesanan ditemukan, arahkan pengguna ke halaman detail_order_page.
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => DetailOrder(),
+            builder: (context) => DetailOrder(orderNumber: orderNumber),
           ),
         );
       } else {
