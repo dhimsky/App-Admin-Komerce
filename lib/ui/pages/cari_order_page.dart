@@ -1,42 +1,136 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
-import 'package:komerce/models/order_model.dart';
+import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/services/order_service.dart';
 
-class CariOrder extends StatelessWidget {
-  final TextEditingController _orderIdController = TextEditingController();
-  final OrderController _orderController = OrderController();
+class CariOrder extends StatefulWidget {
+  @override
+  _CariOrder createState() => _CariOrder();
+}
 
-  void _showDialog(BuildContext context, String message) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Hasil Pencarian Order ID'),
-          content: Text(message),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Tutup'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+class _CariOrder extends State<CariOrder> {
+  final TextEditingController _orderNumberController = TextEditingController();
+  final OrderService _orderService = OrderService();
+  String _result = '';
+
+  // void _showDialog(BuildContext context, String message) {
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text('Hasil Pencarian Order ID'),
+  //         content: Text(message),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: Text('Tutup'),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
+  // void _checkOrder(BuildContext context) async {
+  //   final String orderId = _orderIdController.text;
+  //   final Order? order = await _orderController.getOrderById(orderId);
+
+  //   if (order != null) {
+  //     _showDialog(context,
+  //         'Order ID ditemukan: ${order.name}'); // Menambahkan parameter context
+  //   } else {
+  //     _showDialog(context,
+  //         'Order ID tidak ditemukan.'); // Menambahkan parameter context
+  //   }
+  // }
+
+  bool isLoading = false; // Tambahkan variabel isLoading.
+
+  Future<void> _fetchOrderDetails() async {
+    final orderNumber = _orderNumberController.text.trim();
+    if (orderNumber.isEmpty) {
+      // Tampilkan popup atau pesan bahwa orderNumber belum diisi.
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Nomor Resi Belum Diisi'),
+            content: Text('Silakan isi nomor resi terlebih dahulu.'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      return; // Keluar dari fungsi jika orderNumber belum diisi.
+    }
+
+    // Mulai menampilkan loading indicator.
+    setState(() {
+      isLoading = true;
+    });
+
+    try {
+      final orderData = await _orderService.getOrderDetails(orderNumber);
+      if (orderData != null) {
+        // Data pemesanan ditemukan, arahkan pengguna ke halaman detail_order_page.
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => DetailOrder(),
+          ),
         );
-      },
-    );
-  }
-
-  void _checkOrder(BuildContext context) async {
-    final String orderId = _orderIdController.text;
-    final Order? order = await _orderController.getOrderById(orderId);
-
-    if (order != null) {
-      _showDialog(context,
-          'Order ID ditemukan: ${order.name}'); // Menambahkan parameter context
-    } else {
-      _showDialog(context,
-          'Order ID tidak ditemukan.'); // Menambahkan parameter context
+      } else {
+        // Tampilkan popup atau pesan bahwa data pemesanan tidak ditemukan.
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Data Pemesanan Tidak Ditemukan'),
+              content:
+                  Text('Data pemesanan dengan nomor tersebut tidak ditemukan.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('OK'),
+                ),
+              ],
+            );
+          },
+        );
+      }
+    } catch (e) {
+      // Tangani kesalahan dan tampilkan pesan kesalahan.
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Data Tidak Ditemukan'),
+            content: Text('Pastikan mengisi nomor resi dengan benar'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+    } finally {
+      // Selesai mengambil data, hentikan loading indicator.
+      setState(() {
+        isLoading = false;
+      });
     }
   }
 
@@ -140,7 +234,7 @@ class CariOrder extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: TextField(
-                                    controller: _orderIdController,
+                                    controller: _orderNumberController,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(7 * fem),
                                       hintText: 'KOMSHIP123XXX',
@@ -165,44 +259,33 @@ class CariOrder extends StatelessWidget {
                   SizedBox(
                     height: 350,
                   ),
-                  InkWell(
-                    onTap: () {
-                      _checkOrder(context);
+                  ElevatedButton(
+                    onPressed: () {
+                      _fetchOrderDetails();
                     },
+                    style: ElevatedButton.styleFrom(
+                      primary: orangeColor, // Warna latar belakang tombol.
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            8 * fem), // Ganti dengan nilai yang sesuai.
+                      ),
+                      minimumSize: Size(
+                          331,
+                          52 *
+                              fem), // Mengatur lebar dan tinggi minimum tombol.
+                    ),
                     child: Container(
-                      width: double.infinity,
+                      width: 100 *
+                          fem, // Biarkan tetap double.infinity agar tombol mengisi lebar minimum.
                       height: 52 * fem,
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            left: 32 * fem,
-                            top: 8 * fem,
-                            child: Container(
-                              padding: EdgeInsets.fromLTRB(
-                                  12 * fem, 10 * fem, 12 * fem, 10 * fem),
-                              width: 311 * fem,
-                              height: 44 * fem,
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Color(0xffcccccc)),
-                                color: orangeColor,
-                                borderRadius: BorderRadius.circular(8 * fem),
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Cari Order',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: whiteColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Cari Order',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14,
+                          color: whiteColor,
+                        ),
                       ),
                     ),
                   )
