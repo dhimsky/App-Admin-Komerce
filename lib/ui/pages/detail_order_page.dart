@@ -65,6 +65,12 @@ class _DetailOrder extends State<DetailOrder> {
         additionalCost = orderData['data']['additional_cost'];
         discount = orderData['data']['discount'];
         totalPay = orderData['data']['subtotal'];
+
+        productImg = orderData['data']['product_image'];
+        productName = orderData['data']['product_name'];
+        variantName = orderData['data']['variant_name'];
+        productPrice = orderData['data']['price'];
+        qty = orderData['data']['qty'];
       });
     } catch (e) {
       // Tangani kesalahan jika terjadi
@@ -1090,7 +1096,7 @@ class _DetailOrder extends State<DetailOrder> {
                         ),
                         Container(
                           width: double.infinity,
-                          height: 580 * fem,
+                          height: MediaQuery.of(context).size.width * fem,
                           child: Stack(
                             children: [
                               Positioned(
@@ -1165,7 +1171,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                               .start,
                                                       children: [
                                                         Text(
-                                                          'Jilbab Pasmina',
+                                                          'Jilbab',
                                                           style: SafeGoogleFont(
                                                             'Plus Jakarta Sans',
                                                             fontSize: 16 * ffem,
