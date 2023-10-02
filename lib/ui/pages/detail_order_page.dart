@@ -7,9 +7,7 @@ import 'package:flutter/cupertino.dart';
 class DetailOrder extends StatefulWidget {
   final String orderNumber; // Nomor pesanan yang akan ditampilkan
 
-  DetailOrder({required this.orderNumber}) {
-    print('orderNumber: $orderNumber'); // Tambahkan pernyataan print di sini
-  }
+  DetailOrder({required this.orderNumber}) {}
 
   @override
   _DetailOrder createState() => _DetailOrder();
@@ -23,26 +21,27 @@ class _DetailOrder extends State<DetailOrder> {
 
   final OrderService orderService = OrderService();
 
-  String namaPartner = '';
-  String email = '';
-  String noHp = '';
-  String waktuOrder = '';
-  String pengiriman = '';
-
-  String noResi = '';
-
-  String namaPembeli = '';
+  String partnerName = '';
+  String custPhone = '';
+  String orderDate = '';
+  String shipping = '';
+  String orderNo = '';
+  String payMethod = '';
   String noOrder = '';
-  String alamatTujuan = '';
-  String ekpedisiPengiriman = '';
-  String tipePengiriman = '';
-  String beratTotal = '';
+  String custName = '';
+  String custAddress = '';
+  int totalWeight = 0;
+  int totalPrice = 0;
+  int ongkir = 0;
+  int additionalCost = 0;
+  int discount = 0;
+  int totalPay = 0;
 
-  String totalHargaBarang = '';
-  String ongkir = '';
-  String potonganHarga = '';
-  String biayaLain = '';
-  String totalPembayaran = '';
+  String productName = '';
+  String variantName = '';
+  int qty = 0;
+  int productPrice = 0;
+  String productImg = '';
 
   Future<void> fetchData() async {
     try {
@@ -51,11 +50,21 @@ class _DetailOrder extends State<DetailOrder> {
           await orderService.getOrderDetails(widget.orderNumber!);
 
       setState(() {
-        namaPartner = orderData['data']['user_fullname'];
-        noHp = orderData['data']['customer_phone'];
-        noResi = orderData['data']['order_no'];
-        pengiriman = orderData['data']['shipment_image_path'];
-        waktuOrder = orderData['data']['order_date'];
+        partnerName = orderData['data']['user_fullname'];
+        custPhone = orderData['data']['customer_phone'];
+        orderNo = orderData['data']['order_no'];
+        shipping = orderData['data']['shipment_image_path'];
+        orderDate = orderData['data']['order_date'];
+        payMethod = orderData['data']['payment_method'];
+        noOrder = orderData['data']['order_no'];
+        custName = orderData['data']['customer_name'];
+        custAddress = orderData['data']['customer_address'];
+        totalWeight = orderData['data']['total_weight'];
+        totalPrice = orderData['data']['grandtotal'];
+        ongkir = orderData['data']['shipping_cost'];
+        additionalCost = orderData['data']['additional_cost'];
+        discount = orderData['data']['discount'];
+        totalPay = orderData['data']['subtotal'];
       });
     } catch (e) {
       // Tangani kesalahan jika terjadi
@@ -66,9 +75,7 @@ class _DetailOrder extends State<DetailOrder> {
   @override
   void initState() {
     super.initState();
-    // Panggil fetchData saat widget diinisialisasi
     fetchData();
-    print('orderNumber asu: ${widget.orderNumber}');
   }
 
   Widget build(BuildContext context) {
@@ -203,7 +210,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  '$namaPartner',
+                                                  '$partnerName',
                                                   style: SafeGoogleFont(
                                                     'Plus Jakarta Sans',
                                                     fontSize: 12 * ffem,
@@ -243,7 +250,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  '$namaPartner',
+                                                  '$partnerName',
                                                   style: SafeGoogleFont(
                                                     'Plus Jakarta Sans',
                                                     fontSize: 12 * ffem,
@@ -305,7 +312,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                                 4.03 * fem,
                                                                 0 * fem),
                                                         child: Text(
-                                                          '$noHp',
+                                                          '$custPhone',
                                                           style: SafeGoogleFont(
                                                             'Plus Jakarta Sans',
                                                             fontSize: 12 * ffem,
@@ -361,7 +368,7 @@ class _DetailOrder extends State<DetailOrder> {
                                   children: [
                                     Container(
                                       margin: EdgeInsets.fromLTRB(0 * fem,
-                                          0.5 * fem, 159 * fem, 0 * fem),
+                                          0.5 * fem, 110 * fem, 0 * fem),
                                       child: Text(
                                         'No. Resi',
                                         style: SafeGoogleFont(
@@ -376,7 +383,7 @@ class _DetailOrder extends State<DetailOrder> {
                                     GestureDetector(
                                       onTap: () {
                                         // Ambil dan salin teks dari widget Text ke clipboard
-                                        final textToCopy = 'KOMSHIP9982';
+                                        final textToCopy = '$noOrder';
                                         Clipboard.setData(
                                             ClipboardData(text: textToCopy));
                                         // Tampilkan pesan bahwa teks telah disalin
@@ -391,15 +398,18 @@ class _DetailOrder extends State<DetailOrder> {
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(0 * fem,
                                             0.5 * fem, 4 * fem, 0 * fem),
-                                        child: Text(
-                                          'KOMSHIP9982',
-                                          textAlign: TextAlign.right,
-                                          style: SafeGoogleFont(
-                                            'Plus Jakarta Sans',
-                                            fontSize: 12 * ffem,
-                                            fontWeight: FontWeight.w600,
-                                            height: 1.26 * ffem / fem,
-                                            color: Color(0xff333333),
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: Text(
+                                            '$noOrder',
+                                            textAlign: TextAlign.right,
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w600,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xff333333),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -473,7 +483,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   margin: EdgeInsets.fromLTRB(
                                                       0 * fem,
                                                       0 * fem,
-                                                      122 * fem,
+                                                      10 * fem,
                                                       7 * fem),
                                                   width: double.infinity,
                                                   child: Row(
@@ -504,7 +514,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        'Sasa Melati',
+                                                        '$custName',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -554,7 +564,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        '$waktuOrder',
+                                                        '$orderDate',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -573,7 +583,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   margin: EdgeInsets.fromLTRB(
                                                       0 * fem,
                                                       0 * fem,
-                                                      100 * fem,
+                                                      10 * fem,
                                                       7 * fem),
                                                   width: double.infinity,
                                                   child: Row(
@@ -604,7 +614,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        'RX1234567890',
+                                                        '$noOrder',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -659,7 +669,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                           maxWidth: 153 * fem,
                                                         ),
                                                         child: Text(
-                                                          'Sukamaju RT01/RW02,  Tamansari, Karangmoncol, Purbalingga, 556474',
+                                                          '$custAddress',
                                                           style: SafeGoogleFont(
                                                             'Plus Jakarta Sans',
                                                             fontSize: 12 * ffem,
@@ -680,7 +690,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   margin: EdgeInsets.fromLTRB(
                                                       0 * fem,
                                                       0 * fem,
-                                                      163 * fem,
+                                                      0 * fem,
                                                       6 * fem),
                                                   width: double.infinity,
                                                   child: Row(
@@ -693,7 +703,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                             EdgeInsets.fromLTRB(
                                                                 0 * fem,
                                                                 2 * fem,
-                                                                51 * fem,
+                                                                48 * fem,
                                                                 0 * fem),
                                                         child: Text(
                                                           'Pengiriman',
@@ -711,11 +721,11 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Container(
-                                                        width: 25 * fem,
+                                                        width: 30 * fem,
                                                         height: 25 * fem,
                                                         child: Image.network(
-                                                          '$pengiriman',
-                                                          fit: BoxFit.cover,
+                                                          '$shipping',
+                                                          fit: BoxFit.fill,
                                                         ),
                                                       ),
                                                     ],
@@ -756,7 +766,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        'COD',
+                                                        '$payMethod',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -806,7 +816,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                         ),
                                                       ),
                                                       Text(
-                                                        '800gr',
+                                                        '$totalWeight gr',
                                                         style: SafeGoogleFont(
                                                           'Plus Jakarta Sans',
                                                           fontSize: 12 * ffem,
@@ -859,15 +869,18 @@ class _DetailOrder extends State<DetailOrder> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  'Rp980.000',
-                                                  textAlign: TextAlign.right,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w600,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xff333333),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Rp. $totalPrice',
+                                                    textAlign: TextAlign.right,
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff333333),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -885,7 +898,7 @@ class _DetailOrder extends State<DetailOrder> {
                                                   margin: EdgeInsets.fromLTRB(
                                                       0 * fem,
                                                       0 * fem,
-                                                      203 * fem,
+                                                      126 * fem,
                                                       0 * fem),
                                                   child: Text(
                                                     'Ongkir',
@@ -899,15 +912,18 @@ class _DetailOrder extends State<DetailOrder> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  'Rp24.000',
-                                                  textAlign: TextAlign.right,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w600,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xff333333),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Rp. $ongkir',
+                                                    textAlign: TextAlign.right,
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff333333),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -939,15 +955,18 @@ class _DetailOrder extends State<DetailOrder> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  '-Rp20.000',
-                                                  textAlign: TextAlign.right,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w600,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xffe31a1a),
+                                                Expanded(
+                                                  child: Text(
+                                                    '-Rp. $discount',
+                                                    textAlign: TextAlign.right,
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xffe31a1a),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -979,15 +998,18 @@ class _DetailOrder extends State<DetailOrder> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  'Rp20.000',
-                                                  textAlign: TextAlign.right,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w600,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xff333333),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Rp. $additionalCost',
+                                                    textAlign: TextAlign.right,
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 12 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff333333),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -1017,15 +1039,18 @@ class _DetailOrder extends State<DetailOrder> {
                                                     ),
                                                   ),
                                                 ),
-                                                Text(
-                                                  'Rp1.004.000',
-                                                  textAlign: TextAlign.right,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 16 * ffem,
-                                                    fontWeight: FontWeight.w600,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xff34a770),
+                                                Expanded(
+                                                  child: Text(
+                                                    'Rp. $totalPay',
+                                                    textAlign: TextAlign.right,
+                                                    style: SafeGoogleFont(
+                                                      'Plus Jakarta Sans',
+                                                      fontSize: 16 * ffem,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 1.26 * ffem / fem,
+                                                      color: Color(0xff34a770),
+                                                    ),
                                                   ),
                                                 ),
                                               ],
@@ -1237,323 +1262,6 @@ class _DetailOrder extends State<DetailOrder> {
                                       ),
                                       SizedBox(
                                         height: 20 * fem,
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.fromLTRB(16 * fem,
-                                            16 * fem, 16 * fem, 16 * fem),
-                                        width: double.infinity,
-                                        height: 143 * fem,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffffffff),
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0x28000000),
-                                              offset: Offset(0 * fem, 0 * fem),
-                                              blurRadius: 8 * fem,
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  104 * fem,
-                                                  7 * fem),
-                                              width: double.infinity,
-                                              height: 67 * fem,
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        12 * fem,
-                                                        0 * fem),
-                                                    width: 66 * fem,
-                                                    height: 66 * fem,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8 * fem),
-                                                      color: Color(0xffd9d9d9),
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: AssetImage(
-                                                          'assets/images/jilbab.png',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: double.infinity,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Jilbab Pasmina',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 16 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 7 * fem,
-                                                        ),
-                                                        Text(
-                                                          'Hijau - M',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 12 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 7 * fem,
-                                                        ),
-                                                        Text(
-                                                          '1 x Rp120.000',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 12 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        3 * fem),
-                                                    child: Text(
-                                                      'Total Harga',
-                                                      style: SafeGoogleFont(
-                                                        'Plus Jakarta Sans',
-                                                        fontSize: 12 * ffem,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        height:
-                                                            1.26 * ffem / fem,
-                                                        color:
-                                                            Color(0xff818181),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'Rp240.000',
-                                                    style: SafeGoogleFont(
-                                                      'Plus Jakarta Sans',
-                                                      fontSize: 14 * ffem,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      height: 1.26 * ffem / fem,
-                                                      color: Color(0xff000000),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 20 * fem,
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.fromLTRB(16 * fem,
-                                            16 * fem, 16 * fem, 16 * fem),
-                                        width: double.infinity,
-                                        height: 143 * fem,
-                                        decoration: BoxDecoration(
-                                          color: Color(0xffffffff),
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              color: Color(0x28000000),
-                                              offset: Offset(0 * fem, 0 * fem),
-                                              blurRadius: 8 * fem,
-                                            ),
-                                          ],
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  104 * fem,
-                                                  7 * fem),
-                                              width: double.infinity,
-                                              height: 67 * fem,
-                                              child: Row(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        12 * fem,
-                                                        0 * fem),
-                                                    width: 66 * fem,
-                                                    height: 66 * fem,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8 * fem),
-                                                      color: Color(0xffd9d9d9),
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: AssetImage(
-                                                          'assets/images/jilbab.png',
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    height: double.infinity,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          'Jilbab Pasmina',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 16 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 7 * fem,
-                                                        ),
-                                                        Text(
-                                                          'Hijau - M',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 12 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: 7 * fem,
-                                                        ),
-                                                        Text(
-                                                          '1 x Rp120.000',
-                                                          style: SafeGoogleFont(
-                                                            'Plus Jakarta Sans',
-                                                            fontSize: 12 * ffem,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            height: 1.26 *
-                                                                ffem /
-                                                                fem,
-                                                            color: Color(
-                                                                0xff000000),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        0 * fem,
-                                                        3 * fem),
-                                                    child: Text(
-                                                      'Total Harga',
-                                                      style: SafeGoogleFont(
-                                                        'Plus Jakarta Sans',
-                                                        fontSize: 12 * ffem,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        height:
-                                                            1.26 * ffem / fem,
-                                                        color:
-                                                            Color(0xff818181),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Text(
-                                                    'Rp240.000',
-                                                    style: SafeGoogleFont(
-                                                      'Plus Jakarta Sans',
-                                                      fontSize: 14 * ffem,
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      height: 1.26 * ffem / fem,
-                                                      color: Color(0xff000000),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
                                       ),
                                     ],
                                   ),

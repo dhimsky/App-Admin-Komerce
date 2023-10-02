@@ -16,21 +16,84 @@ class _CariOrder extends State<CariOrder> {
   bool isLoading = false; // Tambahkan variabel isLoading.
 
   Future<void> _fetchOrderDetails() async {
+    double baseWidth = 375;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     final orderNumber = _orderNumberController.text.trim();
     if (orderNumber.isEmpty) {
       // Tampilkan popup atau pesan bahwa orderNumber belum diisi.
       showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Nomor Resi Belum Diisi'),
-            content: Text('Silakan isi nomor resi terlebih dahulu.'),
+            content: Container(
+              padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+              width: 247 * fem,
+              height: 105 * fem,
+              decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.circular(8 * fem),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                    width: 58.8 * fem,
+                    height: 55.2 * fem,
+                    child: Image.asset(
+                      'assets/images/alert-icon.png',
+                      width: 58.8 * fem,
+                      height: 55.2 * fem,
+                    ),
+                  ),
+                  Container(
+                    margin:
+                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                    constraints: BoxConstraints(
+                      maxWidth: 197 * fem,
+                    ),
+                    child: Text(
+                      'Nomor Resi Belum Diisi, silakan isi nomor resi terlebih dahulu!',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Plus Jakarta Sans',
+                        fontSize: 12 * ffem,
+                        fontWeight: FontWeight.w500,
+                        height: 1.26 * ffem / fem,
+                        color: Color(0xff333333),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK'),
+                child: Container(
+                  width: double.infinity,
+                  height: 40 * fem,
+                  decoration: BoxDecoration(
+                    color: Color(0xfff95031),
+                    borderRadius: BorderRadius.circular(8 * fem),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Oke',
+                      style: SafeGoogleFont(
+                        'Plus Jakarta Sans',
+                        fontSize: 12 * ffem,
+                        fontWeight: FontWeight.w400,
+                        height: 1.26 * ffem / fem,
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           );
@@ -57,17 +120,77 @@ class _CariOrder extends State<CariOrder> {
         // Tampilkan popup atau pesan bahwa data pemesanan tidak ditemukan.
         showDialog(
           context: context,
-          builder: (context) {
+          builder: (BuildContext context) {
             return AlertDialog(
-              title: Text('Data Pemesanan Tidak Ditemukan'),
-              content:
-                  Text('Data pemesanan dengan nomor tersebut tidak ditemukan.'),
+              content: Container(
+                padding:
+                    EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                width: 247 * fem,
+                height: 105 * fem,
+                decoration: BoxDecoration(
+                  color: Color(0xffffffff),
+                  borderRadius: BorderRadius.circular(8 * fem),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                      width: 58.8 * fem,
+                      height: 55.2 * fem,
+                      child: Image.asset(
+                        'assets/images/alert-icon.png',
+                        width: 58.8 * fem,
+                        height: 55.2 * fem,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                      constraints: BoxConstraints(
+                        maxWidth: 197 * fem,
+                      ),
+                      child: Text(
+                        'Data pemesanan dengan nomor tersebut tidak ditemukan.',
+                        textAlign: TextAlign.center,
+                        style: SafeGoogleFont(
+                          'Plus Jakarta Sans',
+                          fontSize: 12 * ffem,
+                          fontWeight: FontWeight.w500,
+                          height: 1.26 * ffem / fem,
+                          color: Color(0xff333333),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               actions: [
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: Text('OK'),
+                  child: Container(
+                    width: double.infinity,
+                    height: 40 * fem,
+                    decoration: BoxDecoration(
+                      color: Color(0xfff95031),
+                      borderRadius: BorderRadius.circular(8 * fem),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Oke',
+                        style: SafeGoogleFont(
+                          'Plus Jakarta Sans',
+                          fontSize: 12 * ffem,
+                          fontWeight: FontWeight.w400,
+                          height: 1.26 * ffem / fem,
+                          color: Color(0xffffffff),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             );
@@ -78,16 +201,76 @@ class _CariOrder extends State<CariOrder> {
       // Tangani kesalahan dan tampilkan pesan kesalahan.
       showDialog(
         context: context,
-        builder: (context) {
+        builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Data Tidak Ditemukan'),
-            content: Text('Pastikan mengisi nomor resi dengan benar'),
+            content: Container(
+              padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+              width: 247 * fem,
+              height: 105 * fem,
+              decoration: BoxDecoration(
+                color: Color(0xffffffff),
+                borderRadius: BorderRadius.circular(8 * fem),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                    width: 58.8 * fem,
+                    height: 55.2 * fem,
+                    child: Image.asset(
+                      'assets/images/alert-icon.png',
+                      width: 58.8 * fem,
+                      height: 55.2 * fem,
+                    ),
+                  ),
+                  Container(
+                    margin:
+                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                    constraints: BoxConstraints(
+                      maxWidth: 197 * fem,
+                    ),
+                    child: Text(
+                      'Data Tidak Ditemukan, pastikan mengisi nomor resi dengan benar.',
+                      textAlign: TextAlign.center,
+                      style: SafeGoogleFont(
+                        'Plus Jakarta Sans',
+                        fontSize: 12 * ffem,
+                        fontWeight: FontWeight.w500,
+                        height: 1.26 * ffem / fem,
+                        color: Color(0xff333333),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('OK'),
+                child: Container(
+                  width: double.infinity,
+                  height: 40 * fem,
+                  decoration: BoxDecoration(
+                    color: Color(0xfff95031),
+                    borderRadius: BorderRadius.circular(8 * fem),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Oke',
+                      style: SafeGoogleFont(
+                        'Plus Jakarta Sans',
+                        fontSize: 12 * ffem,
+                        fontWeight: FontWeight.w400,
+                        height: 1.26 * ffem / fem,
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ],
           );
@@ -200,19 +383,22 @@ class _CariOrder extends State<CariOrder> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Expanded(
-                                  child: TextField(
-                                    controller: _orderNumberController,
-                                    decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(7 * fem),
-                                      hintText: 'KOMSHIP123XXX',
-                                      hintStyle: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 16 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.26 * ffem / fem,
-                                        color: Color(0xffb3b3b3),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: TextField(
+                                      controller: _orderNumberController,
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.all(9 * fem),
+                                        hintText: 'KOMSHIP123XXX',
+                                        hintStyle: SafeGoogleFont(
+                                          'Plus Jakarta Sans',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.26 * ffem / fem,
+                                          color: Color(0xffb3b3b3),
+                                        ),
+                                        border: InputBorder.none,
                                       ),
-                                      border: InputBorder.none,
                                     ),
                                   ),
                                 ),
@@ -224,7 +410,7 @@ class _CariOrder extends State<CariOrder> {
                     ),
                   ),
                   SizedBox(
-                    height: 350,
+                    height: 0,
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -237,8 +423,8 @@ class _CariOrder extends State<CariOrder> {
                             8 * fem), // Ganti dengan nilai yang sesuai.
                       ),
                       minimumSize: Size(
-                          331,
-                          52 *
+                          300,
+                          40 *
                               fem), // Mengatur lebar dan tinggi minimum tombol.
                     ),
                     child: Container(

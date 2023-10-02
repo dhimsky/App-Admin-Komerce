@@ -18,8 +18,6 @@ class LoginController {
     http.Response result = await _repository.login(
         usernameController.text, passwordController.text);
 
-    print("cek ${result.body}");
-
     if (result.statusCode == 200) {
       print('Berhasil login');
       Map<String, dynamic> myBody = jsonDecode(result.body);
@@ -32,17 +30,7 @@ class LoginController {
 
         // Simpan data token ke SharedPreferences
         await prefs.setString('token', token);
-        print('Token telah disimpan: $token');
-
-        // Load token dari SharedPreferences
-        String? savedToken = prefs.getString('token');
-        if (savedToken != null) {
-          // Bila token berhasil di muat
-          print('Token: $savedToken');
-        } else {
-          // Token tidak ditemukan di SharedPreferences
-          print('Token tidak ditemukan');
-        }
+        print('Token telah disimpan');
       } else {
         // Handle jika token tidak ditemukan dalam respons
         print('Token tidak ditemukan dalam respons');

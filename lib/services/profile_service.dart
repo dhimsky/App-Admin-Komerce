@@ -13,7 +13,7 @@ Future<Map<String, dynamic>> fetchUserProfile(String token) async {
   if (response.statusCode == 200) {
     // Sukses mengambil data, menguraikan respons JSON
     final Map<String, dynamic> data = jsonDecode(response.body);
-    print(jsonDecode(response.body));
+    // print(jsonDecode(response.body));
     return data;
   } else {
     // Gagal mengambil data, tangani kesalahan
