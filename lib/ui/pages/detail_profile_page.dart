@@ -82,7 +82,8 @@ class _DetailProfileState extends State<DetailProfile> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pushNamed(context, '/landing');
+                                  Navigator.pop(
+                                      context); // Menggunakan Navigator.pop() untuk navigasi kembali
                                 },
                                 child: Container(
                                   margin: EdgeInsets.fromLTRB(
@@ -96,7 +97,6 @@ class _DetailProfileState extends State<DetailProfile> {
                                 ),
                               ),
                               Text(
-                                // identitaskamuRSh (23:1971)
                                 'Identitas Kamu',
                                 style: SafeGoogleFont(
                                   'Plus Jakarta Sans',
@@ -115,7 +115,6 @@ class _DetailProfileState extends State<DetailProfile> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Container(
-                                // field6Hw (23:1973)
                                 margin: EdgeInsets.fromLTRB(
                                     0 * fem, 0 * fem, 0 * fem, 21 * fem),
                                 width: double.infinity,

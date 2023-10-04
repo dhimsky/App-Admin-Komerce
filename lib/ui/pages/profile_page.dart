@@ -122,38 +122,45 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                               ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 14.5 * fem, 0 * fem, 13.5 * fem),
-                                height: double.infinity,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 0 * fem, 7 * fem),
-                                      child: Text(
-                                        '$namaLengkap',
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, '/detailprofile');
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.fromLTRB(
+                                      0 * fem, 14.5 * fem, 0 * fem, 13.5 * fem),
+                                  height: double.infinity,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(
+                                            0 * fem, 0 * fem, 0 * fem, 7 * fem),
+                                        child: Text(
+                                          namaLengkap,
+                                          style: SafeGoogleFont(
+                                            'Plus Jakarta Sans',
+                                            fontSize: 16 * ffem,
+                                            fontWeight: FontWeight.w600,
+                                            height: 1.26 * ffem / fem,
+                                            color: Color(0xff333333),
+                                          ),
+                                        ),
+                                      ),
+                                      Text(
+                                        divisi,
                                         style: SafeGoogleFont(
                                           'Plus Jakarta Sans',
-                                          fontSize: 16 * ffem,
-                                          fontWeight: FontWeight.w600,
+                                          fontSize: 12 * ffem,
+                                          fontWeight: FontWeight.w400,
                                           height: 1.26 * ffem / fem,
                                           color: Color(0xff333333),
                                         ),
                                       ),
-                                    ),
-                                    Text(
-                                      '$divisi',
-                                      style: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 12 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.26 * ffem / fem,
-                                        color: Color(0xff333333),
-                                      ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
