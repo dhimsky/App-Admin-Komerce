@@ -474,55 +474,64 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                    Container(
-                                      margin: EdgeInsets.fromLTRB(
-                                          0 * fem, 0 * fem, 41 * fem, 0 * fem),
-                                      height: double.infinity,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.fromLTRB(0 * fem,
-                                                0 * fem, 0 * fem, 8 * fem),
-                                            width: 40 * fem,
-                                            height: 40 * fem,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      12 * fem),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Color(0x28000000),
-                                                  offset:
-                                                      Offset(0 * fem, 0 * fem),
-                                                  blurRadius: 8 * fem,
-                                                ),
-                                              ],
-                                            ),
-                                            child: Icon(
-                                              Icons.edit_note_outlined,
-                                              color: Color(0xfff95031),
-                                            ),
-                                          ),
-                                          Container(
-                                            constraints: BoxConstraints(
-                                              maxWidth: 43 * fem,
-                                            ),
-                                            child: Text(
-                                              'Update\nNo. HP',
-                                              textAlign: TextAlign.center,
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff626262),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, '/updatenohp1');
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.fromLTRB(0 * fem,
+                                            0 * fem, 41 * fem, 0 * fem),
+                                        height: double.infinity,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0 * fem,
+                                                  0 * fem,
+                                                  0 * fem,
+                                                  8 * fem),
+                                              width: 40 * fem,
+                                              height: 40 * fem,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffffffff),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        12 * fem),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Color(0x28000000),
+                                                    offset: Offset(
+                                                        0 * fem, 0 * fem),
+                                                    blurRadius: 8 * fem,
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Icon(
+                                                Icons.edit_note_outlined,
+                                                color: Color(0xfff95031),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Container(
+                                              constraints: BoxConstraints(
+                                                maxWidth: 43 * fem,
+                                              ),
+                                              child: Text(
+                                                'Update\nNo. HP',
+                                                textAlign: TextAlign.center,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff626262),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                     Container(
@@ -576,53 +585,62 @@ class _HomePageState extends State<HomePage> {
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      height: double.infinity,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.fromLTRB(0 * fem,
-                                                0 * fem, 0 * fem, 8 * fem),
-                                            width: 40 * fem,
-                                            height: 40 * fem,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      12 * fem),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Color(0x28000000),
-                                                  offset:
-                                                      Offset(0 * fem, 0 * fem),
-                                                  blurRadius: 8 * fem,
-                                                ),
-                                              ],
-                                            ),
-                                            child: Icon(
-                                              Icons.verified_outlined,
-                                              color: Color(0xfff95031),
-                                            ),
-                                          ),
-                                          Container(
-                                            constraints: BoxConstraints(
-                                              maxWidth: 64 * fem,
-                                            ),
-                                            child: Text(
-                                              'Kirim Ulang\nVerifikasi',
-                                              textAlign: TextAlign.center,
-                                              style: SafeGoogleFont(
-                                                'Plus Jakarta Sans',
-                                                fontSize: 12 * ffem,
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.26 * ffem / fem,
-                                                color: Color(0xff626262),
+                                    GestureDetector(
+                                      onTap: () {
+                                        Navigator.pushNamed(
+                                            context, '/resendverifikasi');
+                                      },
+                                      child: Container(
+                                        height: double.infinity,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              margin: EdgeInsets.fromLTRB(
+                                                  0 * fem,
+                                                  0 * fem,
+                                                  0 * fem,
+                                                  8 * fem),
+                                              width: 40 * fem,
+                                              height: 40 * fem,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xffffffff),
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        12 * fem),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    color: Color(0x28000000),
+                                                    offset: Offset(
+                                                        0 * fem, 0 * fem),
+                                                    blurRadius: 8 * fem,
+                                                  ),
+                                                ],
+                                              ),
+                                              child: Icon(
+                                                Icons.verified_outlined,
+                                                color: Color(0xfff95031),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                            Container(
+                                              constraints: BoxConstraints(
+                                                maxWidth: 64 * fem,
+                                              ),
+                                              child: Text(
+                                                'Kirim Ulang\nVerifikasi',
+                                                textAlign: TextAlign.center,
+                                                style: SafeGoogleFont(
+                                                  'Plus Jakarta Sans',
+                                                  fontSize: 12 * ffem,
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.26 * ffem / fem,
+                                                  color: Color(0xff626262),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],

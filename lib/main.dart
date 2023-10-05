@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:komerce/cubit/page_cubit.dart';
 import 'package:komerce/ui/pages/cari_order_page.dart';
 import 'package:komerce/ui/pages/detail_order_page.dart';
+import 'package:komerce/ui/pages/resend_verifikasi_page.dart';
 import 'package:komerce/ui/pages/splash_page.dart';
 import 'package:komerce/ui/pages/login_page.dart';
 import 'package:komerce/ui/pages/lupa_password_page.dart';
@@ -13,6 +14,9 @@ import 'package:komerce/ui/pages/home_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 import 'package:komerce/ui/pages/landing_page.dart';
 import 'dart:io';
+
+import 'package:komerce/ui/pages/update_noHp_page1.dart';
+import 'package:komerce/ui/pages/update_noHp_page2.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -56,6 +60,9 @@ class MyApp extends StatelessWidget {
           '/detailorder': (context) => DetailOrder(
                 orderNumber: '',
               ),
+          '/updatenohp1': (context) => UpdateNoHp1(),
+          '/updatenohp2': (context) => UpdateNoHp2(),
+          '/resendverifikasi': (context) => ResendVerifikasi(),
         },
       ),
     );
