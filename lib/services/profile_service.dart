@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 Future<Map<String, dynamic>> fetchUserProfile(String token) async {
   final response = await http.get(
-    Uri.parse('http://192.168.1.6:9000/app/profile/detail'),
+    Uri.parse('http://192.168.1.103:9000/app/profile/detail'),
     headers: {
       'Authorization': 'Bearer $token',
     },

@@ -28,31 +28,44 @@ class _CustomBottomNavigationItemState
   Widget build(BuildContext context) {
     return Scaffold(
       body: _pages[_currentIndex], // Tampilkan halaman sesuai dengan indeks
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
-            label: 'Beranda',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.list_bullet),
-            label: 'Log Aktivitas',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.profile_circled),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _currentIndex, // Atur indeks halaman aktif
-        selectedItemColor:
-            Color(0xfff95031), // Warna saat item terpilih (aktif)
-        unselectedItemColor:
-            Colors.grey, // Warna saat item tidak terpilih (tidak aktif)
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index; // Perbarui indeks halaman aktif
-          });
-        },
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          color: Colors.white, // Atur warna latar belakang sesuai kebutuhan
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2), // Warna bayangan
+              blurRadius: 5.0, // Ukuran blur bayangan
+              spreadRadius: 2.0, // Jarak penyebaran bayangan
+              offset: Offset(0, -3), // Posisi bayangan (di atas)
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.home),
+              label: 'Beranda',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.list_bullet),
+              label: 'Log Aktivitas',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.profile_circled),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _currentIndex, // Atur indeks halaman aktif
+          selectedItemColor:
+              Color(0xfff95031), // Warna saat item terpilih (aktif)
+          unselectedItemColor:
+              Colors.grey, // Warna saat item tidak terpilih (tidak aktif)
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index; // Perbarui indeks halaman aktif
+            });
+          },
+        ),
       ),
     );
   }

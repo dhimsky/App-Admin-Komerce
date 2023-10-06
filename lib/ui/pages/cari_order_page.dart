@@ -290,12 +290,47 @@ class _CariOrder extends State<CariOrder> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white, // Ubah latar belakang
+        elevation: 0, // Menghapus shadow
+        child: Container(
+          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 30 * fem),
+          width: double.infinity,
+          height: 90 * fem,
+          decoration: BoxDecoration(
+            color: Color(0xffffffff),
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              _fetchOrderDetails();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xfff95031),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8 * fem),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 0 * fem),
+            ),
+            child: Center(
+              child: Text(
+                'Cari Order',
+                style: TextStyle(
+                  fontSize: 14 * ffem,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffffffff),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
             width: double.infinity,
             child: Container(
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
               ),
@@ -409,39 +444,6 @@ class _CariOrder extends State<CariOrder> {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 0,
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      _fetchOrderDetails();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      primary: orangeColor, // Warna latar belakang tombol.
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            8 * fem), // Ganti dengan nilai yang sesuai.
-                      ),
-                      minimumSize: Size(
-                          300,
-                          40 *
-                              fem), // Mengatur lebar dan tinggi minimum tombol.
-                    ),
-                    child: Container(
-                      width: 100 *
-                          fem, // Biarkan tetap double.infinity agar tombol mengisi lebar minimum.
-                      height: 52 * fem,
-                      alignment: Alignment.center,
-                      child: Text(
-                        'Cari Order',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14,
-                          color: whiteColor,
-                        ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),

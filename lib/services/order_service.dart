@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/order_model.dart';
 
 class OrderService {
-  final String baseUrl = 'http://192.168.1.6:9000/app/komship';
+  final String baseUrl = 'http://192.168.1.103:9000/app/komship';
 
   Future<Map<String, dynamic>> getOrderDetails(String orderNumber) async {
     final prefs = await SharedPreferences.getInstance();

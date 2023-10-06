@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:komerce/models/ubah_pw_model.dart';
 import 'package:komerce/services/ubah_pw_service.dart';
 
+import '../../shared/theme.dart';
+
 class ChangePasswordPage extends StatefulWidget {
   ChangePasswordPage({Key? key}) : super(key: key);
 
@@ -39,6 +41,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
   @override
   Widget build(BuildContext context) {
+    double baseWidth = 375;
+    double fem = MediaQuery.of(context).size.width / baseWidth;
+    double ffem = fem * 0.97;
     Color orangeColor = Color(0xffF95031);
     return Scaffold(
       appBar: AppBar(
@@ -59,6 +64,407 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             fontWeight: FontWeight.w700,
           ),
         ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white, // Ubah latar belakang
+        elevation: 0, // Menghapus shadow
+        child: Container(
+            padding:
+                EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
+            width: double.infinity,
+            height: 63 * fem,
+            decoration: BoxDecoration(
+              color: Color(0xffffffff),
+            ),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        content: Container(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          width: 217 * fem,
+                          height: 140.7 *
+                              fem, // Menambahkan tinggi agar dialog lebih proporsional
+                          decoration: BoxDecoration(
+                            color: Color(0xffffffff),
+                            borderRadius: BorderRadius.circular(8 * fem),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                                width: 58.8 * fem,
+                                height: 55.2 * fem,
+                                child: Image.asset(
+                                  'assets/images/alert-icon.png',
+                                  width: 58.8 * fem,
+                                  height: 55.2 * fem,
+                                ),
+                              ),
+                              Container(
+                                margin: EdgeInsets.fromLTRB(0 * fem, 0 * fem,
+                                    0 * fem, 5 * fem), // Memberi margin ke teks
+                                constraints: BoxConstraints(
+                                  maxWidth: 197 * fem,
+                                ),
+                                child: Text(
+                                  'Yakin ingin mengubah\npassword ?',
+                                  textAlign: TextAlign.center,
+                                  style: SafeGoogleFont(
+                                    'Plus Jakarta Sans',
+                                    fontSize: 12 * ffem,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1 * ffem / fem,
+                                    color: Color(0xff333333),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Container(
+                                      width: 97.50,
+                                      height: 25,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12,
+                                        vertical: 4,
+                                      ),
+                                      decoration: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                          side: BorderSide(
+                                            width: 1,
+                                            color: Color(0xFF999999),
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Tidak',
+                                            style: TextStyle(
+                                              color: Color(0xFF999999),
+                                              fontSize: 12,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        4, // Jarak antara tombol "Tidak" dan "Iya"
+                                  ),
+                                  TextButton(
+                                    onPressed: () {
+                                      final passwordChangeService =
+                                          PasswordChangeService();
+                                      passwordChangeService
+                                          .changePassword(
+                                              _passwordChange, _token)
+                                          .then((success) {
+                                        if (success) {
+                                          Navigator.of(context)
+                                              .pop(); // Tutup dialog
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                content: Container(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem),
+                                                  width: 217 * fem,
+                                                  height: 100 * fem,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xffffffff),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8 * fem),
+                                                  ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                14.4 * fem),
+                                                        width: 58.8 * fem,
+                                                        height: 55.2 * fem,
+                                                        child: Image.asset(
+                                                          'assets/images/success-icon.png',
+                                                          width: 58.8 * fem,
+                                                          height: 55.2 * fem,
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem),
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          maxWidth: 197 * fem,
+                                                        ),
+                                                        child: Text(
+                                                          'Selamat data anda berhasil di ubah.',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: SafeGoogleFont(
+                                                            'Plus Jakarta Sans',
+                                                            fontSize: 12 * ffem,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            height: 1.26 *
+                                                                ffem /
+                                                                fem,
+                                                            color: Color(
+                                                                0xff333333),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 30 * fem,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xfff95031),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    8 * fem),
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          'Oke',
+                                                          style: SafeGoogleFont(
+                                                            'Plus Jakarta Sans',
+                                                            fontSize: 12 * ffem,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            height: 1.26 *
+                                                                ffem /
+                                                                fem,
+                                                            color: Color(
+                                                                0xffffffff),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        } else {
+                                          Navigator.of(context).pop();
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return AlertDialog(
+                                                content: Container(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem,
+                                                      0 * fem),
+                                                  width: 217 * fem,
+                                                  height: 100 * fem,
+                                                  decoration: BoxDecoration(
+                                                    color: Color(0xffffffff),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8 * fem),
+                                                  ),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                14.4 * fem),
+                                                        width: 58.8 * fem,
+                                                        height: 55.2 * fem,
+                                                        child: Image.asset(
+                                                          'assets/images/failed-icon.png',
+                                                          width: 58.8 * fem,
+                                                          height: 55.2 * fem,
+                                                        ),
+                                                      ),
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.fromLTRB(
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem,
+                                                                0 * fem),
+                                                        constraints:
+                                                            BoxConstraints(
+                                                          maxWidth: 197 * fem,
+                                                        ),
+                                                        child: Text(
+                                                          'Ada kesalahan saat mengubah data.',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: SafeGoogleFont(
+                                                            'Plus Jakarta Sans',
+                                                            fontSize: 12 * ffem,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            height: 1.26 *
+                                                                ffem /
+                                                                fem,
+                                                            color: Color(
+                                                                0xff333333),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                    },
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 30 * fem,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xfff95031),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                                    8 * fem),
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          'Kembali',
+                                                          style: SafeGoogleFont(
+                                                            'Plus Jakarta Sans',
+                                                            fontSize: 12 * ffem,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                            height: 1.26 *
+                                                                ffem /
+                                                                fem,
+                                                            color: Color(
+                                                                0xffffffff),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                        }
+                                      });
+                                    },
+                                    child: Container(
+                                      width: 97.50,
+                                      height: 25,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 12,
+                                        vertical: 4,
+                                      ),
+                                      decoration: ShapeDecoration(
+                                        color: Color(0xFFF94F31),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Iya',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 12,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w400,
+                                              height: 0,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+              },
+              style: ButtonStyle(
+                minimumSize: MaterialStateProperty.all(Size.fromHeight(44.0)),
+                backgroundColor: MaterialStateProperty.all(
+                    orangeColor), // Gunakan warna orangeColor
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(9.0), // Atur radius menjadi 9
+                  ),
+                ),
+              ),
+              child: Text('Simpan',
+                  style: TextStyle(
+                      color: Colors.white)), // Ubah warna teks menjadi putih
+            )),
       ),
       body: Form(
         key: _formKey,
@@ -159,76 +565,6 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                     });
                   },
                 ),
-                SizedBox(height: 200), // Tambahkan jarak antara inputan
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            title: Text('Konfirmasi Perubahan Kata Sandi'),
-                            content: Text(
-                                'Apakah Anda yakin ingin mengubah kata sandi?'),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop(); // Tutup dialog
-                                },
-                                child: Text('Tidak'),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  final passwordChangeService =
-                                      PasswordChangeService();
-                                  passwordChangeService
-                                      .changePassword(_passwordChange, _token)
-                                      .then((success) {
-                                    if (success) {
-                                      Navigator.of(context).pop(); // Tutup dialog
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content:
-                                              Text('Kata Sandi berhasil diubah.'),
-                                        ),
-                                      );
-                                      // Arahkan pengguna ke route /landing
-                                      Navigator.of(context)
-                                          .pushReplacementNamed('/landing');
-                                    } else {
-                                      Navigator.of(context).pop(); // Tutup dialog
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content:
-                                              Text('Gagal mengubah kata sandi.'),
-                                        ),
-                                      );
-                                    }
-                                  });
-                                },
-                                child: Text('Ya'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-                    }
-                  },
-                  style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size.fromHeight(44.0)),
-                    backgroundColor: MaterialStateProperty.all(
-                        orangeColor), // Gunakan warna orangeColor
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius:
-                            BorderRadius.circular(9.0), // Atur radius menjadi 9
-                      ),
-                    ),
-                  ),
-                  child: Text('Simpan',
-                      style: TextStyle(
-                          color: Colors.white)), // Ubah warna teks menjadi putih
-                )
               ],
             ),
           ),

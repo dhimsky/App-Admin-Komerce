@@ -34,6 +34,40 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white, // Ubah latar belakang
+        elevation: 0, // Menghapus shadow
+        child: Container(
+          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
+          width: double.infinity,
+          height: 63 * fem,
+          decoration: BoxDecoration(
+            color: Color(0xffffffff),
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/updatenohp2');
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Color(0xfff95031),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8 * fem),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 0 * fem),
+            ),
+            child: Center(
+              child: Text(
+                'Lanjutkan',
+                style: TextStyle(
+                  fontSize: 14 * ffem,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xffffffff),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -135,46 +169,6 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/updatenohp2');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(
-                          24 * fem, 12 * fem, 24 * fem, 12 * fem),
-                      width: double.infinity,
-                      height: 84 * fem,
-                      child: Container(
-                        margin: EdgeInsets.fromLTRB(
-                            0 * fem, 0 * fem, 0 * fem, 20 * fem),
-                        padding: EdgeInsets.fromLTRB(
-                            87 * fem, 8 * fem, 88 * fem, 8 * fem),
-                        width: double.infinity,
-                        height: 40 * fem,
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Color(0xfff95031)),
-                          color: Color(0xfff95031),
-                          borderRadius: BorderRadius.circular(8 * fem),
-                        ),
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Center(
-                            child: Text(
-                              'Lanjutkan',
-                              style: SafeGoogleFont(
-                                'Poppins',
-                                fontSize: 14 * ffem,
-                                fontWeight: FontWeight.w600,
-                                height: 1.5 * ffem / fem,
-                                color: Color(0xffffffff),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                 ],
