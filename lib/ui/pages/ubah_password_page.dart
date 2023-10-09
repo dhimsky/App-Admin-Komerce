@@ -86,7 +86,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         content: Container(
                           padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                           width: 217 * fem,
-                          height: 140.7 *
+                          height: 150.7 *
                               fem, // Menambahkan tinggi agar dialog lebih proporsional
                           decoration: BoxDecoration(
                             color: Color(0xffffffff),
@@ -135,7 +135,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                       width: 97.50,
                                       height: 25,
                                       padding: const EdgeInsets.symmetric(
-                                        horizontal: 12,
+                                        horizontal: 10,
                                         vertical: 4,
                                       ),
                                       decoration: ShapeDecoration(

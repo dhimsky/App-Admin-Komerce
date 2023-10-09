@@ -8,38 +8,55 @@ import '../models/user_model.dart';
 
 class LoginController {
   LoginRepository _repository = LoginRepository();
-
   bool isLoading = false;
-
   var usernameController = TextEditingController();
   var passwordController = TextEditingController();
 
   Future<MyResponse> login() async {
-    http.Response result = await _repository.login(
-        usernameController.text, passwordController.text);
+    try {
+      // Validasi input
+      String username = usernameController.text.trim(); // Menghapus spasi di awal dan akhir
+      String password = passwordController.text.trim(); // Menghapus spasi di awal dan akhir
 
-    if (result.statusCode == 200) {
-      print('Berhasil login');
-      Map<String, dynamic> myBody = jsonDecode(result.body);
-
-      // Simpan token dari respons
-      String? token = myBody['token'];
-
-      if (token != null) {
-        final prefs = await SharedPreferences.getInstance();
-
-        // Simpan data token ke SharedPreferences
-        await prefs.setString('token', token);
-        print('Token telah disimpan');
-      } else {
-        // Handle jika token tidak ditemukan dalam respons
-        print('Token tidak ditemukan dalam respons');
+      if (username.isEmpty || password.isEmpty) {
+        return MyResponse(status: 1, message: "Username dan password harus diisi");
       }
 
-      // mengembalikan respons yang telah dimodifikasi
-      return MyResponse(status: 200, message: "Login berhasil", data: myBody);
-    } else {
+      // Validasi panjang password
+      if (password.length < 8) {
+        return MyResponse(status: 1, message: "Password harus memiliki minimal 8 karakter");
+      }
+
+      // Validasi password tidak mengandung spasi
+      if (password.contains(' ')) {
+        return MyResponse(status: 1, message: "Password tidak boleh mengandung spasi");
+      }
+
+      http.Response result = await _repository.login(username, password);
+
+      if (result.statusCode == 200) {
+        Map<String, dynamic> myBody = jsonDecode(result.body);
+        String? token = myBody['token'];
+
+        if (token != null) {
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.setString('token', token);
+          return MyResponse(status: 200, message: "Login berhasil", data: myBody);
+        } else {
+          return MyResponse(status: 1, message: "Token tidak ditemukan dalam respons");
+        }
+      } else if (result.statusCode == 401) {
+        // Handle status HTTP 401 (Unauthorized)
+        return MyResponse(status: 1, message: "Username atau password salah");
+      } else {
+        // Handle status HTTP selain 200 dan 401
+        return MyResponse(status: result.statusCode, message: "Login gagal");
+      }
+    } catch (e) {
+      // Tangani pengecualian, misalnya masalah koneksi
       return MyResponse(status: 1, message: "Terjadi kesalahan. Coba lagi");
     }
   }
 }
+
+
