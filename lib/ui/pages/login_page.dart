@@ -229,57 +229,17 @@ class _LoginState extends State<Login> {
                                           controller:
                                               _controller.usernameController,
                                           decoration: InputDecoration(
-                                            contentPadding:
-                                                EdgeInsets.all(7 * fem),
-                                            hintText: 'Masukan username kamu',
-                                            hintStyle: SafeGoogleFont(
-                                              'Plus Jakarta Sans',
-                                              fontSize: 16 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.26 * ffem / fem,
-                                              color: Color(0xffb3b3b3),
-                                            ),
+                                            labelText: 'Username',
                                             border: OutlineInputBorder(
                                               borderRadius:
-                                                  BorderRadius.circular(
-                                                      10 * fem),
+                                                  BorderRadius.circular(8.0),
                                             ),
                                           ),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Username tidak ditemukan';
-                                            }
-                                            return null;
-                                          },
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _username = value;
-                                            });
-                                          },
-                                        ),
-                                        Positioned(
-                                          left: 8 * fem,
-                                          bottom: 32 * fem,
-                                          child: Container(
-                                            width: 65 * fem,
-                                            height: 16 * fem,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Username',
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff1a1a1a),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black),
+                                          onChanged: (value) {},
                                         ),
                                       ],
                                     ),
@@ -292,82 +252,31 @@ class _LoginState extends State<Login> {
                                         TextFormField(
                                           controller:
                                               _controller.passwordController,
-                                          obscureText: !_isPasswordVisible,
                                           decoration: InputDecoration(
-                                            contentPadding:
-                                                EdgeInsets.all(7 * fem),
-                                            hintText: 'Password kamu',
-                                            hintStyle: SafeGoogleFont(
-                                              'Plus Jakarta Sans',
-                                              fontSize: 16 * ffem,
-                                              fontWeight: FontWeight.w400,
-                                              height: 1.26 * ffem / fem,
-                                              color: Color(0xffb3b3b3),
-                                            ),
+                                            labelText: 'Password',
                                             border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        10 * fem)),
-                                            suffixIcon: GestureDetector(
-                                              onTap: () {
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                            suffixIcon: IconButton(
+                                              icon: Icon(
+                                                _isPasswordVisible
+                                                    ? Icons.visibility
+                                                    : Icons.visibility_off,
+                                              ),
+                                              onPressed: () {
                                                 setState(() {
                                                   _isPasswordVisible =
                                                       !_isPasswordVisible;
                                                 });
                                               },
-                                              child: Container(
-                                                width: 24 * fem,
-                                                height: 24 * fem,
-                                                child: Icon(
-                                                  _isPasswordVisible
-                                                      ? CupertinoIcons.eye
-                                                      : CupertinoIcons
-                                                          .eye_slash,
-                                                ),
-                                              ),
                                             ),
                                           ),
-                                          validator: (value) {
-                                            if (value == null ||
-                                                value.isEmpty) {
-                                              return 'Username atau password salah';
-                                            }
-                                            if (value.length < 8) {
-                                              return 'Password minimal 8 karakter';
-                                            }
-                                            if (value.contains(' ')) {
-                                              return 'Password tidak dapat menggunakan spasi';
-                                            }
-                                            return null;
-                                          },
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _password = value;
-                                            });
-                                          },
-                                        ),
-                                        Positioned(
-                                          left: 8 * fem,
-                                          bottom: 32 * fem,
-                                          child: Container(
-                                            width: 60 * fem,
-                                            height: 16 * fem,
-                                            decoration: BoxDecoration(
-                                              color: Color(0xffffffff),
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                'Password',
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff1a1a1a),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.w700,
+                                              color: Colors.black),
+                                          obscureText: !_isPasswordVisible,
                                         ),
                                       ],
                                     ),
@@ -466,10 +375,32 @@ class _LoginState extends State<Login> {
 
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(response.message)));
+
     if (response.status == 200) {
+      // Berhasil masuk
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('username', _username);
       Navigator.of(context).pushNamed('/landing');
-    } else {}
+    } else if (response.status == 400) {
+      // Handle ketika username atau password salah
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Username atau password salah")),
+      );
+    } else if (response.status == 401) {
+      // Handle ketika password kurang dari 8 karakter
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Password harus memiliki minimal 8 karakter")),
+      );
+    } else if (response.status == 402) {
+      // Handle ketika password kosong
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Password tidak boleh kosong")),
+      );
+    } else if (response.status == 403) {
+      // Handle ketika password mengandung spasi
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Password tidak boleh mengandung spasi")),
+      );
+    }
   }
 }
