@@ -4,7 +4,7 @@ import 'package:komerce/models/ubah_pw_model.dart';
 
 class PasswordChangeService {
   final String apiUrl =
-      'http://192.168.1.103:9000/app/profile'; // Ganti dengan URL API sesuai dengan kebutuhan Anda
+      'http://192.168.1.37:9000/app/profile'; // Ganti dengan URL API sesuai dengan kebutuhan Anda
 
   Future<bool> changePassword(
       PasswordChange passwordChange, String token) async {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../services/update_noHp_service.dart';
 import '../../shared/theme.dart';
 
 class UpdateNoHp1 extends StatefulWidget {
@@ -9,6 +10,21 @@ class UpdateNoHp1 extends StatefulWidget {
 }
 
 class _UpdateNoHp1State extends State<UpdateNoHp1> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  String? token;
+
+  @override
+  void initState() {
+    super.initState();
+    loadToken();
+  }
+
+  Future<void> loadToken() async {
+    token = await getToken();
+    print('$token');
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -25,18 +41,18 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                 context); // Menggunakan Navigator.pop() untuk navigasi kembali
           },
         ),
-        backgroundColor: Colors.white, // Ubah latar belakang
+        backgroundColor: Colors.white,
         title: Text(
           'Update No. Hp',
           style: TextStyle(
-            color: Colors.black, // Ubah warna teks
+            color: Colors.black,
             fontWeight: FontWeight.w700,
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white, // Ubah latar belakang
-        elevation: 0, // Menghapus shadow
+        color: Colors.white,
+        elevation: 0,
         child: Container(
           padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
           width: double.infinity,
@@ -46,7 +62,31 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
           ),
           child: ElevatedButton(
             onPressed: () {
-              Navigator.pushNamed(context, '/updatenohp2');
+              String enteredText = _emailController.text;
+              print('Teks yang diinputkan: $enteredText');
+              print('$token');
+              if (_formKey.currentState != null &&
+                  _formKey.currentState!.validate()) {
+                final tokenValue = token ?? "";
+                fetchUserProfile(_emailController.text, tokenValue)
+                    .then((result) {
+                  if (result.email == _emailController.text) {
+                    Navigator.pushNamed(context, '/updatenohp2');
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Email does not match API data'),
+                      ),
+                    );
+                  }
+                }).catchError((error) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Error: $error'),
+                    ),
+                  );
+                });
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xfff95031),
@@ -152,18 +192,28 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                               color: Color(0xffffffff),
                               borderRadius: BorderRadius.circular(8 * fem),
                             ),
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.all(9 * fem),
-                                hintText: 'arieff****1@gmail.com',
-                                hintStyle: SafeGoogleFont(
-                                  'Plus Jakarta Sans',
-                                  fontSize: 12 * ffem,
-                                  fontWeight: FontWeight.w400,
-                                  height: 1.26 * ffem / fem,
-                                  color: Color(0xffc2c2c2),
+                            child: Form(
+                              key: _formKey,
+                              child: TextFormField(
+                                controller: _emailController,
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Email tidak boleh kosong';
+                                  }
+                                  return null;
+                                },
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.all(9 * fem),
+                                  hintText: 'arieff****1@gmail.com',
+                                  hintStyle: SafeGoogleFont(
+                                    'Plus Jakarta Sans',
+                                    fontSize: 12 * ffem,
+                                    fontWeight: FontWeight.w400,
+                                    height: 1.26 * ffem / fem,
+                                    color: Color(0xffc2c2c2),
+                                  ),
+                                  border: InputBorder.none,
                                 ),
-                                border: InputBorder.none,
                               ),
                             ),
                           ),
