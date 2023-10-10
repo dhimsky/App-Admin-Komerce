@@ -13,12 +13,33 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _isPasswordVisible = false;
-  final _formKey = GlobalKey<FormState>();
-  String _username = '';
-  String _password = '';
-
   LoginController _controller = LoginController();
+  final _formKey = GlobalKey<FormState>();
+  bool _isPasswordVisible = false;
+  String _password = '';
+  String _username = '';
+
+  void _login() async {
+    setState(() {
+      _controller.isLoading = true;
+    });
+
+    MyResponse response = await _controller.login();
+
+    setState(() {
+      _controller.isLoading = false;
+    });
+
+    if (response.status == 200) {
+      // Berhasil masuk
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString(
+          'username',
+          _controller
+              .usernameController.text); // Menggunakan controller yang sesuai
+      Navigator.of(context).pushNamed('/landing');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -215,72 +236,198 @@ class _LoginState extends State<Login> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Container(
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 0 * fem, 12 * fem),
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 12 * fem),
                               width: double.infinity,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  Container(
-                                    child: Stack(
-                                      children: [
-                                        SizedBox(height: 0),
-                                        TextFormField(
-                                          controller:
-                                              _controller.usernameController,
-                                          decoration: InputDecoration(
-                                            labelText: 'Username',
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                          ),
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700,
-                                              color: Colors.black),
-                                          onChanged: (value) {},
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                    child: Stack(
-                                      children: [
-                                        SizedBox(height: 0),
-                                        TextFormField(
-                                          controller:
-                                              _controller.passwordController,
-                                          decoration: InputDecoration(
-                                            labelText: 'Password',
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                            ),
-                                            suffixIcon: IconButton(
-                                              icon: Icon(
-                                                _isPasswordVisible
-                                                    ? Icons.visibility
-                                                    : Icons.visibility_off,
+                                  Column(
+                                    children: [
+                                      SizedBox(
+                                          height: 20), // Beri jarak dari atas
+                                      Center(
+                                        child: Wrap(
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.center,
+                                          children: [
+                                            Container(
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              padding: EdgeInsets.fromLTRB(
+                                                  0, 0, 0, 0),
+                                              child: Column(
+                                                children: [
+                                                  SizedBox(
+                                                    height: 10,
+                                                  ), // Beri jarak dari elemen sebelumnya
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                        color: _controller
+                                                                .errorMessageUsername
+                                                                .isNotEmpty
+                                                            ? Colors.red
+                                                            : Colors.grey,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                    child: TextFormField(
+                                                      controller: _controller
+                                                          .usernameController,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        labelText: 'Username',
+                                                        border:
+                                                            OutlineInputBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0)
+                                                        ),
+                                                      ),
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onChanged: (value) {
+                                                        // Reset pesan kesalahan username saat nilai berubah
+                                                        setState(() {
+                                                          _controller
+                                                              .errorMessageUsername = '';
+                                                        });
+                                                      },
+                                                    ),
+                                                  ),
+
+                                                  // Tampilkan pesan kesalahan username jika ada
+                                                  if (_controller
+                                                      .errorMessageUsername
+                                                      .isNotEmpty)
+                                                    Align(
+                                                      alignment: Alignment
+                                                          .centerLeft, // Mengatur teks rata kiri
+                                                      child: Text(
+                                                        _controller
+                                                            .errorMessageUsername,
+                                                        style: TextStyle(
+                                                          color: Colors
+                                                              .red, // Ganti warna teks sesuai kebutuhan
+                                                        ),
+                                                      ),
+                                                    ),
+                                                ],
                                               ),
-                                              onPressed: () {
-                                                setState(() {
-                                                  _isPasswordVisible =
-                                                      !_isPasswordVisible;
-                                                });
-                                              },
                                             ),
-                                          ),
-                                          style: TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w700,
-                                              color: Colors.black),
-                                          obscureText: !_isPasswordVisible,
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  )
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(height: 20),
+                                  Wrap(
+                                    crossAxisAlignment:
+                                        WrapCrossAlignment.center,
+                                    children: [
+                                      Container(
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        padding:
+                                            EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        child: Column(
+                                          children: [
+                                            SizedBox(
+                                              height: 10,
+                                            ), // Beri jarak dari elemen sebelumnya
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: _controller
+                                                          .errorMessagePassword
+                                                          .isNotEmpty
+                                                      ? Colors.red
+                                                      : Colors.grey,
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                              ),
+                                              child: TextFormField(
+                                                controller: _controller
+                                                    .passwordController,
+                                                decoration: InputDecoration(
+                                                  labelText: 'Password',
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    borderSide: BorderSide(
+                                                      color: _controller
+                                                              .errorMessagePassword
+                                                              .isNotEmpty
+                                                          ? Colors
+                                                              .red // Warna border merah saat ada kesalahan
+                                                          : Colors
+                                                              .grey, // Warna border abu-abu ketika tidak ada kesalahan
+                                                    ),
+                                                  ),
+                                                  suffixIcon: IconButton(
+                                                    icon: Icon(
+                                                      _isPasswordVisible
+                                                          ? Icons.visibility
+                                                          : Icons
+                                                              .visibility_off,
+                                                      color: Colors
+                                                          .grey, // Warna ikon mata
+                                                    ),
+                                                    onPressed: () {
+                                                      setState(() {
+                                                        _isPasswordVisible =
+                                                            !_isPasswordVisible;
+                                                      });
+                                                    },
+                                                  ),
+                                                ),
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.black,
+                                                ),
+                                                obscureText:
+                                                    !_isPasswordVisible,
+                                                onChanged: (value) {
+                                                  // Reset pesan kesalahan password saat nilai berubah
+                                                  setState(() {
+                                                    _controller
+                                                        .errorMessagePassword = '';
+                                                  });
+                                                },
+                                              ),
+                                            ),
+
+                                            // Tampilkan pesan kesalahan password jika ada
+                                            if (_controller.errorMessagePassword
+                                                .isNotEmpty)
+                                              Align(
+                                                alignment: Alignment
+                                                    .centerLeft, // Mengatur teks rata kiri
+                                                child: Text(
+                                                  _controller
+                                                      .errorMessagePassword,
+                                                  style: TextStyle(
+                                                    color: Colors
+                                                        .red, // Ganti warna teks sesuai kebutuhan
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),
@@ -360,47 +507,5 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
-  }
-
-  void _login() async {
-    setState(() {
-      _controller.isLoading = true;
-    });
-
-    MyResponse response = await _controller.login();
-
-    setState(() {
-      _controller.isLoading = false;
-    });
-
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(response.message)));
-
-    if (response.status == 200) {
-      // Berhasil masuk
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString('username', _username);
-      Navigator.of(context).pushNamed('/landing');
-    } else if (response.status == 400) {
-      // Handle ketika username atau password salah
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Username atau password salah")),
-      );
-    } else if (response.status == 401) {
-      // Handle ketika password kurang dari 8 karakter
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Password harus memiliki minimal 8 karakter")),
-      );
-    } else if (response.status == 402) {
-      // Handle ketika password kosong
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Password tidak boleh kosong")),
-      );
-    } else if (response.status == 403) {
-      // Handle ketika password mengandung spasi
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Password tidak boleh mengandung spasi")),
-      );
-    }
   }
 }
