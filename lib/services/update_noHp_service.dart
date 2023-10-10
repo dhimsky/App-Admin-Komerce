@@ -9,7 +9,7 @@ Future<String?> getToken() async {
 }
 
 Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
-  final apiUrl = 'http://192.168.1.37:9000/app/get-noHp';
+  final apiUrl = 'http://192.168.1.101:9000/app/get-noHp';
 
   final response = await http.get(
     Uri.parse('$apiUrl?email=$email'),
