@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../../services/update_noHp_service.dart';
 import '../../shared/theme.dart';
 
 class UpdateNoHp2 extends StatefulWidget {
@@ -10,6 +14,40 @@ class UpdateNoHp2 extends StatefulWidget {
 }
 
 class _UpdateNoHp2State extends State<UpdateNoHp2> {
+  Map<String, dynamic> userData = {};
+  String noHp = '';
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController _newNoHpController = TextEditingController();
+  String? token;
+
+  @override
+  void initState() {
+    super.initState();
+    loadDataFromSharedPreferences();
+    loadToken();
+  }
+
+  Future<void> loadDataFromSharedPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String jsonData = prefs.getString('user_data') ?? '{}';
+    setState(() {
+      userData = json.decode(jsonData);
+    });
+    print('Data ditemukan: $userData');
+
+    noHp = userData['data']['no Hp'] ?? ''; // Menginisialisasi nilai noHp
+    if (noHp.isNotEmpty && noHp.startsWith('0')) {
+      noHp = noHp.substring(1);
+    }
+    print('$noHp');
+  }
+
+  Future<void> loadToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    token = prefs.getString('token');
+    print('Token: $token');
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
@@ -186,19 +224,43 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.pushNamed(
-                                            context, '/landing');
-                                        bool updateSuccessful = true;
-                                        if (updateSuccessful) {
-                                          Fluttertoast.showToast(
-                                            msg: 'No. HP berhasil diubah',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.BOTTOM,
-                                            timeInSecForIosWeb: 1,
-                                            backgroundColor: Color(0x99c2c2c2),
-                                            textColor: Color(0xff333333),
-                                            fontSize: 16 * ffem,
-                                          );
+                                        if (_formKey.currentState!.validate()) {
+                                          final newNoHp =
+                                              _newNoHpController.text;
+                                          final tokenValue = token ?? "";
+
+                                          updateNoHp(newNoHp, tokenValue)
+                                              .then((result) {
+                                            if (result == 200) {
+                                              Navigator.pushNamed(
+                                                  context, '/landing');
+                                              bool updateSuccessful = true;
+                                              if (updateSuccessful) {
+                                                Fluttertoast.showToast(
+                                                  msg: 'No. HP berhasil diubah',
+                                                  toastLength:
+                                                      Toast.LENGTH_SHORT,
+                                                  gravity: ToastGravity.BOTTOM,
+                                                  timeInSecForIosWeb: 1,
+                                                  backgroundColor:
+                                                      Color(0x99c2c2c2),
+                                                  textColor: Color(0xff333333),
+                                                  fontSize: 16 * ffem,
+                                                );
+                                              }
+                                            } else {
+                                              Fluttertoast.showToast(
+                                                msg: 'Gagal mengubah No. HP',
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor:
+                                                    Color(0x99c2c2c2),
+                                                textColor: Color(0xff333333),
+                                                fontSize: 16 * ffem,
+                                              );
+                                            }
+                                          });
                                         }
                                       },
                                       child: Container(
@@ -333,7 +395,8 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                     height: double.infinity,
                                     child: Center(
                                       child: Text(
-                                        'arieffeisal01@gmail.com',
+                                        userData['data']['email'] ??
+                                            'Email tidak ada',
                                         style: SafeGoogleFont(
                                           'Poppins',
                                           fontSize: 14 * ffem,
@@ -432,21 +495,14 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                               0 * fem, 0 * fem, 0 * fem),
                                           width: 120 * fem,
                                           height: double.infinity,
-                                          child: Center(
-                                            child: TextFormField(
-                                              decoration: InputDecoration(
-                                                contentPadding:
-                                                    EdgeInsets.all(7 * fem),
-                                                hintText: '857623819202183',
-                                                hintStyle: SafeGoogleFont(
-                                                  'Poppins',
-                                                  fontSize: 14 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.5 * ffem / fem,
-                                                  color: Color(0xffc2c2c2),
-                                                ),
-                                                border: InputBorder.none,
-                                              ),
+                                          child: Text(
+                                            noHp,
+                                            style: SafeGoogleFont(
+                                              'Poppins',
+                                              fontSize: 14 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.5 * ffem / fem,
+                                              color: Color(0xffc2c2c2),
                                             ),
                                           ),
                                         ),
@@ -537,11 +593,22 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                           width: 106 * fem,
                                           height: double.infinity,
                                           child: Center(
-                                            child: TextFormField(
-                                              decoration: InputDecoration(
-                                                contentPadding:
-                                                    EdgeInsets.all(11 * fem),
-                                                border: InputBorder.none,
+                                            child: Form(
+                                              key: _formKey,
+                                              child: TextFormField(
+                                                controller: _newNoHpController,
+                                                validator: (value) {
+                                                  if (value == null ||
+                                                      value.isEmpty) {
+                                                    return 'No. Hp tidak boleh kosong';
+                                                  }
+                                                  return null;
+                                                },
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      EdgeInsets.all(11 * fem),
+                                                  border: InputBorder.none,
+                                                ),
                                               ),
                                             ),
                                           ),
