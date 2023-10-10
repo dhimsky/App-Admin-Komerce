@@ -36,7 +36,7 @@ Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
   }
 }
 
-Future<UpdateNoHp> updateNoHp(String newNoHp, String token) async {
+Future<bool> updateNoHp(String newNoHp, String token) async {
   final apiUrl = 'http://192.168.1.101:9000/app/update-noHp';
 
   final Map<String, dynamic> requestBody = {
@@ -58,10 +58,8 @@ Future<UpdateNoHp> updateNoHp(String newNoHp, String token) async {
   print('Response dari API: ${response.body}');
 
   if (response.statusCode == 200) {
-    final Map<String, dynamic> data = json.decode(response.body);
-    print('$data');
-    return UpdateNoHp.fromJson(data);
+    return true;
   } else {
-    throw Exception('Gagal update data profil dari API');
+    return false;
   }
 }

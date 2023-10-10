@@ -114,6 +114,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
             width: double.infinity,
             child: Container(
               width: double.infinity,
+              height: MediaQuery.of(context).size.height,
               decoration: BoxDecoration(
                 color: Color(0xffffffff),
               ),

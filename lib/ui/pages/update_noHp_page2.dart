@@ -224,14 +224,14 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        if (_formKey.currentState!.validate()) {
+                                        if (_formKey.currentState != null &&
+                                            _formKey.currentState!.validate()) {
                                           final newNoHp =
                                               _newNoHpController.text;
                                           final tokenValue = token ?? "";
 
-                                          updateNoHp(newNoHp, tokenValue)
-                                              .then((result) {
-                                            if (result == 200) {
+                                          updateNoHp(newNoHp, tokenValue).then(
+                                            (result) {
                                               Navigator.pushNamed(
                                                   context, '/landing');
                                               bool updateSuccessful = true;
@@ -241,26 +241,15 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                                   toastLength:
                                                       Toast.LENGTH_SHORT,
                                                   gravity: ToastGravity.BOTTOM,
-                                                  timeInSecForIosWeb: 1,
+                                                  timeInSecForIosWeb: 3,
                                                   backgroundColor:
                                                       Color(0x99c2c2c2),
                                                   textColor: Color(0xff333333),
                                                   fontSize: 16 * ffem,
                                                 );
                                               }
-                                            } else {
-                                              Fluttertoast.showToast(
-                                                msg: 'Gagal mengubah No. HP',
-                                                toastLength: Toast.LENGTH_SHORT,
-                                                gravity: ToastGravity.BOTTOM,
-                                                timeInSecForIosWeb: 1,
-                                                backgroundColor:
-                                                    Color(0x99c2c2c2),
-                                                textColor: Color(0xff333333),
-                                                fontSize: 16 * ffem,
-                                              );
-                                            }
-                                          });
+                                            },
+                                          );
                                         }
                                       },
                                       child: Container(
@@ -595,20 +584,31 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                           child: Center(
                                             child: Form(
                                               key: _formKey,
-                                              child: TextFormField(
-                                                controller: _newNoHpController,
-                                                validator: (value) {
-                                                  if (value == null ||
-                                                      value.isEmpty) {
-                                                    return 'No. Hp tidak boleh kosong';
-                                                  }
-                                                  return null;
-                                                },
-                                                decoration: InputDecoration(
-                                                  contentPadding:
-                                                      EdgeInsets.all(11 * fem),
-                                                  border: InputBorder.none,
-                                                ),
+                                              child: Column(
+                                                children: [
+                                                  TextFormField(
+                                                    controller:
+                                                        _newNoHpController,
+                                                    decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.fromLTRB(
+                                                              11 * fem,
+                                                              0 * fem,
+                                                              11 * fem,
+                                                              30),
+                                                      border: InputBorder.none,
+                                                    ),
+                                                    validator: (value) {
+                                                      Navigator.of(context)
+                                                          .pop();
+                                                      if (value == null ||
+                                                          value.isEmpty) {
+                                                        return 'No. Hp tidak boleh kosong';
+                                                      }
+                                                      return null;
+                                                    },
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
