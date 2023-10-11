@@ -206,8 +206,8 @@ class _LoginState extends State<Login> {
                 color: Color(0xffffffff),
               ),
               child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    32 * fem, 120 * fem, 32 * fem, 120 * fem),
+                padding:
+                    EdgeInsets.fromLTRB(32 * fem, 120 * fem, 32 * fem, 0 * fem),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -292,7 +292,7 @@ class _LoginState extends State<Login> {
                                                     ),
                                                     child: Padding(
                                                       padding: const EdgeInsets
-                                                          .symmetric(
+                                                              .symmetric(
                                                           horizontal:
                                                               10), // Tambahkan jarak horizontal
                                                       child: TextFormField(
@@ -386,7 +386,7 @@ class _LoginState extends State<Login> {
                                               ),
                                               child: Padding(
                                                 padding: const EdgeInsets
-                                                    .symmetric(
+                                                        .symmetric(
                                                     horizontal:
                                                         10), // Tambahkan jarak horizontal
                                                 child: Stack(
