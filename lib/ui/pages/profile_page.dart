@@ -296,7 +296,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Container(
                                 margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 12 * fem, 0 * fem),
+                                    0 * fem, 0 * fem, 6 * fem, 0 * fem),
                                 width: 72 * fem,
                                 height: double.infinity,
                                 decoration: BoxDecoration(

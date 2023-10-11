@@ -505,7 +505,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                         ),
                         Container(
                           padding: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 26 * fem),
+                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
                           width: double.infinity,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -535,7 +535,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                       left: 0 * fem,
                                       top: 0 * fem,
                                       child: Container(
-                                        width: 67 * fem,
+                                        width: 64 * fem,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
                                           border: Border.all(
@@ -561,11 +561,11 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                       ),
                                     ),
                                     Positioned(
-                                      left: 54 * fem,
+                                      left: 53 * fem,
                                       top: 0 * fem,
                                       child: Container(
                                         padding: EdgeInsets.fromLTRB(14 * fem,
-                                            8 * fem, 14 * fem, 0 * fem),
+                                            0 * fem, 14 * fem, 0 * fem),
                                         width: 273 * fem,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
@@ -583,35 +583,36 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                               0 * fem, 0 * fem, 0 * fem),
                                           width: 106 * fem,
                                           height: double.infinity,
-                                          child: Center(
-                                            child: Form(
-                                              key: _formKey,
-                                              child: Column(
-                                                children: [
-                                                  TextFormField(
-                                                    controller:
-                                                        _newNoHpController,
-                                                    decoration: InputDecoration(
-                                                      contentPadding:
-                                                          EdgeInsets.fromLTRB(
-                                                              11 * fem,
-                                                              20 * fem,
-                                                              11 * fem,
-                                                              30),
-                                                      border: InputBorder.none,
-                                                    ),
-                                                    validator: (value) {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                      if (value == null ||
-                                                          value.isEmpty) {
-                                                        return 'No. Hp tidak boleh kosong';
-                                                      }
-                                                      return null;
-                                                    },
+                                          child: Form(
+                                            key: _formKey,
+                                            child: Column(
+                                              children: [
+                                                TextFormField(
+                                                  controller:
+                                                      _newNoHpController,
+                                                  decoration: InputDecoration(
+                                                    contentPadding:
+                                                        EdgeInsets.fromLTRB(
+                                                            0 * fem,
+                                                            0 * fem,
+                                                            11 * fem,
+                                                            12 * fem),
+                                                    border: InputBorder.none,
                                                   ),
-                                                ],
-                                              ),
+                                                  validator: (value) {
+                                                    Navigator.of(context).pop();
+                                                    if (value == null ||
+                                                        value.isEmpty) {
+                                                      return 'No. Hp tidak boleh kosong';
+                                                    }
+                                                    if (value.length < 10 ||
+                                                        value.length > 13) {
+                                                      return 'No. Hp harus terdiri dari 10 hingga 12 karakter';
+                                                    }
+                                                    return null;
+                                                  },
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
