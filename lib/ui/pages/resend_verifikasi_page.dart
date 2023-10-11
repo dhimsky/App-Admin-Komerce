@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:komerce/models/verify_email_model.dart';
+import 'package:komerce/services/verify_email_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../shared/theme.dart';
 
@@ -11,11 +14,28 @@ class ResendVerifikasi extends StatefulWidget {
 }
 
 class _ResendVerifikasiState extends State<ResendVerifikasi> {
+  final _formKey = GlobalKey<FormState>();
+  VerifyEmail _verifyEmail = VerifyEmail(email: '');
+  late String _token;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTokenFromSharedPreferences();
+  }
+
+  void _loadTokenFromSharedPreferences() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _token = prefs.getString('token') ?? '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
+    double ffem = fem * 0.90;
     return Scaffold(
       appBar: AppBar(
         elevation: 0, // Menghapus shadow
@@ -184,28 +204,54 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.pushNamed(
-                                            context, '/landing');
-                                        bool updateSuccessful = true;
-                                        if (updateSuccessful) {
-                                          Fluttertoast.showToast(
-                                            msg:
-                                                'Verifikasi Ulang Telah Terkirim',
-                                            toastLength: Toast.LENGTH_SHORT,
-                                            gravity: ToastGravity.BOTTOM,
-                                            timeInSecForIosWeb: 1,
-                                            backgroundColor: Color(0x99c2c2c2),
-                                            textColor: Color(0xff333333),
-                                            fontSize: 16 * ffem,
-                                          );
-                                        }
+                                        final verifyEmailService =
+                                            VerifyEmailService();
+                                        verifyEmailService
+                                            .verifyEmail(_verifyEmail, _token)
+                                            .then((succes) {
+                                          if (succes) {
+                                            Navigator.pushNamed(
+                                                context, '/landing');
+                                            bool updateSuccessful = true;
+                                            if (updateSuccessful) {
+                                              Fluttertoast.showToast(
+                                                msg:
+                                                    'Verifikasi Ulang Telah Terkirim',
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor:
+                                                    Color(0x99c2c2c2),
+                                                textColor: Color(0xff333333),
+                                                fontSize: 16 * ffem,
+                                              );
+                                            }
+                                          } else {
+                                            Navigator.pushNamed(
+                                                context, '/landing');
+                                            bool updateSuccessful = true;
+                                            if (updateSuccessful) {
+                                              Fluttertoast.showToast(
+                                                msg:
+                                                    'Verifikasi Ulang Gagal',
+                                                toastLength: Toast.LENGTH_SHORT,
+                                                gravity: ToastGravity.BOTTOM,
+                                                timeInSecForIosWeb: 1,
+                                                backgroundColor:
+                                                    Color(0x99c2c2c2),
+                                                textColor: Color(0xff333333),
+                                                fontSize: 16 * ffem,
+                                              );
+                                            }
+                                          }
+                                        });
                                       },
                                       child: Container(
                                         padding: EdgeInsets.fromLTRB(
-                                            143.5 * fem,
+                                            12 * fem,
                                             8 * fem,
-                                            140 * fem,
-                                            8 * fem),
+                                            12 * fem,
+                                            8* fem),
                                         width: double.infinity,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
@@ -220,7 +266,7 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
                                           height: double.infinity,
                                           child: Center(
                                             child: Text(
-                                              'Yakin',
+                                              'Kirim Verifikasi',
                                               style: SafeGoogleFont(
                                                 'Poppins',
                                                 fontSize: 14 * ffem,
@@ -356,6 +402,11 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
                               borderRadius: BorderRadius.circular(8 * fem),
                             ),
                             child: TextFormField(
+                              onChanged: (value) {
+                                setState(() {
+                                  _verifyEmail.email = value;
+                                });
+                              },
                               decoration: InputDecoration(
                                 contentPadding: EdgeInsets.all(9 * fem),
                                 hintText: 'arieff****1@gmail.com',
