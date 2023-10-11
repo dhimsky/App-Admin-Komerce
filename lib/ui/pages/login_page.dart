@@ -260,9 +260,28 @@ class _LoginState extends State<Login> {
                                                 children: [
                                                   SizedBox(
                                                     height: 10,
+                                                  ),
+                                                  Align(
+                                                    alignment: Alignment
+                                                        .centerLeft, // Mengatur label ke kiri
+                                                    child: Text(
+                                                      'Username',
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
                                                   ), // Beri jarak dari elemen sebelumnya
                                                   Container(
                                                     decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
                                                       border: Border.all(
                                                         color: _controller
                                                                 .errorMessageUsername
@@ -270,40 +289,38 @@ class _LoginState extends State<Login> {
                                                             ? Colors.red
                                                             : Colors.grey,
                                                       ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
                                                     ),
-                                                    child: TextFormField(
-                                                      controller: _controller
-                                                          .usernameController,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText: 'Username',
-                                                        border:
-                                                            OutlineInputBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0)
+                                                    child: Padding(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal:
+                                                              10), // Tambahkan jarak horizontal
+                                                      child: TextFormField(
+                                                        controller: _controller
+                                                            .usernameController,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          hintText:
+                                                              'Masukkan username kamu',
+                                                          border: InputBorder
+                                                              .none, // Hilangkan border bawaan TextFormField
                                                         ),
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: Colors.black,
+                                                        ),
+                                                        onChanged: (value) {
+                                                          // Reset pesan kesalahan username saat nilai berubah
+                                                          setState(() {
+                                                            _controller
+                                                                .errorMessageUsername = '';
+                                                          });
+                                                        },
                                                       ),
-                                                      style: TextStyle(
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        color: Colors.black,
-                                                      ),
-                                                      onChanged: (value) {
-                                                        // Reset pesan kesalahan username saat nilai berubah
-                                                        setState(() {
-                                                          _controller
-                                                              .errorMessageUsername = '';
-                                                        });
-                                                      },
                                                     ),
                                                   ),
-
                                                   // Tampilkan pesan kesalahan username jika ada
                                                   if (_controller
                                                       .errorMessageUsername
@@ -330,21 +347,35 @@ class _LoginState extends State<Login> {
                                   ),
                                   SizedBox(height: 20),
                                   Wrap(
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.center,
+                                    alignment: WrapAlignment.center,
                                     children: [
                                       Container(
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        padding:
-                                            EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                        padding: EdgeInsets.fromLTRB(0, 10, 0,
+                                            0), // Beri jarak dari elemen sebelumnya
                                         child: Column(
                                           children: [
+                                            // Label teks
+                                            Align(
+                                              alignment: Alignment
+                                                  .centerLeft, // Mengatur label ke kiri
+                                              child: Text(
+                                                'Password',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ),
                                             SizedBox(
-                                              height: 10,
-                                            ), // Beri jarak dari elemen sebelumnya
+                                                height:
+                                                    5), // Beri jarak antara label dan input
                                             Container(
                                               decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                                 border: Border.all(
                                                   color: _controller
                                                           .errorMessagePassword
@@ -352,74 +383,79 @@ class _LoginState extends State<Login> {
                                                       ? Colors.red
                                                       : Colors.grey,
                                                 ),
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
                                               ),
-                                              child: TextFormField(
-                                                controller: _controller
-                                                    .passwordController,
-                                                decoration: InputDecoration(
-                                                  labelText: 'Password',
-                                                  border: OutlineInputBorder(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    borderSide: BorderSide(
-                                                      color: _controller
-                                                              .errorMessagePassword
-                                                              .isNotEmpty
-                                                          ? Colors
-                                                              .red // Warna border merah saat ada kesalahan
-                                                          : Colors
-                                                              .grey, // Warna border abu-abu ketika tidak ada kesalahan
+                                              child: Padding(
+                                                padding: const EdgeInsets
+                                                    .symmetric(
+                                                    horizontal:
+                                                        10), // Tambahkan jarak horizontal
+                                                child: Stack(
+                                                  alignment: Alignment
+                                                      .centerRight, // Mengatur ikon mata ke kanan
+                                                  children: [
+                                                    TextFormField(
+                                                      obscureText:
+                                                          !_isPasswordVisible,
+                                                      controller: _controller
+                                                          .passwordController,
+                                                      decoration:
+                                                          InputDecoration(
+                                                        hintText:
+                                                            'Password kamu',
+                                                        border: InputBorder
+                                                            .none, // Hilangkan border bawaan TextFormField
+                                                      ),
+                                                      style: TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black,
+                                                      ),
+                                                      onChanged: (value) {
+                                                        // Reset pesan kesalahan password saat nilai berubah
+                                                        setState(() {
+                                                          _controller
+                                                              .errorMessagePassword = '';
+                                                        });
+                                                      },
                                                     ),
-                                                  ),
-                                                  suffixIcon: IconButton(
-                                                    icon: Icon(
-                                                      _isPasswordVisible
-                                                          ? Icons.visibility
-                                                          : Icons
-                                                              .visibility_off,
-                                                      color: Colors
-                                                          .grey, // Warna ikon mata
+                                                    IconButton(
+                                                      icon: Icon(
+                                                        _isPasswordVisible
+                                                            ? Icons.visibility
+                                                            : Icons
+                                                                .visibility_off,
+                                                        color: Colors
+                                                            .grey, // Warna ikon mata
+                                                      ),
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          _isPasswordVisible =
+                                                              !_isPasswordVisible;
+                                                        });
+                                                      },
                                                     ),
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        _isPasswordVisible =
-                                                            !_isPasswordVisible;
-                                                      });
-                                                    },
-                                                  ),
+                                                  ],
                                                 ),
-                                                style: TextStyle(
-                                                  fontSize: 12,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.black,
-                                                ),
-                                                obscureText:
-                                                    !_isPasswordVisible,
-                                                onChanged: (value) {
-                                                  // Reset pesan kesalahan password saat nilai berubah
-                                                  setState(() {
-                                                    _controller
-                                                        .errorMessagePassword = '';
-                                                  });
-                                                },
                                               ),
                                             ),
-
                                             // Tampilkan pesan kesalahan password jika ada
                                             if (_controller.errorMessagePassword
                                                 .isNotEmpty)
                                               Align(
                                                 alignment: Alignment
                                                     .centerLeft, // Mengatur teks rata kiri
-                                                child: Text(
-                                                  _controller
-                                                      .errorMessagePassword,
-                                                  style: TextStyle(
-                                                    color: Colors
-                                                        .red, // Ganti warna teks sesuai kebutuhan
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 8.0),
+                                                  child: Text(
+                                                    _controller
+                                                        .errorMessagePassword,
+                                                    style: TextStyle(
+                                                      color: Colors
+                                                          .red, // Ganti warna teks sesuai kebutuhan
+                                                    ),
                                                   ),
                                                 ),
                                               ),
@@ -427,7 +463,7 @@ class _LoginState extends State<Login> {
                                         ),
                                       ),
                                     ],
-                                  ),
+                                  )
                                 ],
                               ),
                             ),

@@ -4,7 +4,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/response_model.dart';
 import '../services/login_service.dart';
-import '../models/user_model.dart';
 
 class LoginController {
   LoginRepository _repository = LoginRepository();
