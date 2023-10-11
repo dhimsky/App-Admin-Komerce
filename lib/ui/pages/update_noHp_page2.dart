@@ -338,7 +338,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                        24 * fem, 37 * fem, 24 * fem, 0 * fem),
+                        24 * fem, 30 * fem, 24 * fem, 0 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -525,6 +525,8 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                 ),
                               ),
                               Container(
+                                padding: EdgeInsets.fromLTRB(
+                                    0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                 width: double.infinity,
                                 height: 40 * fem,
                                 child: Stack(
@@ -563,7 +565,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                       top: 0 * fem,
                                       child: Container(
                                         padding: EdgeInsets.fromLTRB(14 * fem,
-                                            8 * fem, 14 * fem, 8 * fem),
+                                            8 * fem, 14 * fem, 0 * fem),
                                         width: 273 * fem,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
@@ -593,7 +595,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                                       contentPadding:
                                                           EdgeInsets.fromLTRB(
                                                               11 * fem,
-                                                              0 * fem,
+                                                              20 * fem,
                                                               11 * fem,
                                                               30),
                                                       border: InputBorder.none,

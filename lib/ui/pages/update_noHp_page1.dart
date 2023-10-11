@@ -123,7 +123,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                        24 * fem, 37 * fem, 24 * fem, 188.31 * fem),
+                        24 * fem, 37 * fem, 24 * fem, 180 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
