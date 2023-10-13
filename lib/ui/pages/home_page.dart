@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget build(BuildContext context) {
-    double baseWidth = 375;
+    double baseWidth = 370;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
@@ -118,8 +118,10 @@ class _HomePageState extends State<HomePage> {
                                     borderRadius: BorderRadius.circular(30),
                                   ),
                                 ),
-                                child: Icon(
-                                  Icons.notifications_outlined,
+                                child: Image.asset(
+                                  'assets/images/notification.png',
+                                  color: Colors
+                                      .black, // Gantilah dengan warna yang sesuai
                                 ),
                               ),
                             ),
@@ -199,16 +201,16 @@ class _HomePageState extends State<HomePage> {
                                       child: Stack(
                                         children: [
                                           Positioned(
-                                            left: -24 * fem,
-                                            top: -151 * fem,
+                                            left: 0 * fem,
+                                            top: 0 * fem,
                                             child: Align(
                                               child: SizedBox(
-                                                width: 500 * fem,
-                                                height: 400 * fem,
+                                                width: 375 * fem,
+                                                height: 273 * fem,
                                                 child: Image.asset(
-                                                  'assets/images/backgroundsaldo.png',
-                                                  width: 609.73 * fem,
-                                                  height: 497.46 * fem,
+                                                  'assets/images/backgroundatas.png',
+                                                  width: 375 * fem,
+                                                  height: 273 * fem,
                                                 ),
                                               ),
                                             ),
@@ -263,10 +265,10 @@ class _HomePageState extends State<HomePage> {
                                                         Container(
                                                           width: 24 * fem,
                                                           height: 24 * fem,
-                                                          child: Icon(
-                                                            Icons.info_outline,
-                                                            color: Color(
-                                                                0xfffafafa),
+                                                          child: Image.asset(
+                                                            'assets/images/info-circle.png',
+                                                            width: 375 * fem,
+                                                            height: 273 * fem,
                                                           ),
                                                         ),
                                                       ],
@@ -318,7 +320,7 @@ class _HomePageState extends State<HomePage> {
                                                 width: 378 * fem,
                                                 height: 235 * fem,
                                                 child: Image.asset(
-                                                  'assets/images/backgroundsaldo.png',
+                                                  'assets/images/CardSaldo.png',
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -374,10 +376,10 @@ class _HomePageState extends State<HomePage> {
                                                         Container(
                                                           width: 18 * fem,
                                                           height: 18 * fem,
-                                                          child: Icon(
-                                                            Icons.info_outline,
-                                                            color: Color(
-                                                                0xfffafafa),
+                                                          child: Image.asset(
+                                                            'assets/images/info-circle.png',
+                                                            width: 375 * fem,
+                                                            height: 273 * fem,
                                                           ),
                                                         ),
                                                       ],
@@ -449,9 +451,10 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ],
                                               ),
-                                              child: Icon(
-                                                Icons.search,
-                                                color: Color(0xfff95031),
+                                              child: Image.asset(
+                                                'assets/images/bag-tick.png',
+                                                color: Color(
+                                                    0xfff95031), // Gantilah dengan warna yang sesuai
                                               ),
                                             ),
                                             Container(
@@ -509,9 +512,10 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ],
                                               ),
-                                              child: Icon(
-                                                Icons.edit_note_outlined,
-                                                color: Color(0xfff95031),
+                                              child: Image.asset(
+                                                'assets/images/mobile-programming.png',
+                                                color: Color(
+                                                    0xfff95031), // Gantilah dengan warna yang sesuai
                                               ),
                                             ),
                                             Container(
@@ -561,9 +565,10 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ],
                                             ),
-                                            child: Icon(
-                                              Icons.add_home_outlined,
-                                              color: Color(0xfff95031),
+                                            child: Image.asset(
+                                              'assets/images/location-add.png',
+                                              color: Color(
+                                                  0xfff95031), // Gantilah dengan warna yang sesuai
                                             ),
                                           ),
                                           Container(
@@ -618,9 +623,10 @@ class _HomePageState extends State<HomePage> {
                                                   ),
                                                 ],
                                               ),
-                                              child: Icon(
-                                                Icons.verified_outlined,
-                                                color: Color(0xfff95031),
+                                              child: Image.asset(
+                                                'assets/images/send-2.png',
+                                                color: Color(
+                                                    0xfff95031), // Gantilah dengan warna yang sesuai
                                               ),
                                             ),
                                             Container(

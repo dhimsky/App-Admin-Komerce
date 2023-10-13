@@ -29,13 +29,13 @@ class LoginController {
 
       if (password.length < 8) {
         errorMessage = ''; // Reset pesan kesalahan umum
-        errorMessagePassword = "Password harus memiliki minimal 8 karakter"; // Set pesan kesalahan password
+        errorMessagePassword = "Password minimal 8 karakter"; // Set pesan kesalahan password
         return MyResponse(status: 1, message: "Password harus memiliki minimal 8 karakter");
       }
 
       if (password.contains(' ')) {
         errorMessage = ''; // Reset pesan kesalahan umum
-        errorMessagePassword = "Password tidak boleh mengandung spasi"; // Set pesan kesalahan password
+        errorMessagePassword = "Password tidak dapat menggunakan spasi"; // Set pesan kesalahan password
         return MyResponse(status: 1, message: "Password tidak boleh mengandung spasi");
       }
 
@@ -58,7 +58,7 @@ class LoginController {
         }
       } else if (result.statusCode == 401) {
         errorMessage = ''; // Reset pesan kesalahan umum
-        errorMessageUsername = "Username atau password salah"; // Set pesan kesalahan username
+        errorMessageUsername = "Username tidak ditemukan"; // Set pesan kesalahan username
         errorMessagePassword = "Username atau password salah"; // Set pesan kesalahan password
         return MyResponse(status: 1, message: "Username atau password salah");
       } else {

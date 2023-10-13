@@ -292,7 +292,7 @@ class _LoginState extends State<Login> {
                                                     ),
                                                     child: Padding(
                                                       padding: const EdgeInsets
-                                                              .symmetric(
+                                                          .symmetric(
                                                           horizontal:
                                                               10), // Tambahkan jarak horizontal
                                                       child: TextFormField(
@@ -306,10 +306,10 @@ class _LoginState extends State<Login> {
                                                               .none, // Hilangkan border bawaan TextFormField
                                                         ),
                                                         style: TextStyle(
-                                                          fontSize: 12,
+                                                          fontSize: 16,
                                                           fontWeight:
-                                                              FontWeight.w700,
-                                                          color: Colors.black,
+                                                              FontWeight.w400,
+                                                          color: Colors.black, // Menggunakan warna #B3B3B3
                                                         ),
                                                         onChanged: (value) {
                                                           // Reset pesan kesalahan username saat nilai berubah
@@ -386,7 +386,7 @@ class _LoginState extends State<Login> {
                                               ),
                                               child: Padding(
                                                 padding: const EdgeInsets
-                                                        .symmetric(
+                                                    .symmetric(
                                                     horizontal:
                                                         10), // Tambahkan jarak horizontal
                                                 child: Stack(
@@ -406,9 +406,9 @@ class _LoginState extends State<Login> {
                                                             .none, // Hilangkan border bawaan TextFormField
                                                       ),
                                                       style: TextStyle(
-                                                        fontSize: 12,
+                                                        fontSize: 16,
                                                         fontWeight:
-                                                            FontWeight.w700,
+                                                            FontWeight.w400,
                                                         color: Colors.black,
                                                       ),
                                                       onChanged: (value) {
@@ -467,21 +467,21 @@ class _LoginState extends State<Login> {
                                 ],
                               ),
                             ),
-                            // TextButton(
-                            //   onPressed: () {
-                            //     Navigator.of(context)
-                            //         .pushNamed('/lupapassword');
-                            //   },
-                            //   child: Text(
-                            //     'Forgot password?',
-                            //     style: TextStyle(
-                            //       fontSize: 12 * ffem,
-                            //       fontWeight: FontWeight.w700,
-                            //       height: 1.26 * ffem / fem,
-                            //       color: Color(0xff818181),
-                            //     ),
-                            //   ),
-                            // ),
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/lupapassword');
+                              },
+                              child: Text(
+                                'Lupa password?',
+                                style: TextStyle(
+                                  fontSize: 12 * ffem,
+                                  fontWeight: FontWeight.w700,
+                                  height: 1.26 * ffem / fem,
+                                  color: Color(0xff818181),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),

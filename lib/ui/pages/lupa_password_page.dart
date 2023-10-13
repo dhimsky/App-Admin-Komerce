@@ -175,7 +175,7 @@ class _LupaPasswordState extends State<LupaPassword> {
                                   ),
                                 ),
                                 TextSpan(
-                                  text: 'Kembali Masuk',
+                                  text: ' Kembali Masuk',
                                   style: SafeGoogleFont(
                                     'Plus Jakarta Sans',
                                     fontSize: 12 * ffem,
@@ -201,7 +201,7 @@ class _LupaPasswordState extends State<LupaPassword> {
                               padding: EdgeInsets.fromLTRB(
                                   0 * fem, 0 * fem, 0 * fem, 0 * fem),
                               width: 247 * fem,
-                              height: 115 * fem,
+                              height: 165 * fem,
                               decoration: BoxDecoration(
                                 color: Color(0xffffffff),
                                 borderRadius: BorderRadius.circular(8 * fem),
@@ -221,8 +221,9 @@ class _LupaPasswordState extends State<LupaPassword> {
                                     ),
                                   ),
                                   Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                    margin: EdgeInsets.only(
+                                        bottom: 2 *
+                                            fem), // Tambahkan margin ke sini
                                     constraints: BoxConstraints(
                                       maxWidth: 197 * fem,
                                     ),
@@ -238,37 +239,37 @@ class _LupaPasswordState extends State<LupaPassword> {
                                       ),
                                     ),
                                   ),
+                                  Container(
+                                    child: TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 30 * fem,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xfff95031),
+                                          borderRadius:
+                                              BorderRadius.circular(8 * fem),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'Oke',
+                                            style: SafeGoogleFont(
+                                              'Plus Jakarta Sans',
+                                              fontSize: 12 * ffem,
+                                              fontWeight: FontWeight.w400,
+                                              height: 1.26 * ffem / fem,
+                                              color: Color(0xffffffff),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
-                            actions: [
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 30 * fem,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xfff95031),
-                                    borderRadius:
-                                        BorderRadius.circular(8 * fem),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'Oke',
-                                      style: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 12 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.26 * ffem / fem,
-                                        color: Color(0xffffffff),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
                           );
                         },
                       );

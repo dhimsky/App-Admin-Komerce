@@ -92,7 +92,7 @@ class _DetailProfileState extends State<DetailProfile> {
                                   height: 24 * fem,
                                   child: Icon(
                                     Icons.arrow_back_ios,
-                                    color: Color.fromARGB(255, 245, 75, 32),
+                                    color: Colors.black,
                                   ),
                                 ),
                               ),

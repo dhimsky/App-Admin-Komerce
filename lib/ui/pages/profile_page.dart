@@ -202,7 +202,7 @@ class _ProfileState extends State<Profile> {
               ),
               padding: EdgeInsets.symmetric(vertical: 0 * fem),
               shadowColor: Colors.black,
-              elevation: 10,
+              elevation: 1,
             ),
             child: Container(
               width: double.infinity,
@@ -220,7 +220,6 @@ class _ProfileState extends State<Profile> {
                         fontSize: 16 * ffem,
                         fontWeight: FontWeight.w600,
                         height: 1.26 * ffem / fem,
-                        letterSpacing: -0.25 * fem,
                         color: Color(0xffe31a1a),
                       ),
                     ),
@@ -228,9 +227,10 @@ class _ProfileState extends State<Profile> {
                   Container(
                     width: 24 * fem,
                     height: 24 * fem,
-                    child: Icon(
-                      Icons.logout_outlined,
-                      color: Color.fromARGB(255, 245, 75, 32),
+                    child: Image.asset(
+                      'assets/images/logout.png',
+                      color: Color(
+                          0xfff95031), // Gantilah dengan warna yang sesuai
                     ),
                   ),
                 ],
@@ -240,234 +240,233 @@ class _ProfileState extends State<Profile> {
         ),
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
+        child: Container(
+          width: double.infinity,
           child: Container(
             width: double.infinity,
-            child: Container(
-              width: double.infinity,
-              height: MediaQuery.of(context).size.height,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.fromLTRB(
-                        12 * fem, 4 * fem, 16.71 * fem, 23 * fem),
-                    width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                              12 * fem, 40 * fem, 0 * fem, 0 * fem),
-                          child: Text(
-                            'Profile',
-                            style: SafeGoogleFont(
-                              'Plus Jakarta Sans',
-                              fontSize: 20 * ffem,
-                              fontWeight: FontWeight.w700,
-                              height: 1.26 * ffem / fem,
-                              color: Color(0xff000000),
-                            ),
+            height: MediaQuery.of(context).size.height,
+            decoration: BoxDecoration(
+              color: Color(0xffffffff),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(
+                      12 * fem, 4 * fem, 16.71 * fem, 23 * fem),
+                  width: double.infinity,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            12 * fem, 40 * fem, 0 * fem, 0 * fem),
+                        child: Text(
+                          'Profile',
+                          style: SafeGoogleFont(
+                            'Plus Jakarta Sans',
+                            fontSize: 20 * ffem,
+                            fontWeight: FontWeight.w700,
+                            height: 1.26 * ffem / fem,
+                            color: Color(0xff000000),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  Container(
+                ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(
+                      24 * fem, 12 * fem, 24 * fem, 12 * fem),
+                  width: double.infinity,
+                  height: 96 * fem,
+                  decoration: BoxDecoration(
+                    color: Color(0xffffffff),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                            0 * fem, 0 * fem, 80 * fem, 0 * fem),
+                        height: double.infinity,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  0 * fem, 0 * fem, 5 * fem, 0 * fem),
+                              width: 72 * fem,
+                              height: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xfff95031),
+                                borderRadius: BorderRadius.circular(36 * fem),
+                              ),
+                              child: Align(
+                                alignment: Alignment
+                                    .center, // Menempatkan teks di tengah container
+                                child: Text(
+                                  'A',
+                                  style: SafeGoogleFont(
+                                    'Plus Jakarta Sans',
+                                    fontSize: 38.4000015259 * ffem,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.5 * ffem / fem,
+                                    color: Color(0xffffffff),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.pushNamed(context, '/detailprofile');
+                              },
+                              child: Container(
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * fem, 14.5 * fem, 0 * fem, 13.5 * fem),
+                                height: double.infinity,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(
+                                          0 * fem, 0 * fem, 0 * fem, 7 * fem),
+                                      child: Text(
+                                        namaLengkap,
+                                        style: SafeGoogleFont(
+                                          'Plus Jakarta Sans',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w600,
+                                          height: 1.26 * ffem / fem,
+                                          color: Color(0xff333333),
+                                        ),
+                                      ),
+                                    ),
+                                    Text(
+                                      divisi,
+                                      style: SafeGoogleFont(
+                                        'Plus Jakarta Sans',
+                                        fontSize: 12 * ffem,
+                                        fontWeight: FontWeight.w400,
+                                        height: 1.26 * ffem / fem,
+                                        color: Color(0xff333333),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/detailprofile');
+                        },
+                        child: Container(
+                          width: 16 * fem,
+                          height: 16 * fem,
+                          child: Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color.fromARGB(255, 245, 75, 32),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/ubahpassword');
+                  },
+                  child: Container(
                     padding: EdgeInsets.fromLTRB(
-                        24 * fem, 12 * fem, 24 * fem, 12 * fem),
+                        24 * fem, 16 * fem, 24 * fem, 47 * fem),
                     width: double.infinity,
-                    height: 96 * fem,
-                    decoration: BoxDecoration(
-                      color: Color(0xffffffff),
-                    ),
-                    child: Row(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 80 * fem, 0 * fem),
-                          height: double.infinity,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 6 * fem, 0 * fem),
-                                width: 72 * fem,
-                                height: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Color(0xfff95031),
-                                  borderRadius: BorderRadius.circular(36 * fem),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    'A',
-                                    style: SafeGoogleFont(
-                                      'Plus Jakarta Sans',
-                                      fontSize: 38.4000015259 * ffem,
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.5 * ffem / fem,
-                                      color: Color(0xffffffff),
-                                    ),
+                              0 * fem, 0 * fem, 0 * fem, 230 * fem),
+                          padding: EdgeInsets.fromLTRB(
+                              12 * fem, 12 * fem, 12 * fem, 12 * fem),
+                          width: double.infinity,
+                          height: 48 * fem,
+                          decoration: BoxDecoration(
+                            color: Color(0xffffffff),
+                            borderRadius: BorderRadius.circular(8 * fem),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x19000000),
+                                offset: Offset(0 * fem, 0 * fem),
+                                blurRadius: 10.5 * fem,
+                              ),
+                            ],
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            height: double.infinity,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Container(
+                                  margin: EdgeInsets.fromLTRB(
+                                      0 * fem, 0 * fem, 8 * fem, 0 * fem),
+                                  width: 24 * fem,
+                                  height: 24 * fem,
+                                  child: Image.asset(
+                                    'assets/images/security-safe.png',
+                                    color: Color(
+                                        0xfff95031), // Gantilah dengan warna yang sesuai
                                   ),
                                 ),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  Navigator.pushNamed(
-                                      context, '/detailprofile');
-                                },
-                                child: Container(
+                                Container(
                                   margin: EdgeInsets.fromLTRB(
-                                      0 * fem, 14.5 * fem, 0 * fem, 13.5 * fem),
+                                      0 * fem, 4 * fem, 0 * fem, 3.5 * fem),
                                   height: double.infinity,
-                                  child: Column(
+                                  child: Row(
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 7 * fem),
+                                        margin: EdgeInsets.fromLTRB(0 * fem,
+                                            0.5 * fem, 169 * fem, 0 * fem),
                                         child: Text(
-                                          namaLengkap,
+                                          'Ubah Password',
                                           style: SafeGoogleFont(
                                             'Plus Jakarta Sans',
-                                            fontSize: 16 * ffem,
-                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12 * ffem,
+                                            fontWeight: FontWeight.w500,
                                             height: 1.26 * ffem / fem,
-                                            color: Color(0xff333333),
+                                            letterSpacing: -0.25 * fem,
+                                            color: Color(0xff818181),
                                           ),
                                         ),
                                       ),
-                                      Text(
-                                        divisi,
-                                        style: SafeGoogleFont(
-                                          'Plus Jakarta Sans',
-                                          fontSize: 12 * ffem,
-                                          fontWeight: FontWeight.w400,
-                                          height: 1.26 * ffem / fem,
-                                          color: Color(0xff333333),
+                                      Container(
+                                        margin: EdgeInsets.fromLTRB(0 * fem,
+                                            0 * fem, 0 * fem, 0.5 * fem),
+                                        width: 16 * fem,
+                                        height: 16 * fem,
+                                        child: Icon(
+                                          Icons.arrow_forward_ios,
+                                          color:
+                                              Color.fromARGB(255, 245, 75, 32),
                                         ),
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(context, '/detailprofile');
-                          },
-                          child: Container(
-                            width: 16 * fem,
-                            height: 16 * fem,
-                            child: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Color.fromARGB(255, 245, 75, 32),
+                              ],
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, '/ubahpassword');
-                    },
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(
-                          24 * fem, 16 * fem, 24 * fem, 47 * fem),
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                                0 * fem, 0 * fem, 0 * fem, 230 * fem),
-                            padding: EdgeInsets.fromLTRB(
-                                12 * fem, 12 * fem, 12 * fem, 12 * fem),
-                            width: double.infinity,
-                            height: 48 * fem,
-                            decoration: BoxDecoration(
-                              color: Color(0xffffffff),
-                              borderRadius: BorderRadius.circular(8 * fem),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  offset: Offset(0 * fem, 0 * fem),
-                                  blurRadius: 10.5 * fem,
-                                ),
-                              ],
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              height: double.infinity,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 0 * fem, 8 * fem, 0 * fem),
-                                    width: 24 * fem,
-                                    height: 24 * fem,
-                                    child: Icon(
-                                      Icons.key,
-                                      color: Color.fromARGB(255, 245, 75, 32),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin: EdgeInsets.fromLTRB(
-                                        0 * fem, 4 * fem, 0 * fem, 3.5 * fem),
-                                    height: double.infinity,
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0.5 * fem, 169 * fem, 0 * fem),
-                                          child: Text(
-                                            'Ubah Password',
-                                            style: SafeGoogleFont(
-                                              'Plus Jakarta Sans',
-                                              fontSize: 12 * ffem,
-                                              fontWeight: FontWeight.w500,
-                                              height: 1.26 * ffem / fem,
-                                              letterSpacing: -0.25 * fem,
-                                              color: Color(0xff818181),
-                                            ),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 0.5 * fem),
-                                          width: 16 * fem,
-                                          height: 16 * fem,
-                                          child: Icon(
-                                            Icons.arrow_forward_ios,
-                                            color: Color.fromARGB(
-                                                255, 245, 75, 32),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
