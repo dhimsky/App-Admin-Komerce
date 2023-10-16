@@ -15,7 +15,7 @@ Future<void> saveDataToSharedPreferences(Map<String, dynamic> data) async {
 }
 
 Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
-  final apiUrl = 'http://192.168.1.101:9000/app/get-noHp';
+  final apiUrl = 'http://192.168.1.163:9000/app/get-noHp';
 
   final response = await http.get(
     Uri.parse('$apiUrl?email=$email'),
@@ -32,12 +32,12 @@ Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
     await saveDataToSharedPreferences(data);
     return UpdateNoHp.fromJson(data);
   } else {
-    throw Exception('Gagal mengambil data profil dari API');
+    throw ('Email Tidak Terdaftar di Database');
   }
 }
 
 Future<bool> updateNoHp(String newNoHp, String token) async {
-  final apiUrl = 'http://192.168.1.101:9000/app/update-noHp';
+  final apiUrl = 'http://192.168.1.163:9000/app/update-noHp';
 
   final Map<String, dynamic> requestBody = {
     'no_hp': newNoHp,
@@ -58,8 +58,14 @@ Future<bool> updateNoHp(String newNoHp, String token) async {
   print('Response dari API: ${response.body}');
 
   if (response.statusCode == 200) {
-    return true;
-  } else {
-    return false;
-  }
+  // Perubahan nomor HP berhasil.
+  return true;
+} else {
+  // Perubahan nomor HP gagal. Tampilkan pesan kesalahan jika tersedia.
+  final responseBody = json.decode(response.body);
+  final errorMessage = responseBody['message']; // Ganti 'message' dengan kunci pesan kesalahan yang sesuai.
+  return false;
+
+}
+
 }

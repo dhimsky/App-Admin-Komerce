@@ -22,7 +22,6 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
 
   Future<void> loadToken() async {
     token = await getToken();
-    print('$token');
   }
 
   @override
@@ -64,7 +63,6 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
             onPressed: () {
               String enteredText = _emailController.text;
               print('Teks yang diinputkan: $enteredText');
-              print('$token');
               if (_formKey.currentState != null &&
                   _formKey.currentState!.validate()) {
                 final tokenValue = token ?? "";
@@ -82,12 +80,13 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                 }).catchError((error) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text('Error: $error'),
+                      content: Text('$error'),
                     ),
                   );
                 });
               }
             },
+
             style: ElevatedButton.styleFrom(
               backgroundColor: Color(0xfff95031),
               shape: RoundedRectangleBorder(
@@ -197,12 +196,6 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                               key: _formKey,
                               child: TextFormField(
                                 controller: _emailController,
-                                validator: (value) {
-                                  if (value == null || value.isEmpty) {
-                                    return 'Email tidak boleh kosong';
-                                  }
-                                  return null;
-                                },
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(9 * fem),
                                   hintText: 'arieff****1@gmail.com',
@@ -215,7 +208,9 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                                   ),
                                   border: InputBorder.none,
                                 ),
+                                
                               ),
+                              
                             ),
                           ),
                         ),

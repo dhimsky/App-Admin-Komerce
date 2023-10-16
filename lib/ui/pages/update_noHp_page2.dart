@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../services/update_noHp_service.dart';
@@ -229,13 +230,11 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                           final newNoHp =
                                               _newNoHpController.text;
                                           final tokenValue = token ?? "";
-
                                           updateNoHp(newNoHp, tokenValue).then(
                                             (result) {
-                                              Navigator.pushNamed(
-                                                  context, '/landing');
-                                              bool updateSuccessful = true;
-                                              if (updateSuccessful) {
+                                              if (result == true) {
+                                                Navigator.pushNamed(
+                                                    context, '/landing');
                                                 Fluttertoast.showToast(
                                                   msg: 'No. HP berhasil diubah',
                                                   toastLength:
@@ -247,6 +246,15 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                                   textColor: Color(0xff333333),
                                                   fontSize: 16 * ffem,
                                                 );
+                                              } else if (result == false) {
+                                                Navigator.pop(context);
+                                                final snackBar = SnackBar(
+                                                  content: Text('Pastikan isi No HP dengan Benar'),
+                                                  duration:
+                                                      Duration(seconds: 3),
+                                                );
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(snackBar);
                                               }
                                             },
                                           );
@@ -504,8 +512,10 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                           ),
                         ),
                         Container(
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 0 * fem, 6 * fem),
                           padding: EdgeInsets.fromLTRB(
-                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                              0 * fem, 0 * fem, 0 * fem, 26 * fem),
                           width: double.infinity,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -514,7 +524,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                 margin: EdgeInsets.fromLTRB(
                                     0 * fem, 0 * fem, 0 * fem, 8 * fem),
                                 child: Text(
-                                  'No. HP Baru',
+                                  'No.Hp Baru',
                                   style: SafeGoogleFont(
                                     'Poppins',
                                     fontSize: 14 * ffem,
@@ -525,17 +535,19 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 0 * fem, 0 * fem),
                                 width: double.infinity,
                                 height: 40 * fem,
+                                decoration: BoxDecoration(
+                                  color: Color(0xfff8f8f8),
+                                  borderRadius: BorderRadius.circular(8 * fem),
+                                ),
                                 child: Stack(
                                   children: [
                                     Positioned(
                                       left: 0 * fem,
                                       top: 0 * fem,
                                       child: Container(
-                                        width: 64 * fem,
+                                        width: 54 * fem,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
                                           border: Border.all(
@@ -565,13 +577,12 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                       top: 0 * fem,
                                       child: Container(
                                         padding: EdgeInsets.fromLTRB(14 * fem,
-                                            0 * fem, 14 * fem, 0 * fem),
+                                            8 * fem, 14 * fem, 8 * fem),
                                         width: 273 * fem,
                                         height: 40 * fem,
                                         decoration: BoxDecoration(
                                           border: Border.all(
                                               color: Color(0xffe2e2e2)),
-                                          color: Color(0xffffffff),
                                           borderRadius: BorderRadius.only(
                                             topRight: Radius.circular(8 * fem),
                                             bottomRight:
@@ -581,38 +592,26 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
                                         child: Container(
                                           margin: EdgeInsets.fromLTRB(0 * fem,
                                               0 * fem, 0 * fem, 0 * fem),
-                                          width: 106 * fem,
+                                          width: 120 * fem,
                                           height: double.infinity,
                                           child: Form(
                                             key: _formKey,
-                                            child: Column(
-                                              children: [
-                                                TextFormField(
-                                                  controller:
-                                                      _newNoHpController,
-                                                  decoration: InputDecoration(
-                                                    contentPadding:
-                                                        EdgeInsets.fromLTRB(
-                                                            0 * fem,
-                                                            0 * fem,
-                                                            11 * fem,
-                                                            12 * fem),
-                                                    border: InputBorder.none,
-                                                  ),
-                                                  validator: (value) {
-                                                    Navigator.of(context).pop();
-                                                    if (value == null ||
-                                                        value.isEmpty) {
-                                                      return 'No. Hp tidak boleh kosong';
-                                                    }
-                                                    if (value.length < 10 ||
-                                                        value.length > 13) {
-                                                      return 'No. Hp harus terdiri dari 10 hingga 12 karakter';
-                                                    }
-                                                    return null;
-                                                  },
-                                                ),
-                                              ],
+                                            child: TextFormField(
+                                              controller: _newNoHpController,
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                              ),
+                                              style: SafeGoogleFont(
+                                                'Poppins',
+                                                fontSize: 14 * ffem,
+                                                fontWeight: FontWeight.w400,
+                                                height: 1.5 * ffem / fem,
+                                                color: Colors.black,
+                                              ),
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter
+                                                    .digitsOnly
+                                              ], // Batasi input hanya menerima angka.
                                             ),
                                           ),
                                         ),

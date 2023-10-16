@@ -8,8 +8,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  bool _isDisposed =
-      false; // variabel untuk melacak apakah widget sudah di-"dispose"
+  bool _isDisposed = false; // variabel untuk melacak apakah widget sudah di-"dispose"
 
   @override
   void initState() {
@@ -46,28 +45,27 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 250,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, // Mengatur konten di tengah layar
+            children: [
+              Image.asset(
+                'assets/images/logo.png',
+                width: 182,
+                height: 67.69,
+              ),
+              SizedBox(
+                height: 16, // Menambahkan jarak antara gambar dan teks
+              ),
+              Text(
+                'my.komerce.id',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xffB3B3B3),
                 ),
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: 182,
-                  height: 67.69,
-                ),
-                Text(
-                  'my.komerce.id',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xffB3B3B3),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
