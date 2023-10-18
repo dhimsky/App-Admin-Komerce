@@ -4,7 +4,7 @@ import 'package:komerce/models/verify_email_model.dart';
 
 class VerifyEmailService {
   final String apiUrl =
-      'http://192.168.1.163:9000/app'; // Ganti dengan URL API sesuai dengan kebutuhan Anda
+      'http://192.168.1.50:9000/app'; // Ganti dengan URL API sesuai dengan kebutuhan Anda
 
   Future<int> verifyEmail(VerifyEmail verifyEmail, String token) async {
     final response = await http.post(

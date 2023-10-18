@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/services/order_service.dart';
+import 'package:provider/provider.dart';
+
+class MyModel2 with ChangeNotifier {
+  bool isFormFilled = false;
+
+  void setFormFilled(bool value) {
+    isFormFilled = value;
+    notifyListeners();
+  }
+}
 
 class CariOrder extends StatefulWidget {
   @override
@@ -220,7 +230,7 @@ class _CariOrder extends State<CariOrder> {
                     width: 58.8 * fem,
                     height: 55.2 * fem,
                     child: Image.asset(
-                      'assets/images/alert-icon.png',
+                      'assets/images/failed-icon.png',
                       width: 58.8 * fem,
                       height: 55.2 * fem,
                     ),
@@ -232,7 +242,7 @@ class _CariOrder extends State<CariOrder> {
                       maxWidth: 197 * fem,
                     ),
                     child: Text(
-                      'Data Tidak Ditemukan, pastikan mengisi nomor resi dengan benar.',
+                      'Order data tidak ditemukan.',
                       textAlign: TextAlign.center,
                       style: SafeGoogleFont(
                         'Plus Jakarta Sans',
@@ -260,7 +270,7 @@ class _CariOrder extends State<CariOrder> {
                   ),
                   child: Center(
                     child: Text(
-                      'Oke',
+                      'Kembali',
                       style: SafeGoogleFont(
                         'Plus Jakarta Sans',
                         fontSize: 12 * ffem,
@@ -286,6 +296,7 @@ class _CariOrder extends State<CariOrder> {
 
   @override
   Widget build(BuildContext context) {
+    final myModel = Provider.of<MyModel2>(context);
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -301,11 +312,11 @@ class _CariOrder extends State<CariOrder> {
             color: Color(0xffffffff),
           ),
           child: ElevatedButton(
-            onPressed: () {
+            onPressed: myModel.isFormFilled ? () {
               _fetchOrderDetails();
-            },
+            } : null,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xfff95031),
+              primary: myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8 * fem),
               ),
@@ -422,6 +433,11 @@ class _CariOrder extends State<CariOrder> {
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: TextField(
+                                    onChanged: (value){
+                                      setState(() {
+                                        myModel.setFormFilled(value.isNotEmpty);
+                                      });
+                                    },
                                     controller: _orderNumberController,
                                     decoration: InputDecoration(
                                       contentPadding: EdgeInsets.all(9 * fem),

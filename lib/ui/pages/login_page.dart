@@ -302,6 +302,7 @@ class _LoginState extends State<Login> {
                                                             InputDecoration(
                                                           hintText:
                                                               'Masukkan username kamu',
+                                                              hintStyle: TextStyle(color: Color(0xffB3B3B3)),
                                                           border: InputBorder
                                                               .none, // Hilangkan border bawaan TextFormField
                                                         ),
@@ -402,6 +403,7 @@ class _LoginState extends State<Login> {
                                                           InputDecoration(
                                                         hintText:
                                                             'Password kamu',
+                                                            hintStyle: TextStyle(color: Color(0xffB3B3B3)),
                                                         border: InputBorder
                                                             .none, // Hilangkan border bawaan TextFormField
                                                       ),

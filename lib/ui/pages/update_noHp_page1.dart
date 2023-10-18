@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../services/update_noHp_service.dart';
 import '../../shared/theme.dart';
+
+class MyModel3 with ChangeNotifier {
+  bool isFormFilled = false;
+
+  void setFormFilled(bool value) {
+    isFormFilled = value;
+    notifyListeners();
+  }
+}
 
 class UpdateNoHp1 extends StatefulWidget {
   const UpdateNoHp1({super.key});
@@ -26,6 +36,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
 
   @override
   Widget build(BuildContext context) {
+    final myModel = Provider.of<MyModel3>(context);
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -60,7 +71,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
             color: Color(0xffffffff),
           ),
           child: ElevatedButton(
-            onPressed: () {
+            onPressed: myModel.isFormFilled ? () {
               String enteredText = _emailController.text;
               print('Teks yang diinputkan: $enteredText');
               if (_formKey.currentState != null &&
@@ -85,10 +96,9 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                   );
                 });
               }
-            },
-
+            } : null,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Color(0xfff95031),
+              primary: myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8 * fem),
               ),
@@ -195,6 +205,11 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                             child: Form(
                               key: _formKey,
                               child: TextFormField(
+                                onChanged: (value) {
+                                  setState(() {
+                                    myModel.setFormFilled(value.isNotEmpty);
+                                  });
+                                },
                                 controller: _emailController,
                                 decoration: InputDecoration(
                                   contentPadding: EdgeInsets.all(9 * fem),
