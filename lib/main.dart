@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:komerce/cubit/page_cubit.dart';
-import 'package:komerce/ui/pages/cari_order_page.dart';  // Hapus impor ini jika tidak diperlukan
+import 'package:komerce/ui/pages/cari_order_page.dart'; // Hapus impor ini jika tidak diperlukan
 import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/ui/pages/resend_verifikasi_page.dart';
 import 'package:komerce/ui/pages/splash_page.dart';
@@ -18,7 +18,6 @@ import 'dart:io';
 import 'package:komerce/ui/pages/update_noHp_page1.dart';
 import 'package:komerce/ui/pages/update_noHp_page2.dart';
 import 'package:provider/provider.dart';
-
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -40,21 +39,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (context) => MyModel(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => MyModel2(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => MyModel3(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => MyModel4(),
-        ),
-        ChangeNotifierProvider(
-          create: (context) => MyModel5(),
-        ),
+        ChangeNotifierProvider(create: (context) => MyModel()),
+        ChangeNotifierProvider(create: (context) => MyModel2()),
+        ChangeNotifierProvider(create: (context) => MyModel3()),
+        ChangeNotifierProvider(create: (context) => MyModel4()),
+        ChangeNotifierProvider(create: (context) => MyModel5()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -78,8 +67,8 @@ class MyApp extends StatelessWidget {
             '/ubahpassword': (context) => ChangePasswordPage(),
             '/cariorder': (context) => CariOrder(),
             '/detailorder': (context) => DetailOrder(
-              orderNumber: '',
-            ),
+                  orderNumber: '',
+                ),
             '/updatenohp1': (context) => UpdateNoHp1(),
             '/updatenohp2': (context) => UpdateNoHp2(),
             '/resendverifikasi': (context) => ResendVerifikasi(),
@@ -89,4 +78,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

@@ -3,6 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:komerce/models/update_noHp_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+class UpdateHp {
+  
+}
 Future<String?> getToken() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.getString('token');
@@ -15,7 +19,8 @@ Future<void> saveDataToSharedPreferences(Map<String, dynamic> data) async {
 }
 
 Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
-  final apiUrl = 'http://192.168.1.50:9000/app/get-noHp';
+  final apiUrl = 'http://192.168.1.91:9000/app/get-noHp';
+  bool isLoading = false;
 
   final response = await http.get(
     Uri.parse('$apiUrl?email=$email'),
@@ -37,7 +42,7 @@ Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
 }
 
 Future<bool> updateNoHp(String newNoHp, String token) async {
-  final apiUrl = 'http://192.168.1.50:9000/app/update-noHp';
+  final apiUrl = 'http://192.168.1.91:9000/app/update-noHp';
 
   final Map<String, dynamic> requestBody = {
     'no_hp': newNoHp,
@@ -58,14 +63,13 @@ Future<bool> updateNoHp(String newNoHp, String token) async {
   print('Response dari API: ${response.body}');
 
   if (response.statusCode == 200) {
-  // Perubahan nomor HP berhasil.
-  return true;
-} else {
-  // Perubahan nomor HP gagal. Tampilkan pesan kesalahan jika tersedia.
-  final responseBody = json.decode(response.body);
-  final errorMessage = responseBody['message']; // Ganti 'message' dengan kunci pesan kesalahan yang sesuai.
-  return false;
-
-}
-
+    // Perubahan nomor HP berhasil.
+    return true;
+  } else {
+    // Perubahan nomor HP gagal. Tampilkan pesan kesalahan jika tersedia.
+    final responseBody = json.decode(response.body);
+    final errorMessage = responseBody[
+        'message']; // Ganti 'message' dengan kunci pesan kesalahan yang sesuai.
+    return false;
+  }
 }

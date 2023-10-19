@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:komerce/models/response_model.dart';
 import 'package:komerce/controller/login_controller.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../shared/theme.dart';
@@ -302,7 +303,9 @@ class _LoginState extends State<Login> {
                                                             InputDecoration(
                                                           hintText:
                                                               'Masukkan username kamu',
-                                                              hintStyle: TextStyle(color: Color(0xffB3B3B3)),
+                                                          hintStyle: TextStyle(
+                                                              color: Color(
+                                                                  0xffB3B3B3)),
                                                           border: InputBorder
                                                               .none, // Hilangkan border bawaan TextFormField
                                                         ),
@@ -310,7 +313,8 @@ class _LoginState extends State<Login> {
                                                           fontSize: 16,
                                                           fontWeight:
                                                               FontWeight.w400,
-                                                          color: Colors.black, // Menggunakan warna #B3B3B3
+                                                          color: Colors
+                                                              .black, // Menggunakan warna #B3B3B3
                                                         ),
                                                         onChanged: (value) {
                                                           // Reset pesan kesalahan username saat nilai berubah
@@ -403,7 +407,9 @@ class _LoginState extends State<Login> {
                                                           InputDecoration(
                                                         hintText:
                                                             'Password kamu',
-                                                            hintStyle: TextStyle(color: Color(0xffB3B3B3)),
+                                                        hintStyle: TextStyle(
+                                                            color: Color(
+                                                                0xffB3B3B3)),
                                                         border: InputBorder
                                                             .none, // Hilangkan border bawaan TextFormField
                                                       ),
@@ -489,22 +495,15 @@ class _LoginState extends State<Login> {
                       ),
                       (_controller.isLoading)
                           ? Center(
-                              child: SizedBox(
-                                height: 32,
-                                width: 32,
-                                child: CircularProgressIndicator(
-                                  color: Colors.blue,
-                                  strokeWidth: 3,
-                                ),
+                              child: Lottie.asset(
+                                'assets/json/Logo_Komerce_Loading_Page.json',
+                                fit: BoxFit.cover,
+                                height: 60,
+                                width: 60,
                               ),
                             )
                           : ElevatedButton(
                               onPressed: _login,
-                              // () {
-                              //   if (_formKey.currentState!.validate()) {
-                              //     Navigator.of(context).pushNamed('/landing');
-                              //   }
-                              // },
                               style: ButtonStyle(
                                 backgroundColor:
                                     MaterialStateProperty.all<Color>(

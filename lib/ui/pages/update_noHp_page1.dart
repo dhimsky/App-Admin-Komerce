@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../../services/update_noHp_service.dart';
 import '../../shared/theme.dart';
@@ -22,6 +23,8 @@ class UpdateNoHp1 extends StatefulWidget {
 class _UpdateNoHp1State extends State<UpdateNoHp1> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
+  UpdateNoHp1 _updateNoHp1 = UpdateNoHp1();
+  bool isLoading = false;
   String? token;
 
   @override
@@ -70,51 +73,81 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
           decoration: BoxDecoration(
             color: Color(0xffffffff),
           ),
-          child: ElevatedButton(
-            onPressed: myModel.isFormFilled ? () {
-              String enteredText = _emailController.text;
-              print('Teks yang diinputkan: $enteredText');
-              if (_formKey.currentState != null &&
-                  _formKey.currentState!.validate()) {
-                final tokenValue = token ?? "";
-                fetchUserProfile(_emailController.text, tokenValue)
-                    .then((result) {
-                  if (result.email == _emailController.text) {
-                    Navigator.pushNamed(context, '/updatenohp2');
-                  } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text('Email does not match API data'),
-                      ),
-                    );
-                  }
-                }).catchError((error) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('$error'),
+          child: isLoading
+              ? Center(
+                  child: Lottie.asset(
+                    'assets/json/Logo_Komerce_Loading_Page.json',
+                    fit: BoxFit.cover,
+                    height: 60,
+                    width: 60,
+                  ),
+                )
+              : ElevatedButton(
+                  onPressed: myModel.isFormFilled
+                      ? () {
+                          setState(() {
+                            isLoading = true;
+                          });
+
+                          String enteredText = _emailController.text;
+                          print('Teks yang diinputkan: $enteredText');
+                          if (_formKey.currentState != null &&
+                              _formKey.currentState!.validate()) {
+                            final tokenValue = token ?? "";
+
+                            // Menunda indikator loading selama 2 detik sebelum memulai pencarian
+                            Future.delayed(Duration(seconds: 3), () {
+                              fetchUserProfile(
+                                      _emailController.text, tokenValue)
+                                  .then((result) {
+                                setState(() {
+                                  isLoading = false;
+                                });
+
+                                if (result.email == _emailController.text) {
+                                  Navigator.pushNamed(context, '/updatenohp2');
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content:
+                                          Text('Email does not match API data'),
+                                    ),
+                                  );
+                                }
+                              }).catchError((error) {
+                                setState(() {
+                                  isLoading = false;
+                                });
+
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('$error'),
+                                  ),
+                                );
+                              });
+                            });
+                          }
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    primary:
+                        myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8 * fem),
                     ),
-                  );
-                });
-              }
-            } : null,
-            style: ElevatedButton.styleFrom(
-              primary: myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8 * fem),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 0 * fem),
-            ),
-            child: Center(
-              child: Text(
-                'Lanjutkan',
-                style: TextStyle(
-                  fontSize: 14 * ffem,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xffffffff),
+                    padding: EdgeInsets.symmetric(vertical: 0 * fem),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Lanjutkan',
+                      style: TextStyle(
+                        fontSize: 14 * ffem,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
         ),
       ),
       body: SafeArea(
@@ -223,9 +256,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
                                   ),
                                   border: InputBorder.none,
                                 ),
-                                
                               ),
-                              
                             ),
                           ),
                         ),

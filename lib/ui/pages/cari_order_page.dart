@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/services/order_service.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 class MyModel2 with ChangeNotifier {
@@ -114,7 +115,7 @@ class _CariOrder extends State<CariOrder> {
 
     // Mulai menampilkan loading indicator.
     setState(() {
-      isLoading = true;
+      _orderService.isLoading = true;
     });
 
     try {
@@ -289,7 +290,7 @@ class _CariOrder extends State<CariOrder> {
     } finally {
       // Selesai mengambil data, hentikan loading indicator.
       setState(() {
-        isLoading = false;
+        _orderService.isLoading = false;
       });
     }
   }
@@ -302,8 +303,8 @@ class _CariOrder extends State<CariOrder> {
     double ffem = fem * 0.97;
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
-        color: Colors.white, // Ubah latar belakang
-        elevation: 0, // Menghapus shadow
+        color: Colors.white,
+        elevation: 0,
         child: Container(
           padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 30 * fem),
           width: double.infinity,
@@ -311,27 +312,47 @@ class _CariOrder extends State<CariOrder> {
           decoration: BoxDecoration(
             color: Color(0xffffffff),
           ),
-          child: ElevatedButton(
-            onPressed: myModel.isFormFilled ? () {
-              _fetchOrderDetails();
-            } : null,
-            style: ElevatedButton.styleFrom(
-              primary: myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8 * fem),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 0 * fem),
-            ),
-            child: Center(
-              child: Text(
-                'Cari Order',
-                style: TextStyle(
-                  fontSize: 14 * ffem,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xffffffff),
+          child: Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              if (_orderService.isLoading)
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Lottie.asset(
+                      'assets/json/Logo_Komerce_Loading_Page.json',
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              if (!_orderService.isLoading)
+                ElevatedButton(
+                  onPressed: myModel.isFormFilled
+                      ? () {
+                          _fetchOrderDetails();
+                        }
+                      : null,
+                  style: ElevatedButton.styleFrom(
+                    primary:
+                        myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8 * fem),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 0 * fem),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Cari Order',
+                      style: TextStyle(
+                        fontSize: 14 * ffem,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xffffffff),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
       ),
@@ -394,7 +415,6 @@ class _CariOrder extends State<CariOrder> {
                   ),
                 ),
                 Container(
-                  
                   width: double.infinity,
                   height: 100 * fem,
                   child: Stack(
@@ -433,7 +453,7 @@ class _CariOrder extends State<CariOrder> {
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: TextField(
-                                    onChanged: (value){
+                                    onChanged: (value) {
                                       setState(() {
                                         myModel.setFormFilled(value.isNotEmpty);
                                       });
