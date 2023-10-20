@@ -286,42 +286,44 @@ class _ProfileState extends State<Profile> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(
-                            0 * fem, 0 * fem, 80 * fem, 0 * fem),
-                        height: double.infinity,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 0 * fem, 5 * fem, 0 * fem),
-                              width: 72 * fem,
-                              height: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Color(0xfff95031),
-                                borderRadius: BorderRadius.circular(36 * fem),
-                              ),
-                              child: Align(
-                                alignment: Alignment
-                                    .center, // Menempatkan teks di tengah container
-                                child: Text(
-                                  'A',
-                                  style: SafeGoogleFont(
-                                    'Plus Jakarta Sans',
-                                    fontSize: 38.4000015259 * ffem,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.5 * ffem / fem,
-                                    color: Color(0xffffffff),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushNamed(context, '/detailprofile');
+                        },
+                        child: Container(
+                          margin: EdgeInsets.fromLTRB(
+                              0 * fem, 0 * fem, 80 * fem, 0 * fem),
+                          height: double.infinity,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.fromLTRB(
+                                    0 * fem, 0 * fem, 5 * fem, 0 * fem),
+                                width: 72 * fem,
+                                height: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Color(0xfff95031),
+                                  borderRadius: BorderRadius.circular(36 * fem),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    (namaLengkap.isNotEmpty ? namaLengkap[0] : ''),
+                                    style: SafeGoogleFont(
+                                      'Plus Jakarta Sans',
+                                      fontSize: 38.4000015259 * ffem,
+                                      fontWeight: FontWeight.w500,
+                                      height: 1.5 * ffem / fem,
+                                      color: Color(0xffffffff),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pushNamed(context, '/detailprofile');
-                              },
-                              child: Container(
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Container(
                                 margin: EdgeInsets.fromLTRB(
                                     0 * fem, 14.5 * fem, 0 * fem, 13.5 * fem),
                                 height: double.infinity,
@@ -355,23 +357,27 @@ class _ProfileState extends State<Profile> {
                                   ],
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushNamed(context, '/detailprofile');
-                        },
-                        child: Container(
-                          width: 16 * fem,
-                          height: 16 * fem,
-                          child: Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color.fromARGB(255, 245, 75, 32),
+                            ],
                           ),
                         ),
                       ),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.pushNamed(context, '/detailprofile');
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment
+                                .end, // Mengatur ikon di pojok kanan
+                            children: [
+                              Icon(
+                                Icons.arrow_forward_ios,
+                                color: Color(0xfff95031),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

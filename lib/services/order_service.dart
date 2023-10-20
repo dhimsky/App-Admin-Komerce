@@ -3,14 +3,14 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/order_model.dart';
+
 class OrderService {
-   final String baseUrl = 'http://192.168.1.91:9000/app/komship';
+  final String baseUrl = 'http://192.168.1.91:9000/app/komship';
   bool isLoading = false;
 
   Future<Map<String, dynamic>> getOrderDetails(String orderNumber) async {
     final prefs = await SharedPreferences.getInstance();
     final bearerToken = prefs.getString('token');
-    print('$bearerToken');
     print('$orderNumber');
 
     final response = await http.get(
@@ -47,9 +47,11 @@ class OrderService {
           'Anda tidak memiliki otorisasi untuk mengakses data ini. Silakan login kembali.');
     } else {
       // Menangani kasus jika status code adalah selain 200 atau 401
+      print('Response API: ${response.body}');
       final errorMessage = jsonDecode(response.body)['message'] ??
           'Gagal mengambil detail pesanan';
       throw Exception(errorMessage);
+      
     }
   }
 }
