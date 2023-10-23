@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 import 'package:komerce/ui/pages/detail_order_page.dart';
 import 'package:komerce/services/order_service.dart';
-import 'package:lottie/lottie.dart';
+import 'package:komerce/ui/widgets/loading.dart';
 import 'package:provider/provider.dart';
 
 class MyModel2 with ChangeNotifier {
@@ -26,6 +26,13 @@ class _CariOrder extends State<CariOrder> {
 
   bool isLoading = false; // Tambahkan variabel isLoading.
 
+  @override
+  void initState() {
+    super.initState();
+    // Ketika halaman dimulai, atur isFormFilled ke false.
+    Provider.of<MyModel2>(context, listen: false).setFormFilled(false);
+  }
+
   Future<void> _fetchOrderDetails() async {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
@@ -38,6 +45,7 @@ class _CariOrder extends State<CariOrder> {
         builder: (BuildContext context) {
           return AlertDialog(
             content: Container(
+              
               padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
               width: 247 * fem,
               height: 105 * fem,
@@ -298,6 +306,7 @@ class _CariOrder extends State<CariOrder> {
   @override
   Widget build(BuildContext context) {
     final myModel = Provider.of<MyModel2>(context);
+
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -316,16 +325,7 @@ class _CariOrder extends State<CariOrder> {
             alignment: Alignment.center,
             children: <Widget>[
               if (_orderService.isLoading)
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    height: 100,
-                    width: 100,
-                    child: Lottie.asset(
-                      'assets/json/Logo_Komerce_Loading_Page.json',
-                    ),
-                  ),
-                ),
+                CircularProgressIndicator(), // Tampilkan widget LoadingScreen jika isLoading true
               if (!_orderService.isLoading)
                 ElevatedButton(
                   onPressed: myModel.isFormFilled

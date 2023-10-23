@@ -495,12 +495,7 @@ class _LoginState extends State<Login> {
                       ),
                       (_controller.isLoading)
                           ? Center(
-                              child: Lottie.asset(
-                                'assets/json/Logo_Komerce_Loading_Page.json',
-                                fit: BoxFit.cover,
-                                height: 60,
-                                width: 60,
-                              ),
+                              child: CircularProgressIndicator(),
                             )
                           : ElevatedButton(
                               onPressed: _login,

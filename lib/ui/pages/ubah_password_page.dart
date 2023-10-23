@@ -39,6 +39,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   void initState() {
     super.initState();
     _loadTokenFromSharedPreferences();
+    Provider.of<MyModel>(context, listen: false).setFormFilled(false);
   }
 
   void _loadTokenFromSharedPreferences() async {

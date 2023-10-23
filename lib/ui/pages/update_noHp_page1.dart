@@ -31,6 +31,14 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
   void initState() {
     super.initState();
     loadToken();
+    Provider.of<MyModel3>(context, listen: false).setFormFilled(false);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // Anda bisa tetap memanggil super.dispose() di sini.
+    // Tidak perlu melakukan aksi lain yang melibatkan context di sini.
   }
 
   Future<void> loadToken() async {
@@ -75,12 +83,7 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
           ),
           child: isLoading
               ? Center(
-                  child: Lottie.asset(
-                    'assets/json/Logo_Komerce_Loading_Page.json',
-                    fit: BoxFit.cover,
-                    height: 60,
-                    width: 60,
-                  ),
+                  child: CircularProgressIndicator(),
                 )
               : ElevatedButton(
                   onPressed: myModel.isFormFilled

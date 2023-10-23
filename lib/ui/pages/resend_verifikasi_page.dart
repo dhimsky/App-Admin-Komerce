@@ -32,6 +32,7 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
   void initState() {
     super.initState();
     _loadTokenFromSharedPreferences();
+    Provider.of<MyModel5>(context, listen: false).setFormFilled(false);
   }
 
   void _loadTokenFromSharedPreferences() async {
@@ -698,7 +699,7 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                        24 * fem, 37 * fem, 24 * fem, 188.31 * fem),
+                        24 * fem, 37 * fem, 24 * fem, 100 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,

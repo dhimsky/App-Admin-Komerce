@@ -36,6 +36,7 @@ class _UpdateNoHp2State extends State<UpdateNoHp2> {
     super.initState();
     loadDataFromSharedPreferences();
     loadToken();
+    Provider.of<MyModel4>(context, listen: false).setFormFilled(false);
   }
 
   Future<void> loadDataFromSharedPreferences() async {

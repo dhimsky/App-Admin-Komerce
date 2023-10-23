@@ -59,7 +59,7 @@ class LoginController {
       } else if (result.statusCode == 401) {
         errorMessage = ''; // Reset pesan kesalahan umum
         errorMessageUsername = "Username tidak ditemukan"; // Set pesan kesalahan username
-        errorMessagePassword = "Username atau password salah"; // Set pesan kesalahan password
+        errorMessagePassword = "Password salah"; // Set pesan kesalahan password
         return MyResponse(status: 1, message: "Username atau password salah");
       } else {
         errorMessage = ''; // Reset pesan kesalahan umum
