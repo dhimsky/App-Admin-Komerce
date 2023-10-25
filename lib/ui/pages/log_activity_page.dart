@@ -83,7 +83,7 @@ class LogActivity extends StatelessWidget {
                                   Expanded(
                                     child: SizedBox(
                                       child: Text(
-                                        'example text for field',
+                                        'Cari Nama Admin',
                                         style: TextStyle(
                                           color: Color(0xFFC2C2C2),
                                           fontSize: 14,
@@ -94,7 +94,7 @@ class LogActivity extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: 10),
+                                  const SizedBox(width: 12),
                                   Container(
                                     width: 24,
                                     height: 24,
@@ -125,29 +125,69 @@ class LogActivity extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    Container(
-                      width: 48,
-                      height: 48,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: BoxDecoration(),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 48,
-                            height: 48,
-                            child: Image.asset(
-                              'assets/images/filter-square.png',
-                              width: 375 * fem,
-                              height: 273 * fem,
-                            ),
-                          ),
-                        ],
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.transparent,
+                        elevation: 0,
+                        padding: EdgeInsets.all(0),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8 * fem),
+                        ),
                       ),
-                    ),
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(30))),
+                            builder: (BuildContext context) {
+                              return Container(
+                                padding: EdgeInsets.fromLTRB(
+                                    24 * fem, 15 * fem, 24 * fem, 32 * fem),
+                                width: 375 * fem,
+                                height: 300 * fem,
+                                decoration: BoxDecoration(
+                                  color: Color(0xffffffff),
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(30 * fem),
+                                    topRight: Radius.circular(30 * fem),
+                                  ),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.fromLTRB(135.5 * fem,
+                                          0 * fem, 135.5 * fem, 32 * fem),
+                                      width: double.infinity,
+                                      height: 6 * fem,
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(3 * fem),
+                                        color: Color(0xffc2c2c2),
+                                      ),
+                                    ),
+                                    
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          width: 48,
+                          height: 48,
+                          child: Image.asset(
+                            'assets/images/filter-square.png',
+                            width: 375 * fem,
+                            height: 273 * fem,
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),

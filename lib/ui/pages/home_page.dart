@@ -294,38 +294,29 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                   Container(
-                                    padding: EdgeInsets.fromLTRB(
-                                        24 * fem, 0 * fem, 24 * fem, 0 * fem),
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: 24 * fem),
                                     width: double.infinity,
                                     height: 65 * fem,
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.circular(8 * fem),
+                                      borderRadius: BorderRadius.circular(
+                                          8 * fem), // Atur borderRadius di sini
                                     ),
                                     child: Container(
                                       width: double.infinity,
                                       height: double.infinity,
                                       decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/CardSaldo.png'),
+                                        fit: BoxFit.cover,
+                                      ),
                                         color: Color(0xfffba63c),
-                                        borderRadius:
-                                            BorderRadius.circular(8 * fem),
+                                        borderRadius: BorderRadius.circular(8 *
+                                            fem), // Atur borderRadius di sini
                                       ),
                                       child: Stack(
                                         children: [
-                                          Positioned(
-                                            left: -12 * fem,
-                                            top: -126 * fem,
-                                            child: Align(
-                                              child: SizedBox(
-                                                width: 378 * fem,
-                                                height: 235 * fem,
-                                                child: Image.asset(
-                                                  'assets/images/CardSaldo.png',
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
                                           Positioned(
                                             left: 12 * fem,
                                             top: 12 * fem,

@@ -36,42 +36,6 @@ class _CariOrder extends State<CariOrder> {
     });
   }
 
-  void showLoading() {
-    setState(() {
-      isLoading = true;
-    });
-
-    // Simulasikan tugas yang memerlukan waktu selama 3 detik
-    Future.delayed(Duration(seconds: 3), () {
-      setState(() {
-        isLoading = false;
-      });
-      if (loadingOverlay != null) {
-        loadingOverlay!.remove(); // Tutup LoadingScreen
-      }
-    });
-
-    // Tampilkan LoadingScreen di atas MainScreen
-    loadingOverlay = createOverlayEntry();
-    Overlay.of(context)?.insert(loadingOverlay!);
-  }
-
-  OverlayEntry createOverlayEntry() {
-    RenderBox renderBox = context.findRenderObject() as RenderBox;
-    var size = renderBox.size;
-    var offset = renderBox.localToGlobal(Offset.zero);
-
-    return OverlayEntry(
-      builder: (context) => Positioned(
-        left: offset.dx,
-        top: offset.dy,
-        width: size.width,
-        height: size.height,
-        child: LoadingScreen(),
-      ),
-    );
-  }
-
   Future<void> _showAlertDialog(
       BuildContext context, String title, String message) {
     double baseWidth = 375;
@@ -157,6 +121,22 @@ class _CariOrder extends State<CariOrder> {
     );
   }
 
+  OverlayEntry createOverlayEntry() {
+    RenderBox renderBox = context.findRenderObject() as RenderBox;
+    var size = renderBox.size;
+    var offset = renderBox.localToGlobal(Offset.zero);
+
+    return OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy,
+        width: size.width,
+        height: size.height,
+        child: LoadingScreen(),
+      ),
+    );
+  }
+
   Future<void> _fetchOrderDetails() async {
     final orderNumber = _orderNumberController.text.trim();
     if (orderNumber.isEmpty) {
@@ -166,7 +146,8 @@ class _CariOrder extends State<CariOrder> {
     }
 
     setState(() {
-      _orderService.isLoading = true;
+      loadingOverlay = createOverlayEntry();
+      Overlay.of(context)?.insert(loadingOverlay!);
     });
 
     try {
@@ -186,12 +167,14 @@ class _CariOrder extends State<CariOrder> {
       }
     } catch (e) {
       // Penanganan kesalahan terkait dengan komunikasi jaringan atau lainnya
-      _showAlertDialog(
-        context,
-        'Data Pemesanan Tidak Ditemukan',
-        'Order data tidak ditemukan',
-      );
+      _showAlertDialog(context, 'Data Pemesanan Tidak Ditemukan',
+          'Order data tidak ditemukan');
     } finally {
+      // Hapus loadingOverlay setelah selesai
+      if (loadingOverlay != null) {
+        loadingOverlay!.remove();
+      }
+
       setState(() {
         _orderService.isLoading = false;
       });
@@ -220,15 +203,15 @@ class _CariOrder extends State<CariOrder> {
             alignment: Alignment.center,
             children: <Widget>[
               if (_orderService.isLoading)
-                CircularProgressIndicator(), // Tampilkan widget LoadingScreen jika isLoading true
+                createOverlayEntry().builder(
+                    context), // Tampilkan widget LoadingScreen jika isLoading true
               if (!_orderService.isLoading)
                 ElevatedButton(
-                  onPressed: myModel.isFormFilled
-                      ? () {
-                          _fetchOrderDetails();
-                          showLoading();
-                        }
-                      : null,
+                  onPressed: () {
+                    if (myModel.isFormFilled && !_orderService.isLoading) {
+                      _fetchOrderDetails();
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     primary:
                         myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,
