@@ -118,8 +118,7 @@ class _DetailOrder extends State<DetailOrder> {
                                   children: [
                                     GestureDetector(
                                       onTap: () {
-                                        Navigator.pushNamed(
-                                            context, '/cariorder');
+                                        Navigator.pop(context);
                                       },
                                       child: Container(
                                         margin: EdgeInsets.fromLTRB(0 * fem,

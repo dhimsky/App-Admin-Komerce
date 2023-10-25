@@ -31,8 +31,12 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
   void initState() {
     super.initState();
     loadToken();
-    Provider.of<MyModel3>(context, listen: false).setFormFilled(false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Setelah widget dibangun sepenuhnya, Anda dapat mengakses context dan melakukan perubahan state.
+      Provider.of<MyModel3>(context, listen: false).setFormFilled(false);
+    });
   }
+  
 
   @override
   void dispose() {

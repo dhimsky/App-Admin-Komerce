@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Scaffold(
+    return Scaffold(  
       bottomNavigationBar: BottomAppBar(
         color: Colors.white, // Ubah latar belakang
         elevation: 0, // Menghapus shadow

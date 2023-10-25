@@ -417,6 +417,7 @@ class _HomePageState extends State<HomePage> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     GestureDetector(
+                                      behavior: HitTestBehavior.translucent,
                                       onTap: () {
                                         Navigator.pushNamed(
                                             context, '/cariorder');
@@ -478,6 +479,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     GestureDetector(
+                                      behavior: HitTestBehavior.translucent,
                                       onTap: () {
                                         Navigator.pushNamed(
                                             context, '/updatenohp1');
@@ -591,6 +593,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                     GestureDetector(
+                                      behavior: HitTestBehavior.translucent,
                                       onTap: () {
                                         Navigator.pushNamed(
                                             context, '/resendverifikasi');

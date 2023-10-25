@@ -25,103 +25,146 @@ class _CariOrder extends State<CariOrder> {
   String _result = '';
 
   bool isLoading = false; // Tambahkan variabel isLoading.
+  OverlayEntry? loadingOverlay;
 
   @override
   void initState() {
     super.initState();
-    // Ketika halaman dimulai, atur isFormFilled ke false.
-    Provider.of<MyModel2>(context, listen: false).setFormFilled(false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Setelah widget dibangun sepenuhnya, Anda dapat mengakses context dan melakukan perubahan state.
+      Provider.of<MyModel2>(context, listen: false).setFormFilled(false);
+    });
   }
 
-  Future<void> _fetchOrderDetails() async {
+  void showLoading() {
+    setState(() {
+      isLoading = true;
+    });
+
+    // Simulasikan tugas yang memerlukan waktu selama 3 detik
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        isLoading = false;
+      });
+      if (loadingOverlay != null) {
+        loadingOverlay!.remove(); // Tutup LoadingScreen
+      }
+    });
+
+    // Tampilkan LoadingScreen di atas MainScreen
+    loadingOverlay = createOverlayEntry();
+    Overlay.of(context)?.insert(loadingOverlay!);
+  }
+
+  OverlayEntry createOverlayEntry() {
+    RenderBox renderBox = context.findRenderObject() as RenderBox;
+    var size = renderBox.size;
+    var offset = renderBox.localToGlobal(Offset.zero);
+
+    return OverlayEntry(
+      builder: (context) => Positioned(
+        left: offset.dx,
+        top: offset.dy,
+        width: size.width,
+        height: size.height,
+        child: LoadingScreen(),
+      ),
+    );
+  }
+
+  Future<void> _showAlertDialog(
+      BuildContext context, String title, String message) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    final orderNumber = _orderNumberController.text.trim();
-    if (orderNumber.isEmpty) {
-      // Tampilkan popup atau pesan bahwa orderNumber belum diisi.
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Container(
-              
-              padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-              width: 247 * fem,
-              height: 105 * fem,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-                borderRadius: BorderRadius.circular(8 * fem),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Container(
+            padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+            width: 247 * fem,
+            height: 105 * fem,
+            decoration: BoxDecoration(
+              color: Color(0xffffffff),
+              borderRadius: BorderRadius.circular(8 * fem),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(
+                      0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
+                  width: 58.8 * fem,
+                  height: 55.2 * fem,
+                  child: Image.asset(
+                    'assets/images/failed-icon.png',
                     width: 58.8 * fem,
                     height: 55.2 * fem,
-                    child: Image.asset(
-                      'assets/images/alert-icon.png',
-                      width: 58.8 * fem,
-                      height: 55.2 * fem,
+                  ),
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                  constraints: BoxConstraints(
+                    maxWidth: 197 * fem,
+                  ),
+                  child: Text(
+                    message,
+                    textAlign: TextAlign.center,
+                    style: SafeGoogleFont(
+                      'Plus Jakarta Sans',
+                      fontSize: 12 * ffem,
+                      fontWeight: FontWeight.w500,
+                      height: 1.26 * ffem / fem,
+                      color: Color(0xff333333),
                     ),
                   ),
-                  Container(
-                    margin:
-                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                    constraints: BoxConstraints(
-                      maxWidth: 197 * fem,
-                    ),
-                    child: Text(
-                      'Nomor Resi Belum Diisi, silakan isi nomor resi terlebih dahulu!',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Plus Jakarta Sans',
-                        fontSize: 12 * ffem,
-                        fontWeight: FontWeight.w500,
-                        height: 1.26 * ffem / fem,
-                        color: Color(0xff333333),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 40 * fem,
-                  decoration: BoxDecoration(
-                    color: Color(0xfff95031),
-                    borderRadius: BorderRadius.circular(8 * fem),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Oke',
-                      style: SafeGoogleFont(
-                        'Plus Jakarta Sans',
-                        fontSize: 12 * ffem,
-                        fontWeight: FontWeight.w400,
-                        height: 1.26 * ffem / fem,
-                        color: Color(0xffffffff),
-                      ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Container(
+                width: double.infinity,
+                height: 40 * fem,
+                decoration: BoxDecoration(
+                  color: Color(0xfff95031),
+                  borderRadius: BorderRadius.circular(8 * fem),
+                ),
+                child: Center(
+                  child: Text(
+                    'Oke',
+                    style: SafeGoogleFont(
+                      'Plus Jakarta Sans',
+                      fontSize: 12 * ffem,
+                      fontWeight: FontWeight.w400,
+                      height: 1.26 * ffem / fem,
+                      color: Color(0xffffffff),
                     ),
                   ),
                 ),
               ),
-            ],
-          );
-        },
-      );
-      return; // Keluar dari fungsi jika orderNumber belum diisi.
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Future<void> _fetchOrderDetails() async {
+    final orderNumber = _orderNumberController.text.trim();
+    if (orderNumber.isEmpty) {
+      _showAlertDialog(context, 'Nomor Resi Belum Diisi',
+          'Silakan isi nomor resi terlebih dahulu!');
+      return;
     }
 
-    // Mulai menampilkan loading indicator.
     setState(() {
       _orderService.isLoading = true;
     });
@@ -129,174 +172,26 @@ class _CariOrder extends State<CariOrder> {
     try {
       final orderData = await _orderService.getOrderDetails(orderNumber);
       if (orderData != null) {
-        // Data pemesanan ditemukan, arahkan pengguna ke halaman detail_order_page.
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) => DetailOrder(orderNumber: orderNumber),
           ),
         );
       } else {
-        // Tampilkan popup atau pesan bahwa data pemesanan tidak ditemukan.
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return AlertDialog(
-              content: Container(
-                padding:
-                    EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                width: 247 * fem,
-                height: 105 * fem,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                  borderRadius: BorderRadius.circular(8 * fem),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
-                      width: 58.8 * fem,
-                      height: 55.2 * fem,
-                      child: Image.asset(
-                        'assets/images/alert-icon.png',
-                        width: 58.8 * fem,
-                        height: 55.2 * fem,
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.fromLTRB(
-                          0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                      constraints: BoxConstraints(
-                        maxWidth: 197 * fem,
-                      ),
-                      child: Text(
-                        'Data pemesanan dengan nomor tersebut tidak ditemukan.',
-                        textAlign: TextAlign.center,
-                        style: SafeGoogleFont(
-                          'Plus Jakarta Sans',
-                          fontSize: 12 * ffem,
-                          fontWeight: FontWeight.w500,
-                          height: 1.26 * ffem / fem,
-                          color: Color(0xff333333),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 40 * fem,
-                    decoration: BoxDecoration(
-                      color: Color(0xfff95031),
-                      borderRadius: BorderRadius.circular(8 * fem),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Oke',
-                        style: SafeGoogleFont(
-                          'Plus Jakarta Sans',
-                          fontSize: 12 * ffem,
-                          fontWeight: FontWeight.w400,
-                          height: 1.26 * ffem / fem,
-                          color: Color(0xffffffff),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            );
-          },
+        _showAlertDialog(
+          context,
+          'Kesalahan Server',
+          'Terjadi kesalahan pada server. Silakan coba lagi nanti.',
         );
       }
     } catch (e) {
-      // Tangani kesalahan dan tampilkan pesan kesalahan.
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            content: Container(
-              padding: EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-              width: 247 * fem,
-              height: 105 * fem,
-              decoration: BoxDecoration(
-                color: Color(0xffffffff),
-                borderRadius: BorderRadius.circular(8 * fem),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 0 * fem, 14.4 * fem),
-                    width: 58.8 * fem,
-                    height: 55.2 * fem,
-                    child: Image.asset(
-                      'assets/images/failed-icon.png',
-                      width: 58.8 * fem,
-                      height: 55.2 * fem,
-                    ),
-                  ),
-                  Container(
-                    margin:
-                        EdgeInsets.fromLTRB(0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                    constraints: BoxConstraints(
-                      maxWidth: 197 * fem,
-                    ),
-                    child: Text(
-                      'Order data tidak ditemukan.',
-                      textAlign: TextAlign.center,
-                      style: SafeGoogleFont(
-                        'Plus Jakarta Sans',
-                        fontSize: 12 * ffem,
-                        fontWeight: FontWeight.w500,
-                        height: 1.26 * ffem / fem,
-                        color: Color(0xff333333),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 40 * fem,
-                  decoration: BoxDecoration(
-                    color: Color(0xfff95031),
-                    borderRadius: BorderRadius.circular(8 * fem),
-                  ),
-                  child: Center(
-                    child: Text(
-                      'Kembali',
-                      style: SafeGoogleFont(
-                        'Plus Jakarta Sans',
-                        fontSize: 12 * ffem,
-                        fontWeight: FontWeight.w400,
-                        height: 1.26 * ffem / fem,
-                        color: Color(0xffffffff),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          );
-        },
+      // Penanganan kesalahan terkait dengan komunikasi jaringan atau lainnya
+      _showAlertDialog(
+        context,
+        'Data Pemesanan Tidak Ditemukan',
+        'Order data tidak ditemukan',
       );
     } finally {
-      // Selesai mengambil data, hentikan loading indicator.
       setState(() {
         _orderService.isLoading = false;
       });
@@ -331,6 +226,7 @@ class _CariOrder extends State<CariOrder> {
                   onPressed: myModel.isFormFilled
                       ? () {
                           _fetchOrderDetails();
+                          showLoading();
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
@@ -442,7 +338,9 @@ class _CariOrder extends State<CariOrder> {
                           width: 311 * fem,
                           height: 44 * fem,
                           decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffcccccc)),
+                            border: Border.all(
+                                color: Color(
+                                    0xffcccccc)), // Tambahkan border di sini
                             color: Color(0xffffffff),
                             borderRadius: BorderRadius.circular(8 * fem),
                           ),
@@ -451,28 +349,33 @@ class _CariOrder extends State<CariOrder> {
                             children: [
                               Expanded(
                                 child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: TextField(
-                                    onChanged: (value) {
-                                      setState(() {
-                                        myModel.setFormFilled(value.isNotEmpty);
-                                      });
-                                    },
-                                    controller: _orderNumberController,
-                                    decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.all(9 * fem),
-                                      hintText: 'KOMSHIP123XXX',
-                                      hintStyle: SafeGoogleFont(
-                                        'Plus Jakarta Sans',
-                                        fontSize: 16 * ffem,
-                                        fontWeight: FontWeight.w400,
-                                        height: 1.26 * ffem / fem,
-                                        color: Color(0xffb3b3b3),
+                                    alignment: Alignment.centerLeft,
+                                    child: TextField(
+                                      onChanged: (value) {
+                                        setState(() {
+                                          myModel
+                                              .setFormFilled(value.isNotEmpty);
+                                        });
+                                      },
+                                      controller: _orderNumberController,
+                                      decoration: InputDecoration(
+                                        contentPadding: EdgeInsets.only(
+                                          left: 9 * fem,
+                                          top: 7 * fem,
+                                          right: 9 * fem,
+                                          bottom: 7 * fem,
+                                        ),
+                                        hintText: 'KOMSHIP123XXX',
+                                        hintStyle: SafeGoogleFont(
+                                          'Plus Jakarta Sans',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w400,
+                                          height: 1.26 * ffem / fem,
+                                          color: Color(0xffb3b3b3),
+                                        ),
+                                        border: InputBorder.none,
                                       ),
-                                      border: InputBorder.none,
-                                    ),
-                                  ),
-                                ),
+                                    )),
                               ),
                             ],
                           ),
@@ -480,7 +383,7 @@ class _CariOrder extends State<CariOrder> {
                       ),
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ),

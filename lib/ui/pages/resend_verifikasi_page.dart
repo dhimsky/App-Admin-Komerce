@@ -25,14 +25,17 @@ class ResendVerifikasi extends StatefulWidget {
 
 class _ResendVerifikasiState extends State<ResendVerifikasi> {
   final _formKey = GlobalKey<FormState>();
-  VerifyEmail _verifyEmail = VerifyEmail(email: '');
   late String _token;
+  VerifyEmail _verifyEmail = VerifyEmail(email: '');
 
   @override
   void initState() {
     super.initState();
     _loadTokenFromSharedPreferences();
-    Provider.of<MyModel5>(context, listen: false).setFormFilled(false);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Setelah widget dibangun sepenuhnya, Anda dapat mengakses context dan melakukan perubahan state.
+      Provider.of<MyModel5>(context, listen: false).setFormFilled(false);
+    });
   }
 
   void _loadTokenFromSharedPreferences() async {
