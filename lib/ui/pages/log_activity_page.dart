@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
 
-class LogActivity extends StatelessWidget {
-  const LogActivity({super.key});
+class LogActivity extends StatefulWidget {
+  @override
+  _LogActivity createState() => _LogActivity();
+}
 
+class _LogActivity extends State<LogActivity> {
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
+    String _selectedValue = 'Pilih Aktivitas'; // Nilai awal yang dipilih
     return Scaffold(
         body: SafeArea(
       child: Container(
@@ -81,16 +85,23 @@ class LogActivity extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Expanded(
-                                    child: SizedBox(
-                                      child: Text(
-                                        'Cari Nama Admin',
-                                        style: TextStyle(
+                                    child: TextFormField(
+                                      decoration: InputDecoration(
+                                        hintText: 'Cari Nama Admin',
+                                        hintStyle: TextStyle(
                                           color: Color(0xFFC2C2C2),
                                           fontSize: 14,
                                           fontFamily: 'Poppins',
                                           fontWeight: FontWeight.w400,
-                                          height: 0,
                                         ),
+                                        border: InputBorder
+                                            .none, // Menghilangkan border bawaan
+                                        focusedBorder: InputBorder
+                                            .none, // Menghilangkan border saat difokuskan
+                                        enabledBorder: InputBorder
+                                            .none, // Menghilangkan border saat tidak difokuskan
+                                        contentPadding:
+                                            EdgeInsets.symmetric(vertical: 10),
                                       ),
                                     ),
                                   ),
@@ -252,45 +263,68 @@ class LogActivity extends StatelessWidget {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Expanded(
-                                                  child: SizedBox(
-                                                    child: Text(
-                                                      'Pilih Aktivitas',
-                                                      style: TextStyle(
-                                                        color:
-                                                            Color(0xFFC2C2C2),
-                                                        fontSize: 14,
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        height: 0,
-                                                      ),
+                                                  child: TextFormField(
+                                                    controller:
+                                                        TextEditingController(
+                                                            text:
+                                                                _selectedValue),
+                                                    style: TextStyle(
+                                                      color: Color(0xFFC2C2C2),
+                                                      fontSize: 14,
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w400,
                                                     ),
+                                                    decoration: InputDecoration(
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 10),
+                                                      border: InputBorder.none,
+                                                    ),
+                                                    readOnly:
+                                                        true, // Membuatnya tidak dapat diubah oleh pengguna
                                                   ),
                                                 ),
                                                 const SizedBox(width: 10),
                                                 Container(
                                                   width: 24,
                                                   height: 24,
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Container(
-                                                        width: 24,
-                                                        height: 24,
-                                                        child: Image.asset(
-                                                          'assets/images/arrow-down.png',
-                                                          width: 375 * fem,
-                                                          height: 273 * fem,
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical: 0),
+                                                  child:
+                                                      PopupMenuButton<String>(
+                                                    icon: Icon(
+                                                        Icons.arrow_drop_down),
+                                                    onSelected: (value) {
+                                                      setState(() {
+                                                        _selectedValue = value;
+                                                      });
+                                                    },
+                                                    itemBuilder:
+                                                        (BuildContext context) {
+                                                      return <PopupMenuEntry<
+                                                          String>>[
+                                                        PopupMenuItem<String>(
+                                                          value:
+                                                              'Tambah Alamat',
+                                                          child: Text(
+                                                              'Tambah Alamat'),
                                                         ),
-                                                      ),
-                                                    ],
+                                                        PopupMenuItem<String>(
+                                                          value:
+                                                              'Update NO. HP',
+                                                          child: Text(
+                                                              'Update NO. HP'),
+                                                        ),
+                                                        PopupMenuItem<String>(
+                                                          value:
+                                                              'Kirim Ulang Verifikasi',
+                                                          child: Text(
+                                                              'Kirim Ulang Verifikasi'),
+                                                        ),
+                                                        // Tambahkan opsi lain sesuai kebutuhan Anda
+                                                      ];
+                                                    },
                                                   ),
                                                 ),
                                               ],
