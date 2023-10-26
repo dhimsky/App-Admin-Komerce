@@ -11,6 +11,7 @@ import 'package:komerce/ui/pages/lupa_password_page.dart';
 import 'package:komerce/ui/pages/profile_page.dart';
 import 'package:komerce/ui/pages/detail_profile_page.dart';
 import 'package:komerce/ui/pages/home_page.dart';
+import 'package:komerce/ui/pages/tambah_alamat_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 import 'package:komerce/ui/pages/landing_page.dart';
 import 'dart:io';
@@ -72,6 +73,7 @@ class MyApp extends StatelessWidget {
             '/updatenohp1': (context) => UpdateNoHp1(),
             '/updatenohp2': (context) => UpdateNoHp2(),
             '/resendverifikasi': (context) => ResendVerifikasi(),
+            '/tambahalamat' :(context) => TambahAlamat(),
           },
         ),
       ),

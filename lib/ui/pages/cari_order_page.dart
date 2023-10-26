@@ -207,11 +207,11 @@ class _CariOrder extends State<CariOrder> {
                     context), // Tampilkan widget LoadingScreen jika isLoading true
               if (!_orderService.isLoading)
                 ElevatedButton(
-                  onPressed: () {
-                    if (myModel.isFormFilled && !_orderService.isLoading) {
-                      _fetchOrderDetails();
-                    }
-                  },
+                  onPressed: myModel.isFormFilled
+                      ? () {
+                          _fetchOrderDetails();
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
                     primary:
                         myModel.isFormFilled ? Color(0xffF95031) : Colors.grey,

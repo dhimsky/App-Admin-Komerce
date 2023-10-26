@@ -148,7 +148,7 @@ class LogActivity extends StatelessWidget {
                                 padding: EdgeInsets.fromLTRB(
                                     24 * fem, 15 * fem, 24 * fem, 32 * fem),
                                 width: 375 * fem,
-                                height: 300 * fem,
+                                height: 360 * fem,
                                 decoration: BoxDecoration(
                                   color: Color(0xffffffff),
                                   borderRadius: BorderRadius.only(
@@ -170,7 +170,499 @@ class LogActivity extends StatelessWidget {
                                         color: Color(0xffc2c2c2),
                                       ),
                                     ),
-                                    
+                                    SizedBox(
+                                      width: 327,
+                                      height: 24,
+                                      child: Text(
+                                        'Filter',
+                                        style: TextStyle(
+                                          color: Color(0xFF333333),
+                                          fontSize: 16,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w600,
+                                          height: 0,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 24,
+                                    ),
+                                    Container(
+                                      width: 327,
+                                      height: 66,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: double.infinity,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: SizedBox(
+                                                    child: Text(
+                                                      'Aktivitas',
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xFF333333),
+                                                        fontSize: 14,
+                                                        fontFamily:
+                                                            'Plus Jakarta Sans',
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        height: 0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 8,
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            height: 40,
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 14, vertical: 10),
+                                            decoration: ShapeDecoration(
+                                              color: Colors.white,
+                                              shape: RoundedRectangleBorder(
+                                                side: BorderSide(
+                                                    width: 1,
+                                                    color: Color(0xFFE2E2E2)),
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Expanded(
+                                                  child: SizedBox(
+                                                    child: Text(
+                                                      'Pilih Aktivitas',
+                                                      style: TextStyle(
+                                                        color:
+                                                            Color(0xFFC2C2C2),
+                                                        fontSize: 14,
+                                                        fontFamily: 'Poppins',
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        height: 0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(width: 10),
+                                                Container(
+                                                  width: 24,
+                                                  height: 24,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Container(
+                                                        width: 24,
+                                                        height: 24,
+                                                        child: Image.asset(
+                                                          'assets/images/arrow-down.png',
+                                                          width: 375 * fem,
+                                                          height: 273 * fem,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height: 85,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 10),
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            width: 159.50,
+                                            height: 66,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Expanded(
+                                                        child: SizedBox(
+                                                          child: Text(
+                                                            'Awal',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF333333),
+                                                              fontSize: 14,
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              height: 0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: 40,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 14,
+                                                      vertical: 10),
+                                                  decoration: ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xFFE2E2E2)),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Expanded(
+                                                        child: SizedBox(
+                                                          child: Text(
+                                                            '13/10/2023',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF333333),
+                                                              fontSize: 14,
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              height: 0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: 10),
+                                                      Container(
+                                                        width: 24,
+                                                        height: 24,
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              width: 24,
+                                                              height: 24,
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/calendar.png',
+                                                                width:
+                                                                    375 * fem,
+                                                                height:
+                                                                    273 * fem,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: 12,
+                                          ),
+                                          Container(
+                                            width: 159.50,
+                                            height: 66,
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  width: double.infinity,
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Expanded(
+                                                        child: SizedBox(
+                                                          child: Text(
+                                                            'Akhir',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF333333),
+                                                              fontSize: 14,
+                                                              fontFamily:
+                                                                  'Plus Jakarta Sans',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                              height: 0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: 8,
+                                                ),
+                                                Container(
+                                                  width: double.infinity,
+                                                  height: 40,
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 14,
+                                                      vertical: 10),
+                                                  decoration: ShapeDecoration(
+                                                    color: Colors.white,
+                                                    shape:
+                                                        RoundedRectangleBorder(
+                                                      side: BorderSide(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xFFE2E2E2)),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Expanded(
+                                                        child: SizedBox(
+                                                          child: Text(
+                                                            '13/10/2023',
+                                                            style: TextStyle(
+                                                              color: Color(
+                                                                  0xFF333333),
+                                                              fontSize: 14,
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w400,
+                                                              height: 0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: 10),
+                                                      Container(
+                                                        width: 24,
+                                                        height: 24,
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.min,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            Container(
+                                                              width: 24,
+                                                              height: 24,
+                                                              child:
+                                                                  Image.asset(
+                                                                'assets/images/calendar.png',
+                                                                width:
+                                                                    375 * fem,
+                                                                height:
+                                                                    273 * fem,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 12,
+                                    ),
+                                    Container(
+                                      width: double.infinity,
+                                      height: 50,
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5, vertical: 5),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Expanded(
+                                            child: Container(
+                                              height: 40,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 14),
+                                              decoration: ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(
+                                                      width: 1,
+                                                      color: Color(0xFFF95031)),
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Reset',
+                                                    style: TextStyle(
+                                                      color: Color(0xFFF95031),
+                                                      fontSize: 14,
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 0,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 12),
+                                          Expanded(
+                                            child: Container(
+                                              height: 40,
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 14),
+                                              decoration: ShapeDecoration(
+                                                color: Color(0xFFC2C2C2),
+                                                shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8)),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    'Terapkan',
+                                                    style: TextStyle(
+                                                      color: Colors.white,
+                                                      fontSize: 14,
+                                                      fontFamily: 'Poppins',
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      height: 0,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
                                   ],
                                 ),
                               );
@@ -190,6 +682,9 @@ class LogActivity extends StatelessWidget {
                     )
                   ],
                 ),
+              ),
+              SizedBox(
+                height: 12,
               ),
               Container(
                 width: 375,
@@ -289,7 +784,7 @@ class LogActivity extends StatelessWidget {
                                                 color: Color(0xFF333333),
                                                 fontSize: 14,
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w600,
+                                                fontWeight: FontWeight.w500,
                                                 height: 0,
                                               ),
                                             ),
@@ -433,7 +928,7 @@ class LogActivity extends StatelessWidget {
                                                 color: Color(0xFF333333),
                                                 fontSize: 14,
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w600,
+                                                fontWeight: FontWeight.w500,
                                                 height: 0,
                                               ),
                                             ),
@@ -577,7 +1072,7 @@ class LogActivity extends StatelessWidget {
                                                 color: Color(0xFF333333),
                                                 fontSize: 14,
                                                 fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w600,
+                                                fontWeight: FontWeight.w500,
                                                 height: 0,
                                               ),
                                             ),
