@@ -12,7 +12,14 @@ class _LogActivity extends State<LogActivity> {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    String _selectedValue = 'Pilih Aktivitas'; // Nilai awal yang dipilih
+    String? selectedValue;
+
+    void onDropdownChanged(String? newValue) {
+      setState(() {
+        selectedValue = newValue;
+      });
+    }
+
     return Scaffold(
         body: SafeArea(
       child: Container(
@@ -241,7 +248,7 @@ class _LogActivity extends State<LogActivity> {
                                             height: 8,
                                           ),
                                           Container(
-                                            width: double.infinity,
+                                            width: 327,
                                             height: 40,
                                             padding: const EdgeInsets.symmetric(
                                                 horizontal: 14, vertical: 10),
@@ -263,68 +270,37 @@ class _LogActivity extends State<LogActivity> {
                                                   CrossAxisAlignment.center,
                                               children: [
                                                 Expanded(
-                                                  child: TextFormField(
-                                                    controller:
-                                                        TextEditingController(
-                                                            text:
-                                                                _selectedValue),
+                                                  child: DropdownButton<String>(
+                                                    value: selectedValue,
+                                                    onChanged:
+                                                        onDropdownChanged,
+                                                    hint: Text(
+                                                        'Pilih Aktivitas',
+                                                        style: TextStyle(
+                                                            color: Colors
+                                                                .grey)), // Atur warna hint
                                                     style: TextStyle(
-                                                      color: Color(0xFFC2C2C2),
+                                                      color: Colors.black,
                                                       fontSize: 14,
                                                       fontFamily: 'Poppins',
                                                       fontWeight:
                                                           FontWeight.w400,
+                                                      height: 0,
                                                     ),
-                                                    decoration: InputDecoration(
-                                                      contentPadding:
-                                                          EdgeInsets.symmetric(
-                                                              vertical: 10),
-                                                      border: InputBorder.none,
-                                                    ),
-                                                    readOnly:
-                                                        true, // Membuatnya tidak dapat diubah oleh pengguna
-                                                  ),
-                                                ),
-                                                const SizedBox(width: 10),
-                                                Container(
-                                                  width: 24,
-                                                  height: 24,
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 0),
-                                                  child:
-                                                      PopupMenuButton<String>(
-                                                    icon: Icon(
-                                                        Icons.arrow_drop_down),
-                                                    onSelected: (value) {
-                                                      setState(() {
-                                                        _selectedValue = value;
-                                                      });
-                                                    },
-                                                    itemBuilder:
-                                                        (BuildContext context) {
-                                                      return <PopupMenuEntry<
-                                                          String>>[
-                                                        PopupMenuItem<String>(
-                                                          value:
-                                                              'Tambah Alamat',
-                                                          child: Text(
-                                                              'Tambah Alamat'),
-                                                        ),
-                                                        PopupMenuItem<String>(
-                                                          value:
-                                                              'Update NO. HP',
-                                                          child: Text(
-                                                              'Update NO. HP'),
-                                                        ),
-                                                        PopupMenuItem<String>(
-                                                          value:
-                                                              'Kirim Ulang Verifikasi',
-                                                          child: Text(
-                                                              'Kirim Ulang Verifikasi'),
-                                                        ),
-                                                        // Tambahkan opsi lain sesuai kebutuhan Anda
-                                                      ];
-                                                    },
+                                                    isExpanded: true,
+                                                    underline: Container(),
+                                                    items: <String?>[
+                                                      'Tambah Alamat',
+                                                      'Update No. HP',
+                                                      'Kirim Ulang Verifikasi',
+                                                    ].map((String? value) {
+                                                      return DropdownMenuItem<
+                                                          String>(
+                                                        value: value,
+                                                        child: Text(value ??
+                                                            'Pilih Aktivitas'),
+                                                      );
+                                                    }).toList(),
                                                   ),
                                                 ),
                                               ],
