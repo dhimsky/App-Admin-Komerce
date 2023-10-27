@@ -189,6 +189,25 @@ class _CariOrder extends State<CariOrder> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0, // Menghapus shadow
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios,
+              color: Colors.black), // Ubah ikon dan warna
+          onPressed: () {
+            Navigator.pop(
+                context); // Menggunakan Navigator.pop() untuk navigasi kembali
+          },
+        ),
+        backgroundColor: Colors.white, // Ubah latar belakang
+        title: Text(
+          'Cari Order',
+          style: TextStyle(
+            color: Colors.black, // Ubah warna teks
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         elevation: 0,
@@ -247,51 +266,8 @@ class _CariOrder extends State<CariOrder> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  padding: EdgeInsets.fromLTRB(
-                      24 * fem, 36 * fem, 0 * fem, 20 * fem),
-                  width: double.infinity,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(
-                            0 * fem, 0 * fem, 147 * fem, 0 * fem),
-                        width: double.infinity,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.pop(
-                                    context); // Menggunakan Navigator.pop() untuk navigasi kembali
-                              },
-                              child: Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    0 * fem, 0 * fem, 10 * fem, 1 * fem),
-                                width: 24 * fem,
-                                height: 24 * fem,
-                                child: Icon(
-                                  Icons.arrow_back_ios,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              'Cari Order',
-                              style: SafeGoogleFont(
-                                'Plus Jakarta Sans',
-                                fontSize: 20 * ffem,
-                                fontWeight: FontWeight.w700,
-                                height: 1.26 * ffem / fem,
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                SizedBox(
+                  height: 16,
                 ),
                 Container(
                   width: double.infinity,

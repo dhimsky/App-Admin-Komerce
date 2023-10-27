@@ -14,10 +14,75 @@ class _LogActivity extends State<LogActivity> {
     double ffem = fem * 0.97;
     String? selectedValue;
 
+    DateTime _selectedDateAwal = DateTime.now();
+    DateTime _selectedDateAkhir = DateTime.now();
+    TextEditingController _dateControllerAwal = TextEditingController();
+    TextEditingController _dateControllerAkhir = TextEditingController();
+
+    void initState() {
+      super.initState();
+      _dateControllerAwal.text =
+          '${_selectedDateAwal.day.toString().padLeft(2, '0')}/${_selectedDateAwal.month.toString().padLeft(2, '0')}/${_selectedDateAwal.year.toString()}';
+      _dateControllerAkhir.text =
+          '${_selectedDateAkhir.day.toString().padLeft(2, '0')}/${_selectedDateAkhir.month.toString().padLeft(2, '0')}/${_selectedDateAkhir.year.toString()}';
+    }
+
     void onDropdownChanged(String? newValue) {
       setState(() {
         selectedValue = newValue;
       });
+    }
+
+    Future<void> selectDateAwal() async {
+      DateTime? selectedDateAwal = await showDatePicker(
+        context: context,
+        initialDate: _selectedDateAwal,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: Colors.orange, // Ganti warna utama ke oranye
+              colorScheme: ColorScheme.light(
+                  primary: Colors.orange), // Ganti warna aksen ke oranye
+              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            ),
+            child: child!,
+          );
+        },
+      );
+
+      if (selectedDateAwal != null) {
+        setState(() {
+          _selectedDateAwal = selectedDateAwal;
+        });
+      }
+    }
+
+    Future<void> selectDateAkhir() async {
+      DateTime? selectedDateAkhir = await showDatePicker(
+        context: context,
+        initialDate: _selectedDateAkhir,
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2101),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: Colors.orange, // Ganti warna utama ke oranye
+              colorScheme: ColorScheme.light(
+                  primary: Colors.orange), // Ganti warna aksen ke oranye
+              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+            ),
+            child: child!,
+          );
+        },
+      );
+
+      if (selectedDateAkhir != null) {
+        setState(() {
+          _selectedDateAkhir = selectedDateAkhir;
+        });
+      }
     }
 
     return Scaffold(
@@ -364,58 +429,39 @@ class _LogActivity extends State<LogActivity> {
                                                 SizedBox(
                                                   height: 8,
                                                 ),
-                                                Container(
-                                                  width: double.infinity,
-                                                  height: 40,
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 14,
-                                                      vertical: 10),
-                                                  decoration: ShapeDecoration(
-                                                    color: Colors.white,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 1,
-                                                          color: Color(
-                                                              0xFFE2E2E2)),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Expanded(
-                                                        child: SizedBox(
-                                                          child: Text(
-                                                            '13/10/2023',
-                                                            style: TextStyle(
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () {
+                                                        selectDateAwal();
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        height: 40,
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                          horizontal: 14,
+                                                          vertical: 10,
+                                                        ),
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: Colors.white,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                              width: 1,
                                                               color: Color(
-                                                                  0xFF333333),
-                                                              fontSize: 14,
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              height: 0,
+                                                                  0xFFE2E2E2),
                                                             ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
                                                           ),
                                                         ),
-                                                      ),
-                                                      const SizedBox(width: 10),
-                                                      Container(
-                                                        width: 24,
-                                                        height: 24,
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.min,
@@ -426,6 +472,25 @@ class _LogActivity extends State<LogActivity> {
                                                               CrossAxisAlignment
                                                                   .center,
                                                           children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${_selectedDateAwal.day.toString().padLeft(2, '0')}/${_selectedDateAwal.month.toString().padLeft(2, '0')}/${_selectedDateAwal.year.toString()}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Color(
+                                                                      0xFF333333),
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  height: 0,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                                width: 10),
                                                             Container(
                                                               width: 24,
                                                               height: 24,
@@ -441,8 +506,8 @@ class _LogActivity extends State<LogActivity> {
                                                           ],
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),
@@ -495,58 +560,39 @@ class _LogActivity extends State<LogActivity> {
                                                 SizedBox(
                                                   height: 8,
                                                 ),
-                                                Container(
-                                                  width: double.infinity,
-                                                  height: 40,
-                                                  padding: const EdgeInsets
-                                                      .symmetric(
-                                                      horizontal: 14,
-                                                      vertical: 10),
-                                                  decoration: ShapeDecoration(
-                                                    color: Colors.white,
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                      side: BorderSide(
-                                                          width: 1,
-                                                          color: Color(
-                                                              0xFFE2E2E2)),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                    ),
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Expanded(
-                                                        child: SizedBox(
-                                                          child: Text(
-                                                            '13/10/2023',
-                                                            style: TextStyle(
+                                                Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    InkWell(
+                                                      onTap: () {
+                                                        selectDateAkhir();
+                                                      },
+                                                      child: Container(
+                                                        width: double.infinity,
+                                                        height: 40,
+                                                        padding:
+                                                            const EdgeInsets
+                                                                .symmetric(
+                                                          horizontal: 14,
+                                                          vertical: 10,
+                                                        ),
+                                                        decoration:
+                                                            ShapeDecoration(
+                                                          color: Colors.white,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            side: BorderSide(
+                                                              width: 1,
                                                               color: Color(
-                                                                  0xFF333333),
-                                                              fontSize: 14,
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400,
-                                                              height: 0,
+                                                                  0xFFE2E2E2),
                                                             ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        8),
                                                           ),
                                                         ),
-                                                      ),
-                                                      const SizedBox(width: 10),
-                                                      Container(
-                                                        width: 24,
-                                                        height: 24,
                                                         child: Row(
                                                           mainAxisSize:
                                                               MainAxisSize.min,
@@ -557,6 +603,25 @@ class _LogActivity extends State<LogActivity> {
                                                               CrossAxisAlignment
                                                                   .center,
                                                           children: [
+                                                            Expanded(
+                                                              child: Text(
+                                                                '${_selectedDateAkhir.day.toString().padLeft(2, '0')}/${_selectedDateAkhir.month.toString().padLeft(2, '0')}/${_selectedDateAkhir.year.toString()}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: Color(
+                                                                      0xFF333333),
+                                                                  fontSize: 14,
+                                                                  fontFamily:
+                                                                      'Poppins',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w400,
+                                                                  height: 0,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            const SizedBox(
+                                                                width: 10),
                                                             Container(
                                                               width: 24,
                                                               height: 24,
@@ -572,8 +637,8 @@ class _LogActivity extends State<LogActivity> {
                                                           ],
                                                         ),
                                                       ),
-                                                    ],
-                                                  ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ],
                                             ),

@@ -39,7 +39,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   void initState() {
     super.initState();
     _loadTokenFromSharedPreferences();
-    Provider.of<MyModel>(context, listen: false).setFormFilled(false);
+     WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Setelah widget dibangun sepenuhnya, Anda dapat mengakses context dan melakukan perubahan state.
+      Provider.of<MyModel>(context, listen: false).setFormFilled(false);
+    });
   }
 
   void _loadTokenFromSharedPreferences() async {
