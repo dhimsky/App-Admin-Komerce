@@ -7,83 +7,84 @@ class LogActivity extends StatefulWidget {
 }
 
 class _LogActivity extends State<LogActivity> {
+  TextEditingController _dateControllerAwal = TextEditingController();
+  TextEditingController _dateControllerAkhir = TextEditingController();
+  DateTime _selectedDateAwal = DateTime.now();
+  DateTime _selectedDateAkhir = DateTime.now();
+  String? selectedValue;
+
+  @override
+  void initState() {
+    super.initState();
+    _dateControllerAwal.text =
+        '${_selectedDateAwal.day.toString().padLeft(2, '0')}/${_selectedDateAwal.month.toString().padLeft(2, '0')}/${_selectedDateAwal.year.toString()}';
+    _dateControllerAkhir.text =
+        '${_selectedDateAkhir.day.toString().padLeft(2, '0')}/${_selectedDateAkhir.month.toString().padLeft(2, '0')}/${_selectedDateAkhir.year.toString()}';
+  }
+
+  void onDropdownChanged(String? newValue) {
+    setState(() {
+      selectedValue = newValue;
+    });
+  }
+
+  Future<void> selectDateAwal() async {
+    DateTime? selectedDateAwal = await showDatePicker(
+      context: context,
+      initialDate: _selectedDateAwal,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.orange, // Ganti warna utama ke oranye
+            colorScheme: ColorScheme.light(
+                primary: Colors.orange), // Ganti warna aksen ke oranye
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (selectedDateAwal != null) {
+      setState(() {
+        _selectedDateAwal = selectedDateAwal;
+      });
+    }
+  }
+
+  Future<void> selectDateAkhir() async {
+    DateTime? selectedDateAkhir = await showDatePicker(
+      context: context,
+      initialDate: _selectedDateAkhir,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: Colors.orange, // Ganti warna utama ke oranye
+            colorScheme: ColorScheme.light(
+                primary: Colors.orange), // Ganti warna aksen ke oranye
+            buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          ),
+          child: child!,
+        );
+      },
+    );
+
+    if (selectedDateAkhir != null) {
+      setState(() {
+        _selectedDateAkhir = selectedDateAkhir;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    String? selectedValue;
-
-    DateTime _selectedDateAwal = DateTime.now();
-    DateTime _selectedDateAkhir = DateTime.now();
-    TextEditingController _dateControllerAwal = TextEditingController();
-    TextEditingController _dateControllerAkhir = TextEditingController();
-
-    void initState() {
-      super.initState();
-      _dateControllerAwal.text =
-          '${_selectedDateAwal.day.toString().padLeft(2, '0')}/${_selectedDateAwal.month.toString().padLeft(2, '0')}/${_selectedDateAwal.year.toString()}';
-      _dateControllerAkhir.text =
-          '${_selectedDateAkhir.day.toString().padLeft(2, '0')}/${_selectedDateAkhir.month.toString().padLeft(2, '0')}/${_selectedDateAkhir.year.toString()}';
-    }
-
-    void onDropdownChanged(String? newValue) {
-      setState(() {
-        selectedValue = newValue;
-      });
-    }
-
-    Future<void> selectDateAwal() async {
-      DateTime? selectedDateAwal = await showDatePicker(
-        context: context,
-        initialDate: _selectedDateAwal,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101),
-        builder: (BuildContext context, Widget? child) {
-          return Theme(
-            data: ThemeData.light().copyWith(
-              primaryColor: Colors.orange, // Ganti warna utama ke oranye
-              colorScheme: ColorScheme.light(
-                  primary: Colors.orange), // Ganti warna aksen ke oranye
-              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
-            ),
-            child: child!,
-          );
-        },
-      );
-
-      if (selectedDateAwal != null) {
-        setState(() {
-          _selectedDateAwal = selectedDateAwal;
-        });
-      }
-    }
-
-    Future<void> selectDateAkhir() async {
-      DateTime? selectedDateAkhir = await showDatePicker(
-        context: context,
-        initialDate: _selectedDateAkhir,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2101),
-        builder: (BuildContext context, Widget? child) {
-          return Theme(
-            data: ThemeData.light().copyWith(
-              primaryColor: Colors.orange, // Ganti warna utama ke oranye
-              colorScheme: ColorScheme.light(
-                  primary: Colors.orange), // Ganti warna aksen ke oranye
-              buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary),
-            ),
-            child: child!,
-          );
-        },
-      );
-
-      if (selectedDateAkhir != null) {
-        setState(() {
-          _selectedDateAkhir = selectedDateAkhir;
-        });
-      }
-    }
 
     return Scaffold(
         body: SafeArea(
