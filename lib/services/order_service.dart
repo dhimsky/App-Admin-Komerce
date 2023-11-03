@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/order_model.dart';
 
 class OrderService {
-  final String baseUrl = 'http://192.168.1.91:9000/app/komship';
+  final String baseUrl = 'http://192.168.1.136:9000/app/komship';
   bool isLoading = false;
 
   Future<Map<String, dynamic>> getOrderDetails(String orderNumber) async {

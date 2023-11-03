@@ -19,7 +19,7 @@ Future<void> saveDataToSharedPreferences(Map<String, dynamic> data) async {
 }
 
 Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
-  final apiUrl = 'http://192.168.1.91:9000/app/get-noHp';
+  final apiUrl = 'http://192.168.1.136:9000/app/get-noHp';
   bool isLoading = false;
 
   final response = await http.get(
@@ -42,7 +42,7 @@ Future<UpdateNoHp> fetchUserProfile(String email, String token) async {
 }
 
 Future<bool> updateNoHp(String newNoHp, String token) async {
-  final apiUrl = 'http://192.168.1.91:9000/app/update-noHp';
+  final apiUrl = 'http://192.168.1.136:9000/app/update-noHp';
 
   final Map<String, dynamic> requestBody = {
     'no_hp': newNoHp,
