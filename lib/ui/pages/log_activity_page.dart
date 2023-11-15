@@ -1,5 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:komerce/shared/theme.dart';
+import 'package:intl/intl.dart';
+import 'package:komerce/ui/widgets/dummy.dart';
+import 'package:provider/provider.dart';
+
+class MyModel6 with ChangeNotifier {
+  bool isFormFilled = false;
+
+  void setFormFilled(bool value) {
+    isFormFilled = value;
+    notifyListeners();
+  }
+}
 
 class LogActivity extends StatefulWidget {
   @override
@@ -19,6 +31,10 @@ class _LogActivity extends State<LogActivity> {
     super.initState();
     _dateControllerAwal.text = _formattedDate(_selectedDateAwal);
     _dateControllerAkhir.text = _formattedDate(_selectedDateAkhir);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      // Setelah widget dibangun sepenuhnya, Anda dapat mengakses context dan melakukan perubahan state.
+      Provider.of<MyModel6>(context, listen: false).setFormFilled(false);
+    });
   }
 
   String _formattedDate(DateTime? date) {
@@ -81,6 +97,7 @@ class _LogActivity extends State<LogActivity> {
 
   @override
   Widget build(BuildContext context) {
+    final myModel = Provider.of<MyModel6>(context);
     double baseWidth = 375;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
@@ -354,6 +371,9 @@ class _LogActivity extends State<LogActivity> {
                                                         setState(() {
                                                           selectedValue =
                                                               newValue;
+                                                          myModel.setFormFilled(
+                                                              newValue!
+                                                                  .isNotEmpty);
                                                         });
                                                       },
                                                       style: TextStyle(
@@ -445,9 +465,6 @@ class _LogActivity extends State<LogActivity> {
                                                     height: 8,
                                                   ),
                                                   Column(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
                                                     children: [
                                                       InkWell(
                                                         onTap: () {
@@ -462,7 +479,7 @@ class _LogActivity extends State<LogActivity> {
                                                               const EdgeInsets
                                                                   .symmetric(
                                                             horizontal: 14,
-                                                            vertical: 10,
+                                                            vertical: 0,
                                                           ),
                                                           decoration:
                                                               ShapeDecoration(
@@ -489,7 +506,7 @@ class _LogActivity extends State<LogActivity> {
                                                                     .center,
                                                             crossAxisAlignment:
                                                                 CrossAxisAlignment
-                                                                    .center,
+                                                                    .center, // Set to CrossAxisAlignment.center
                                                             children: [
                                                               Expanded(
                                                                 child:
@@ -611,7 +628,7 @@ class _LogActivity extends State<LogActivity> {
                                                               const EdgeInsets
                                                                   .symmetric(
                                                             horizontal: 14,
-                                                            vertical: 10,
+                                                            vertical: 0,
                                                           ),
                                                           decoration:
                                                               ShapeDecoration(
@@ -642,31 +659,35 @@ class _LogActivity extends State<LogActivity> {
                                                             children: [
                                                               Expanded(
                                                                 child:
-                                                                    TextField(
-                                                                  controller:
-                                                                      _dateControllerAkhir,
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Color(
-                                                                        0xFF333333),
-                                                                    fontSize:
-                                                                        14,
-                                                                    fontFamily:
-                                                                        'Poppins',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                  ),
-                                                                  enabled:
-                                                                      false,
-                                                                  decoration:
-                                                                      InputDecoration(
-                                                                    border:
-                                                                        InputBorder
-                                                                            .none,
-                                                                    contentPadding:
-                                                                        EdgeInsets
-                                                                            .all(0),
+                                                                    Container(
+                                                                  height:
+                                                                      50, // Sesuaikan tinggi Container
+                                                                  child:
+                                                                      TextField(
+                                                                    controller:
+                                                                        _dateControllerAkhir,
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Color(
+                                                                          0xFF333333),
+                                                                      fontSize:
+                                                                          14,
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                    ),
+                                                                    enabled:
+                                                                        false,
+                                                                    decoration:
+                                                                        InputDecoration(
+                                                                      border: InputBorder
+                                                                          .none,
+                                                                      contentPadding:
+                                                                          EdgeInsets.all(
+                                                                              0),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -712,13 +733,42 @@ class _LogActivity extends State<LogActivity> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Expanded(
-                                              child: Container(
-                                                height: 40,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 14),
-                                                decoration: ShapeDecoration(
-                                                  color: Colors.white,
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    // Reset values to their initial state (current date, time set to 00:00:00)
+                                                    selectedValue = null;
+
+                                                    _selectedDateAwal =
+                                                        DateTime.now();
+
+                                                    _selectedDateAkhir =
+                                                        DateTime.now();
+
+                                                    _dateControllerAwal.text =
+                                                        DateFormat('dd/MM/yyyy')
+                                                            .format(
+                                                                DateTime.now());
+                                                    _dateControllerAkhir.text =
+                                                        DateFormat('dd/MM/yyyy')
+                                                            .format(
+                                                                DateTime.now());
+                                                    Provider.of<MyModel6>(
+                                                            context,
+                                                            listen: false)
+                                                        .setFormFilled(false);
+                                                  });
+
+                                                  print('$selectedValue');
+                                                  print('$_dateControllerAwal');
+                                                  print(
+                                                      '$_dateControllerAkhir');
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 14),
+                                                  primary: Colors.white,
                                                   shape: RoundedRectangleBorder(
                                                     side: BorderSide(
                                                         width: 1,
@@ -729,43 +779,54 @@ class _LogActivity extends State<LogActivity> {
                                                             8),
                                                   ),
                                                 ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Text(
-                                                      'Reset',
-                                                      style: TextStyle(
-                                                        color:
-                                                            Color(0xFFF95031),
-                                                        fontSize: 14,
-                                                        fontFamily: 'Poppins',
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        height: 0,
-                                                      ),
-                                                    ),
-                                                  ],
+                                                child: Text(
+                                                  'Reset',
+                                                  style: TextStyle(
+                                                    color: Color(0xFFF95031),
+                                                    fontSize: 14,
+                                                    fontFamily: 'Poppins',
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 0,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                             const SizedBox(width: 12),
                                             Expanded(
-                                              child: Container(
-                                                height: 40,
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 14),
-                                                decoration: ShapeDecoration(
-                                                  color: Color(0xFFC2C2C2),
+                                              child: ElevatedButton(
+                                                onPressed: myModel.isFormFilled
+                                                    ? () {
+                                                        if (selectedValue !=
+                                                                null &&
+                                                            _selectedDateAwal !=
+                                                                null &&
+                                                            _selectedDateAkhir !=
+                                                                null) {
+                                                          print(
+                                                              'Aktivitas: $selectedValue');
+                                                          print(
+                                                              'Tanggal Awal: $_selectedDateAwal');
+                                                          print(
+                                                              'Tanggal Akhir: $_selectedDateAkhir');
+                                                        } else {
+                                                          print('No activity');
+                                                        }
+                                                        Navigator.of(context)
+                                                            .pop();
+                                                      }
+                                                    : null,
+                                                style: ElevatedButton.styleFrom(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 14),
+                                                  primary: myModel.isFormFilled
+                                                      ? Color(0xffF95031)
+                                                      : Colors.grey,
                                                   shape: RoundedRectangleBorder(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8)),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8),
+                                                  ),
                                                 ),
                                                 child: Row(
                                                   mainAxisSize:
@@ -819,447 +880,116 @@ class _LogActivity extends State<LogActivity> {
               ),
               Container(
                 width: 375,
-                height: 264,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      width: 375,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 12),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xFFF4F4F4),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            padding: const EdgeInsets.all(8),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
+                height: 548 ,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: dummyData.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          var containerData = dummyData[index];
+                          return Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 12,
+                            ),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Color(0xFFF4F4F4),
+                                width: 1,
                               ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  blurRadius: 15,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 0,
-                                )
-                              ],
                             ),
                             child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  padding: const EdgeInsets.all(8),
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(12),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color(0x19000000),
+                                        blurRadius: 15,
+                                        offset: Offset(0, 0),
+                                        spreadRadius: 0,
+                                      ),
+                                    ],
+                                  ),
+                                  child: Image.asset(
+                                    containerData['imagePath'] ?? '',
+                                    width: 24,
+                                    height: 24,
+                                  ),
+                                ),
+                                const SizedBox(width: 12),
                                 Expanded(
-                                  child: Container(
-                                    height: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          child: Image.asset(
-                                            'assets/images/mobile-programming.png',
-                                            width: 375 * fem,
-                                            height: 273 * fem,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            containerData['title'] ?? '',
+                                            style: TextStyle(
+                                              color: Color(0xFF333333),
+                                              fontSize: 14,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
+                                          Text(
+                                            containerData['date'] ?? '',
+                                            style: TextStyle(
+                                              color: Color(0xFF818181),
+                                              fontSize: 10,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        containerData['email'] ?? '',
+                                        style: TextStyle(
+                                          color: Color(0xFF818181),
+                                          fontSize: 12,
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontWeight: FontWeight.w400,
                                         ),
-                                      ],
-                                    ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        containerData['admin'] ?? '',
+                                        style: TextStyle(
+                                          color: Color(0xFFF95031),
+                                          fontSize: 12,
+                                          fontFamily: 'Plus Jakarta Sans',
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: SizedBox(
-                                            child: Text(
-                                              'Update No HP',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 14,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Text(
-                                          '19/10/2023',
-                                          style: TextStyle(
-                                            color: Color(0xFF818181),
-                                            fontSize: 10,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                            height: 0,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'arieffeisal01@gmail.com',
-                                      style: TextStyle(
-                                        color: Color(0xFF818181),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'Admin Rizki',
-                                      style: TextStyle(
-                                        color: Color(0xFFF95031),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w600,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                    ),
-                    Container(
-                      width: 375,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 12),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xFFF4F4F4),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            padding: const EdgeInsets.all(8),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  blurRadius: 15,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    height: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          child: Image.asset(
-                                            'assets/images/location-add.png',
-                                            width: 375 * fem,
-                                            height: 273 * fem,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: SizedBox(
-                                            child: Text(
-                                              'Penambahan Alamat',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 14,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Text(
-                                          '19/10/2023',
-                                          style: TextStyle(
-                                            color: Color(0xFF818181),
-                                            fontSize: 10,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                            height: 0,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'Gandasuli, Bobotsari',
-                                      style: TextStyle(
-                                        color: Color(0xFF818181),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'Admin Ridho',
-                                      style: TextStyle(
-                                        color: Color(0xFFF95031),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w600,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      width: 375,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 12),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Color(0xFFF4F4F4),
-                          width: 1,
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: 40,
-                            height: 40,
-                            padding: const EdgeInsets.all(8),
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              shadows: [
-                                BoxShadow(
-                                  color: Color(0x19000000),
-                                  blurRadius: 15,
-                                  offset: Offset(0, 0),
-                                  spreadRadius: 0,
-                                )
-                              ],
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Expanded(
-                                  child: Container(
-                                    height: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Container(
-                                          width: 24,
-                                          height: 24,
-                                          child: Image.asset(
-                                            'assets/images/send-2.png',
-                                            width: 375 * fem,
-                                            height: 273 * fem,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Container(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    width: double.infinity,
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: SizedBox(
-                                            child: Text(
-                                              'Kirim Ulang Verifikasi',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 14,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w500,
-                                                height: 0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Text(
-                                          '19/10/2023',
-                                          style: TextStyle(
-                                            color: Color(0xFF818181),
-                                            fontSize: 10,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
-                                            height: 0,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'arieffeisal09@gmail.com',
-                                      style: TextStyle(
-                                        color: Color(0xFF818181),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w400,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  SizedBox(
-                                    width: double.infinity,
-                                    child: Text(
-                                      'Admin Agung',
-                                      style: TextStyle(
-                                        color: Color(0xFFF95031),
-                                        fontSize: 12,
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        fontWeight: FontWeight.w600,
-                                        height: 0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              )
+              ),
             ],
           ),
         ),

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:komerce/cubit/page_cubit.dart';
-import 'package:komerce/ui/pages/cari_order_page.dart'; // Hapus impor ini jika tidak diperlukan
+import 'package:komerce/ui/pages/cari_order_page.dart'; 
 import 'package:komerce/ui/pages/detail_order_page.dart';
+import 'package:komerce/ui/pages/log_activity_page.dart';
 import 'package:komerce/ui/pages/resend_verifikasi_page.dart';
 import 'package:komerce/ui/pages/splash_page.dart';
 import 'package:komerce/ui/pages/login_page.dart';
@@ -15,7 +16,6 @@ import 'package:komerce/ui/pages/tambah_alamat_page.dart';
 import 'package:komerce/ui/pages/ubah_password_page.dart';
 import 'package:komerce/ui/pages/landing_page.dart';
 import 'dart:io';
-
 import 'package:komerce/ui/pages/update_noHp_page1.dart';
 import 'package:komerce/ui/pages/update_noHp_page2.dart';
 import 'package:provider/provider.dart';
@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => MyModel3()),
         ChangeNotifierProvider(create: (context) => MyModel4()),
         ChangeNotifierProvider(create: (context) => MyModel5()),
+        ChangeNotifierProvider(create: (context) => MyModel6()),
       ],
       child: MultiBlocProvider(
         providers: [
