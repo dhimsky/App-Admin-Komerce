@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:komerce/models/ubah_pw_model.dart';
+import 'package:admin_komerce/models/ubah_pw_model.dart';
 
 class PasswordChangeService {
   final String apiUrl =

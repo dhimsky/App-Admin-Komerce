@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:komerce/shared/theme.dart';
+import 'package:admin_komerce/shared/theme.dart';
 import 'dart:async';
 
 class LupaPassword extends StatefulWidget {

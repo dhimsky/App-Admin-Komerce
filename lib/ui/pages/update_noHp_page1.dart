@@ -79,9 +79,9 @@ class _UpdateNoHp1State extends State<UpdateNoHp1> {
         color: Colors.white,
         elevation: 0,
         child: Container(
-          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
+          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 30 * fem),
           width: double.infinity,
-          height: 63 * fem,
+         height: 90 * fem,
           decoration: BoxDecoration(
             color: Color(0xffffffff),
           ),

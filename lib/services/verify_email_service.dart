@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:komerce/models/verify_email_model.dart';
+import 'package:admin_komerce/models/verify_email_model.dart';
 
 class VerifyEmailService {
   final String apiUrl =

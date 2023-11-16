@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:komerce/models/verify_email_model.dart';
-import 'package:komerce/services/verify_email_service.dart';
+import 'package:admin_komerce/models/verify_email_model.dart';
+import 'package:admin_komerce/services/verify_email_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -75,9 +75,9 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
         color: Colors.white, // Ubah latar belakang
         elevation: 0, // Menghapus shadow
         child: Container(
-          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
+          padding: EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 30 * fem),
           width: double.infinity,
-          height: 70 * fem,
+           height: 90 * fem,
           child: ElevatedButton(
             onPressed: myModel.isFormFilled
                 ? () async {
@@ -702,7 +702,7 @@ class _ResendVerifikasiState extends State<ResendVerifikasi> {
                 children: [
                   Container(
                     padding: EdgeInsets.fromLTRB(
-                        24 * fem, 37 * fem, 24 * fem, 100 * fem),
+                        24 * fem, 37 * fem, 24 * fem, 200 * fem),
                     width: double.infinity,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:komerce/shared/theme.dart';
+import 'package:admin_komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:komerce/ui/widgets/custom_buttom_navigation_item.dart';
+import 'package:admin_komerce/ui/widgets/custom_buttom_navigation_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../services/profile_service.dart';

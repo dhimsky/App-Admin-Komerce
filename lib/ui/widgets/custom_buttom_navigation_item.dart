@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:komerce/ui/pages/log_activity_page.dart';
-import 'package:komerce/ui/pages/home_page.dart';
-import 'package:komerce/ui/pages/profile_page.dart';
-import 'package:komerce/ui/pages/ubah_password_page.dart';
+import 'package:admin_komerce/ui/pages/log_activity_page.dart';
+import 'package:admin_komerce/ui/pages/home_page.dart';
+import 'package:admin_komerce/ui/pages/profile_page.dart';
+import 'package:admin_komerce/ui/pages/ubah_password_page.dart';
 
 class CustomBottomNavigationItem extends StatefulWidget {
   const CustomBottomNavigationItem({Key? key}) : super(key: key);

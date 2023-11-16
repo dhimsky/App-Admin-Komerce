@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:komerce/models/response_model.dart';
-import 'package:komerce/controller/login_controller.dart';
+import 'package:admin_komerce/models/response_model.dart';
+import 'package:admin_komerce/controller/login_controller.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

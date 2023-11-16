@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:komerce/services/order_service.dart';
-import 'package:komerce/shared/theme.dart';
+import 'package:admin_komerce/services/order_service.dart';
+import 'package:admin_komerce/shared/theme.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../models/order_model.dart';

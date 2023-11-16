@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:komerce/shared/theme.dart';
+import 'package:admin_komerce/shared/theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../services/profile_service.dart';
@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     Positioned(
                       left: 24 * fem,
-                      top: 56 * fem,
+                      top: 70 * fem,
                       child: Container(
                         width: 327 * fem,
                         height: 48 * fem,
@@ -146,12 +146,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Positioned(
                       left: 0 * fem,
-                      top: 124 * fem,
+                      top: 150 * fem,
                       child: Container(
                         padding: EdgeInsets.fromLTRB(
-                            0 * fem, 8 * fem, 0 * fem, 0 * fem),
+                            0 * fem, 20 * fem, 0 * fem, 0 * fem),
                         width: 375 * fem,
-                        height: 688 * fem,
+                        height:  MediaQuery.of(context).size.height,
                         decoration: BoxDecoration(
                           color: Color(0xfffafafa),
                           borderRadius: BorderRadius.only(

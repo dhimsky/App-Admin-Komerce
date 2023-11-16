@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:komerce/shared/theme.dart';
-import 'package:komerce/ui/pages/detail_order_page.dart';
-import 'package:komerce/services/order_service.dart';
-import 'package:komerce/ui/widgets/loading.dart';
+import 'package:admin_komerce/shared/theme.dart';
+import 'package:admin_komerce/ui/pages/detail_order_page.dart';
+import 'package:admin_komerce/services/order_service.dart';
+import 'package:admin_komerce/ui/widgets/loading.dart';
 import 'package:provider/provider.dart';
 
 class MyModel2 with ChangeNotifier {

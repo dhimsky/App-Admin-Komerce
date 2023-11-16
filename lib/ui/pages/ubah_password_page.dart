@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:komerce/models/ubah_pw_model.dart';
-import 'package:komerce/services/ubah_pw_service.dart';
+import 'package:admin_komerce/models/ubah_pw_model.dart';
+import 'package:admin_komerce/services/ubah_pw_service.dart';
 
 import '../../shared/theme.dart';
 
@@ -84,9 +84,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         elevation: 0, // Menghapus shadow
         child: Container(
             padding:
-                EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 12 * fem),
+                EdgeInsets.fromLTRB(24 * fem, 12 * fem, 24 * fem, 30 * fem),
             width: double.infinity,
-            height: 63 * fem,
+            height: 90 * fem,
             decoration: BoxDecoration(
               color: Color(0xffffffff),
             ),
