@@ -960,7 +960,7 @@ class _LogActivity extends State<LogActivity> {
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        containerData['email'] ?? '',
+                                        containerData['activity'] ?? '',
                                         style: TextStyle(
                                           color: Color(0xFF818181),
                                           fontSize: 12,

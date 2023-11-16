@@ -400,297 +400,305 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Container(
                               child: Container(
-                                margin: EdgeInsets.fromLTRB(
-                                    35 * fem, 0 * fem, 28 * fem, 307 * fem),
+                                margin:
+                                    EdgeInsets.symmetric(horizontal: 28 * fem),
                                 width: double.infinity,
                                 height: 79 * fem,
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/cariorder');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
-                                        elevation: 0,
-                                        padding: EdgeInsets.all(0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
+                                    Flexible(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/cariorder');
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0,
+                                          padding: EdgeInsets.all(0),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8 * fem),
+                                          ),
                                         ),
-                                      ),
-                                      child: Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                                        height: double.infinity,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  8 * fem),
-                                              width: 40 * fem,
-                                              height: 40 * fem,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffffffff),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        12 * fem),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0x28000000),
-                                                    offset: Offset(
-                                                        0 * fem, 0 * fem),
-                                                    blurRadius: 8 * fem,
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/bag-tick.png',
-                                                color: Color(
-                                                    0xfff95031), // Gantilah dengan warna yang sesuai
-                                              ),
-                                            ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 35 * fem,
-                                              ),
-                                              child: Text(
-                                                'Cari\nOrder',
-                                                textAlign: TextAlign.center,
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff626262),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                          height: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    8 * fem),
+                                                width: 40 * fem,
+                                                height: 40 * fem,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffffffff),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12 * fem),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0x28000000),
+                                                      offset: Offset(
+                                                          0 * fem, 0 * fem),
+                                                      blurRadius: 8 * fem,
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/bag-tick.png',
+                                                  color: Color(
+                                                      0xfff95031), // Gantilah dengan warna yang sesuai
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 35 * fem,
+                                                ),
+                                                child: Text(
+                                                  'Cari\nOrder',
+                                                  textAlign: TextAlign.center,
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff626262),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/updatenohp1');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
-                                        elevation: 0,
-                                        padding: EdgeInsets.all(0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
+                                    Flexible(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/updatenohp1');
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0,
+                                          padding: EdgeInsets.all(0),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8 * fem),
+                                          ),
                                         ),
-                                      ),
-                                      child: Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                                        height: double.infinity,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  8 * fem),
-                                              width: 40 * fem,
-                                              height: 40 * fem,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffffffff),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        12 * fem),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0x28000000),
-                                                    offset: Offset(
-                                                        0 * fem, 0 * fem),
-                                                    blurRadius: 8 * fem,
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/mobile-programming.png',
-                                                color: Color(
-                                                    0xfff95031), // Gantilah dengan warna yang sesuai
-                                              ),
-                                            ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 43 * fem,
-                                              ),
-                                              child: Text(
-                                                'Update\nNo. HP',
-                                                textAlign: TextAlign.center,
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff626262),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                          height: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    8 * fem),
+                                                width: 40 * fem,
+                                                height: 40 * fem,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffffffff),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12 * fem),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0x28000000),
+                                                      offset: Offset(
+                                                          0 * fem, 0 * fem),
+                                                      blurRadius: 8 * fem,
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/mobile-programming.png',
+                                                  color: Color(
+                                                      0xfff95031), // Gantilah dengan warna yang sesuai
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 43 * fem,
+                                                ),
+                                                child: Text(
+                                                  'Update\nNo. HP',
+                                                  textAlign: TextAlign.center,
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff626262),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/tambahalamat');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
-                                        elevation: 0,
-                                        padding: EdgeInsets.all(0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
+                                    Flexible(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/tambahalamat');
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0,
+                                          padding: EdgeInsets.all(0),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8 * fem),
+                                          ),
                                         ),
-                                      ),
-                                      child: Container(
-                                        margin: EdgeInsets.fromLTRB(
-                                            0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                                        height: double.infinity,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  8 * fem),
-                                              width: 40 * fem,
-                                              height: 40 * fem,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffffffff),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        12 * fem),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0x28000000),
-                                                    offset: Offset(
-                                                        0 * fem, 0 * fem),
-                                                    blurRadius: 8 * fem,
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/location-add.png',
-                                                color: Color(
-                                                    0xfff95031), // Gantilah dengan warna yang sesuai
-                                              ),
-                                            ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 50 * fem,
-                                              ),
-                                              child: Text(
-                                                'Tambah\nAlamat',
-                                                textAlign: TextAlign.center,
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff626262),
+                                        child: Container(
+                                          margin: EdgeInsets.fromLTRB(
+                                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                          height: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    8 * fem),
+                                                width: 40 * fem,
+                                                height: 40 * fem,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffffffff),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12 * fem),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0x28000000),
+                                                      offset: Offset(
+                                                          0 * fem, 0 * fem),
+                                                      blurRadius: 8 * fem,
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/location-add.png',
+                                                  color: Color(
+                                                      0xfff95031), // Gantilah dengan warna yang sesuai
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 50 * fem,
+                                                ),
+                                                child: Text(
+                                                  'Tambah\nAlamat',
+                                                  textAlign: TextAlign.center,
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff626262),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
                                     SizedBox(
                                       width: 20,
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(
-                                            context, '/resendverifikasi');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.transparent,
-                                        elevation: 0,
-                                        padding: EdgeInsets.all(0),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8 * fem),
+                                    Flexible(
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pushNamed(
+                                              context, '/resendverifikasi');
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                          primary: Colors.transparent,
+                                          elevation: 0,
+                                          padding: EdgeInsets.all(0),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8 * fem),
+                                          ),
                                         ),
-                                      ),
-                                      child: Container(
-                                        height: double.infinity,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  0 * fem,
-                                                  8 * fem),
-                                              width: 40 * fem,
-                                              height: 40 * fem,
-                                              decoration: BoxDecoration(
-                                                color: Color(0xffffffff),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        12 * fem),
-                                                boxShadow: [
-                                                  BoxShadow(
-                                                    color: Color(0x28000000),
-                                                    offset: Offset(
-                                                        0 * fem, 0 * fem),
-                                                    blurRadius: 8 * fem,
-                                                  ),
-                                                ],
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/send-2.png',
-                                                color: Color(
-                                                    0xfff95031), // Gantilah dengan warna yang sesuai
-                                              ),
-                                            ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 64 * fem,
-                                              ),
-                                              child: Text(
-                                                'Kirim Ulang\nVerifikasi',
-                                                textAlign: TextAlign.center,
-                                                style: SafeGoogleFont(
-                                                  'Plus Jakarta Sans',
-                                                  fontSize: 12 * ffem,
-                                                  fontWeight: FontWeight.w400,
-                                                  height: 1.26 * ffem / fem,
-                                                  color: Color(0xff626262),
+                                        child: Container(
+                                          height: double.infinity,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.fromLTRB(
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    0 * fem,
+                                                    8 * fem),
+                                                width: 40 * fem,
+                                                height: 40 * fem,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0xffffffff),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12 * fem),
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      color: Color(0x28000000),
+                                                      offset: Offset(
+                                                          0 * fem, 0 * fem),
+                                                      blurRadius: 8 * fem,
+                                                    ),
+                                                  ],
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/images/send-2.png',
+                                                  color: Color(
+                                                      0xfff95031), // Gantilah dengan warna yang sesuai
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 64 * fem,
+                                                ),
+                                                child: Text(
+                                                  'Kirim Ulang\nVerifikasi',
+                                                  textAlign: TextAlign.center,
+                                                  style: SafeGoogleFont(
+                                                    'Plus Jakarta Sans',
+                                                    fontSize: 12 * ffem,
+                                                    fontWeight: FontWeight.w400,
+                                                    height: 1.26 * ffem / fem,
+                                                    color: Color(0xff626262),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
