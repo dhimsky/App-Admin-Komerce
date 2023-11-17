@@ -214,6 +214,7 @@ class _LoginState extends State<Login> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      
                       Container(
                         margin: EdgeInsets.only(bottom: 31.5 * fem),
                         constraints: BoxConstraints(
@@ -251,6 +252,7 @@ class _LoginState extends State<Login> {
                                           crossAxisAlignment:
                                               WrapCrossAlignment.center,
                                           children: [
+                                            
                                             Container(
                                               width: MediaQuery.of(context)
                                                   .size
@@ -262,21 +264,20 @@ class _LoginState extends State<Login> {
                                                   SizedBox(
                                                     height: 10,
                                                   ),
-                                                  Align(
-                                                    alignment: Alignment
-                                                        .centerLeft, // Mengatur label ke kiri
-                                                    child: Text(
-                                                      'Username',
-                                                      style: TextStyle(
-                                                        fontSize: 12,
-                                                        fontWeight:
-                                                            FontWeight.w700,
-                                                        color: Colors.black,
+                                                  Container(
+                                                    child: Align(
+                                                      alignment: Alignment
+                                                          .centerLeft, // Mengatur label ke kiri
+                                                      child: Text(
+                                                        'Username',
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: Colors.black,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                  SizedBox(
-                                                    height: 5,
                                                   ), // Beri jarak dari elemen sebelumnya
                                                   Container(
                                                     decoration: BoxDecoration(

@@ -885,7 +885,7 @@ class _LogActivity extends State<LogActivity> {
                 ),
                 Container(
                   width: 375,
-                  height: 548 ,
+                  height: MediaQuery.of(context).size.height,
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,

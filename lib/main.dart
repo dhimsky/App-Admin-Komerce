@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:admin_komerce/cubit/page_cubit.dart';
-import 'package:admin_komerce/ui/pages/cari_order_page.dart'; 
+import 'package:admin_komerce/ui/pages/cari_order_page.dart';
 import 'package:admin_komerce/ui/pages/detail_order_page.dart';
 import 'package:admin_komerce/ui/pages/log_activity_page.dart';
 import 'package:admin_komerce/ui/pages/resend_verifikasi_page.dart';
@@ -32,6 +33,10 @@ class MyHttpOverrides extends HttpOverrides {
 void main() {
   HttpOverrides.global = MyHttpOverrides();
   debugPaintSizeEnabled = false;
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Color(0xffF95031), // Warna navigation bar
+    statusBarColor: Color(0xffF95031), // Warna status bar
+  ));
   runApp(MyApp());
 }
 
@@ -54,8 +59,20 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
+          title: 'Komerce APP Admin',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(fontFamily: 'PlusJakartaSans'),
+          theme: ThemeData(fontFamily: 'PlusJakartaSans', primarySwatch: MaterialColor(0xffF95031, {
+          50: Color(0xffF95031),
+          100: Color(0xffF95031),
+          200: Color(0xffF95031),
+          300: Color(0xffF95031),
+          400: Color(0xffF95031),
+          500: Color(0xffF95031),
+          600: Color(0xffF95031),
+          700: Color(0xffF95031),
+          800: Color(0xffF95031),
+          900: Color(0xffF95031),
+        })),
           home: SplashPage(),
           initialRoute: '/splash',
           routes: {
@@ -74,7 +91,7 @@ class MyApp extends StatelessWidget {
             '/updatenohp1': (context) => UpdateNoHp1(),
             '/updatenohp2': (context) => UpdateNoHp2(),
             '/resendverifikasi': (context) => ResendVerifikasi(),
-            '/tambahalamat' :(context) => TambahAlamat(),
+            '/tambahalamat': (context) => TambahAlamat(),
           },
         ),
       ),
