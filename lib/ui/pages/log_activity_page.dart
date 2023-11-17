@@ -109,7 +109,7 @@ class _LogActivity extends State<LogActivity> {
           width: double.infinity,
           child: Container(
             width: double.infinity,
-            height: MediaQuery.of(context).size.height,
+            height: 700,
             decoration: BoxDecoration(
               color: Color(0xffffffff),
             ),
@@ -883,115 +883,117 @@ class _LogActivity extends State<LogActivity> {
                 SizedBox(
                   height: 12,
                 ),
-                Container(
-                  width: 375,
-                  height: MediaQuery.of(context).size.height,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: dummyData.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            var containerData = dummyData[index];
-                            return Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 24,
-                                vertical: 12,
-                              ),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Color(0xFFF4F4F4),
-                                  width: 1,
+                Flexible(
+                  child: Container(
+                    width: 375,
+                    height: MediaQuery.of(context).size.height,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          ListView.builder(
+                            shrinkWrap: true,
+                            physics: NeverScrollableScrollPhysics(),
+                            itemCount: dummyData.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              var containerData = dummyData[index];
+                              return Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 12,
                                 ),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    padding: const EdgeInsets.all(8),
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(12),
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Color(0x19000000),
-                                          blurRadius: 15,
-                                          offset: Offset(0, 0),
-                                          spreadRadius: 0,
-                                        ),
-                                      ],
-                                    ),
-                                    child: Image.asset(
-                                      containerData['imagePath'] ?? '',
-                                      width: 24,
-                                      height: 24,
-                                    ),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: Color(0xFFF4F4F4),
+                                    width: 1,
                                   ),
-                                  const SizedBox(width: 12),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Text(
-                                              containerData['title'] ?? '',
-                                              style: TextStyle(
-                                                color: Color(0xFF333333),
-                                                fontSize: 14,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w500,
-                                              ),
-                                            ),
-                                            Text(
-                                              containerData['date'] ?? '',
-                                              style: TextStyle(
-                                                color: Color(0xFF818181),
-                                                fontSize: 10,
-                                                fontFamily: 'Plus Jakarta Sans',
-                                                fontWeight: FontWeight.w400,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          containerData['activity'] ?? '',
-                                          style: TextStyle(
-                                            color: Color(0xFF818181),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w400,
+                                ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 40,
+                                      height: 40,
+                                      padding: const EdgeInsets.all(8),
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(12),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Color(0x19000000),
+                                            blurRadius: 15,
+                                            offset: Offset(0, 0),
+                                            spreadRadius: 0,
                                           ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          containerData['admin'] ?? '',
-                                          style: TextStyle(
-                                            color: Color(0xFFF95031),
-                                            fontSize: 12,
-                                            fontFamily: 'Plus Jakarta Sans',
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
+                                      child: Image.asset(
+                                        containerData['imagePath'] ?? '',
+                                        width: 24,
+                                        height: 24,
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        ),
-                      ],
+                                    const SizedBox(width: 12),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text(
+                                                containerData['title'] ?? '',
+                                                style: TextStyle(
+                                                  color: Color(0xFF333333),
+                                                  fontSize: 14,
+                                                  fontFamily: 'Plus Jakarta Sans',
+                                                  fontWeight: FontWeight.w500,
+                                                ),
+                                              ),
+                                              Text(
+                                                containerData['date'] ?? '',
+                                                style: TextStyle(
+                                                  color: Color(0xFF818181),
+                                                  fontSize: 10,
+                                                  fontFamily: 'Plus Jakarta Sans',
+                                                  fontWeight: FontWeight.w400,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            containerData['activity'] ?? '',
+                                            style: TextStyle(
+                                              color: Color(0xFF818181),
+                                              fontSize: 12,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w400,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 8),
+                                          Text(
+                                            containerData['admin'] ?? '',
+                                            style: TextStyle(
+                                              color: Color(0xFFF95031),
+                                              fontSize: 12,
+                                              fontFamily: 'Plus Jakarta Sans',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
