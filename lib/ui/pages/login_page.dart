@@ -476,21 +476,21 @@ class _LoginState extends State<Login> {
                                 ],
                               ),
                             ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed('/lupapassword');
-                              },
-                              child: Text(
-                                'Lupa password?',
-                                style: TextStyle(
-                                  fontSize: 12 * ffem,
-                                  fontWeight: FontWeight.w700,
-                                  height: 1.26 * ffem / fem,
-                                  color: Color(0xff818181),
-                                ),
-                              ),
-                            ),
+                            // TextButton(
+                            //   onPressed: () {
+                            //     Navigator.of(context)
+                            //         .pushNamed('/lupapassword');
+                            //   },
+                            //   child: Text(
+                            //     'Lupa password?',
+                            //     style: TextStyle(
+                            //       fontSize: 12 * ffem,
+                            //       fontWeight: FontWeight.w700,
+                            //       height: 1.26 * ffem / fem,
+                            //       color: Color(0xff818181),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

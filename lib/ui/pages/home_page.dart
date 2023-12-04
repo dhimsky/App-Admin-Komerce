@@ -554,81 +554,81 @@ class _HomePageState extends State<HomePage> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 20,
-                                    ),
-                                    Flexible(
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pushNamed(
-                                              context, '/tambahalamat');
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.transparent,
-                                          elevation: 0,
-                                          padding: EdgeInsets.all(0),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(8 * fem),
-                                          ),
-                                        ),
-                                        child: Container(
-                                          margin: EdgeInsets.fromLTRB(
-                                              0 * fem, 0 * fem, 0 * fem, 0 * fem),
-                                          height: double.infinity,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                margin: EdgeInsets.fromLTRB(
-                                                    0 * fem,
-                                                    0 * fem,
-                                                    0 * fem,
-                                                    8 * fem),
-                                                width: 40 * fem,
-                                                height: 40 * fem,
-                                                decoration: BoxDecoration(
-                                                  color: Color(0xffffffff),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12 * fem),
-                                                  boxShadow: [
-                                                    BoxShadow(
-                                                      color: Color(0x28000000),
-                                                      offset: Offset(
-                                                          0 * fem, 0 * fem),
-                                                      blurRadius: 8 * fem,
-                                                    ),
-                                                  ],
-                                                ),
-                                                child: Image.asset(
-                                                  'assets/images/location-add.png',
-                                                  color: Color(
-                                                      0xfff95031), // Gantilah dengan warna yang sesuai
-                                                ),
-                                              ),
-                                              Container(
-                                                constraints: BoxConstraints(
-                                                  maxWidth: 50 * fem,
-                                                ),
-                                                child: Text(
-                                                  'Tambah\nAlamat',
-                                                  textAlign: TextAlign.center,
-                                                  style: SafeGoogleFont(
-                                                    'Plus Jakarta Sans',
-                                                    fontSize: 12 * ffem,
-                                                    fontWeight: FontWeight.w400,
-                                                    height: 1.26 * ffem / fem,
-                                                    color: Color(0xff626262),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
+                                    // SizedBox(
+                                    //   width: 20,
+                                    // ),
+                                    // Flexible(
+                                    //   child: ElevatedButton(
+                                    //     onPressed: () {
+                                    //       Navigator.pushNamed(
+                                    //           context, '/tambahalamat');
+                                    //     },
+                                    //     style: ElevatedButton.styleFrom(
+                                    //       primary: Colors.transparent,
+                                    //       elevation: 0,
+                                    //       padding: EdgeInsets.all(0),
+                                    //       shape: RoundedRectangleBorder(
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(8 * fem),
+                                    //       ),
+                                    //     ),
+                                    //     child: Container(
+                                    //       margin: EdgeInsets.fromLTRB(
+                                    //           0 * fem, 0 * fem, 0 * fem, 0 * fem),
+                                    //       height: double.infinity,
+                                    //       child: Column(
+                                    //         crossAxisAlignment:
+                                    //             CrossAxisAlignment.center,
+                                    //         children: [
+                                    //           Container(
+                                    //             margin: EdgeInsets.fromLTRB(
+                                    //                 0 * fem,
+                                    //                 0 * fem,
+                                    //                 0 * fem,
+                                    //                 8 * fem),
+                                    //             width: 40 * fem,
+                                    //             height: 40 * fem,
+                                    //             decoration: BoxDecoration(
+                                    //               color: Color(0xffffffff),
+                                    //               borderRadius:
+                                    //                   BorderRadius.circular(
+                                    //                       12 * fem),
+                                    //               boxShadow: [
+                                    //                 BoxShadow(
+                                    //                   color: Color(0x28000000),
+                                    //                   offset: Offset(
+                                    //                       0 * fem, 0 * fem),
+                                    //                   blurRadius: 8 * fem,
+                                    //                 ),
+                                    //               ],
+                                    //             ),
+                                    //             child: Image.asset(
+                                    //               'assets/images/location-add.png',
+                                    //               color: Color(
+                                    //                   0xfff95031), // Gantilah dengan warna yang sesuai
+                                    //             ),
+                                    //           ),
+                                    //           Container(
+                                    //             constraints: BoxConstraints(
+                                    //               maxWidth: 50 * fem,
+                                    //             ),
+                                    //             child: Text(
+                                    //               'Tambah\nAlamat',
+                                    //               textAlign: TextAlign.center,
+                                    //               style: SafeGoogleFont(
+                                    //                 'Plus Jakarta Sans',
+                                    //                 fontSize: 12 * ffem,
+                                    //                 fontWeight: FontWeight.w400,
+                                    //                 height: 1.26 * ffem / fem,
+                                    //                 color: Color(0xff626262),
+                                    //               ),
+                                    //             ),
+                                    //           ),
+                                    //         ],
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // ),
                                     SizedBox(
                                       width: 20,
                                     ),
